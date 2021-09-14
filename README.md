@@ -11,6 +11,10 @@
   Inheritance '21 - Team S.T.A.R. 
 </div>
 <hr>
+
+![GitHub contributors](https://img.shields.io/github/contributors/toshan-luktuke/stock-market-analyser?logo=GitHub&logoColor=red&style=for-the-badge)
+<hr>
+
 <details>
 <summary>Table of Contents</summary>
 
