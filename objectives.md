@@ -10,11 +10,11 @@
 | Update the charts live              | Express Router                    | 2-3              |
 | Optional - Portfolio for a user     | Mongo(maybe) or just localStorage | 1-2              |
 
-- Have a darkmode support for the layout
+- [ ] Have a darkmode support for the layout
 
-- Have our own minimal backend which pulls an endpoint and that would emit a socket event to the frontend which will update when there's a stock price change. This would also have a database to store recent historical data so that the user sees some activity when he/she just opens the page.
+- [ ] Have our own minimal backend which pulls an endpoint and that would emit a socket event to the frontend which will update when there's a stock price change. This would also have a database to store recent historical data so that the user sees some activity when he/she just opens the page.
 
-- Portfoilo would just include allowing a user to pin some of his/her stocks on interest.
+- [ ] Portfoilo would just include allowing a user to pin some of his/her stocks on interest.
 
 ## Hosting 😵
 
