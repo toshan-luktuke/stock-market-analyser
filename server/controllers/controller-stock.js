@@ -12,8 +12,9 @@ module.exports.getStockQuote = async (req, res, next) => {
         },
       },
     );
-    const { quoteResponse } = data;
-    const { result } = quoteResponse;
+    const {
+      quoteResponse: { result },
+    } = data;
     const { ask } = result[0];
     res.status(200).json({ success: true, data: ask });
   } catch (error) {
