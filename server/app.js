@@ -8,11 +8,7 @@ const stock = require('./routes/router-stock');
 const app = express();
 
 app.use(morgan('dev')); // purge in production
-app.use(
-  cors({
-    origin: '*',
-  }),
-);
+app.use(cors());
 app.use(express.urlencoded({ extended: false })); // for the searchbar
 app.use(express.json()); // for the HTTP request
 app.use('/stock', stock);
