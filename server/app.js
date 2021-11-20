@@ -9,7 +9,7 @@ const stock = require('./routes/router-stock');
 
 const app = express();
 const accessLogStream = fs.createWriteStream(
-  path.join(__dirname, 'access.log'),
+  path.join(__dirname, 'access.txt'),
   {
     flags: 'a',
   },
