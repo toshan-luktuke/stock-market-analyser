@@ -9,6 +9,7 @@
     "ecmaVersion": "latest"
   },
   "rules": {
-    "linebreak-style": ["error", "windows"]
+    "linebreak-style": ["error", "windows"],
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }]
   }
 }
