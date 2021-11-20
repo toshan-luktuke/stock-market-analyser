@@ -1,13 +1,21 @@
 require('dotenv').config();
 
+const fs = require('fs');
+const path = require('path');
 const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
 const stock = require('./routes/router-stock');
 
 const app = express();
+const accessLogStream = fs.createWriteStream(
+  path.join(__dirname, 'access.log'),
+  {
+    flags: 'a',
+  },
+);
 
-app.use(morgan('dev')); // purge in production
+app.use(morgan('combined', { stream: accessLogStream }));
 app.use(cors());
 app.use(express.urlencoded({ extended: false })); // for the searchbar
 app.use(express.json()); // for the HTTP request

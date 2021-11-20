@@ -1,0 +1,4 @@
+::1 - - [20/Nov/2021:12:35:25 +0000] "GET /tsla HTTP/1.1" 404 143 "-" "PostmanRuntime/7.28.4"
+::1 - - [20/Nov/2021:12:35:39 +0000] "GET /stock/tsla HTTP/1.1" 200 30 "-" "PostmanRuntime/7.28.4"
+[0mGET /stock/tsla [32m200[0m 411.670 ms - 30[0m
+::1 - - [20/Nov/2021:12:36:26 +0000] "GET /stock/tsla HTTP/1.1" 200 30 "-" "PostmanRuntime/7.28.4"
