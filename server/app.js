@@ -20,6 +20,6 @@ app.use('/stock', stock);
 const port = process.env.PORT;
 app.listen(port, () => {
   /* eslint-disable no-console */
-  console.log('Server is listening at ');
+  console.log(`Server is listening at http://localhost:${port}`);
   /* eslint-enable no-console */
 });
