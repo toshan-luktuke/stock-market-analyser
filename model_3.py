@@ -1,12 +1,12 @@
 # import libraries
-# import numpy as np
+import numpy as np
 import pandas as pd
 import datetime as dt
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 import yfinance as yf
-import julian
+# import julian
 
 # loading the data
 data = yf.download('SPY')
@@ -61,19 +61,22 @@ dte = dt.datetime(year, month, day).toordinal()
 p = model.predict([[dte]])
 print(p, p[0][0])
 
-"""
-for i in range(len(x_test)):
-    x_test[i][0] = dt.date.fromordinal(x_test[i][0])        # use julian
-"""
+x_plot = np.empty_like(x_test, dtype=dt.datetime)
+
+for i in range(x_test.size):
+    x_plot[i][0] = dt.date.fromordinal(x_test[i][0])
+
 
 # result
 print(pred)
 plt.figure(2)
-plt.scatter(x_test, y_test)
+plt.scatter(x_plot, y_test)
 # plt.plot([dte, p[0][0]])
-plt.scatter(dte, p[0][0], label="User requested point")
-plt.plot(x_test, pred, '-r')
+plt.scatter(dt.datetime.fromordinal(dte), p[0][0], label="User requested point")
+plt.plot(x_plot, pred, '-r')
 plt.legend()
 plt.title("Linear Regression model")
+plt.xlabel("Year")
+plt.ylabel("ADJ Closing")
 plt.show()
 
