@@ -1,8 +1,12 @@
 const express = require('express');
 
 const router = express.Router();
-const { getStockQuote } = require('../controllers/controller-stock');
+const {
+  getStockQuote,
+  getStockChart,
+} = require('../controllers/controller-stock');
 
-router.route('/:symbol').get(getStockQuote);
+router.route('/quote/:symbol').get(getStockQuote);
+router.route('/chart/:symbol').get(getStockChart);
 
 module.exports = router;
