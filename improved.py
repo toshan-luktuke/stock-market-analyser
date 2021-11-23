@@ -11,6 +11,11 @@ import yfinance as yf
 plt.style.use('dark_background')
 
 
+# ignore useless warnings
+import warnings
+warnings.filterwarnings("ignore")
+
+
 def menu():
     print("Here are some of the popular stocks and cryptos along with their codes")
     print("TATA MTRS \t\t\t\t\t TATAMOTORS.NS")
@@ -21,8 +26,13 @@ def menu():
 menu()
 
 # loading the data
-name = input("Enter the code of the portfolio or cryptocurrency or individual stock on the market")
+name = input("Enter the code of the portfolio or cryptocurrency or individual stock on the market: ")
 data = yf.download(name, auto_adjust=True)
+
+if data.empty:
+    print("You did not enter a valid stock code")
+    exit(1)
+
 print(data)
 
 data = data[['Close']]
@@ -34,21 +44,25 @@ plt.ylabel("Stock Closing Prices")
 plt.title("Stock ETF Price Series")
 plt.show()
 
-data['S_3'] = data['Close'].rolling(window=3).mean()
-data['S_9'] = data['Close'].rolling(window=9).mean()
+data['S_3'] = data['Close'].rolling(window=3).mean()        # this is for the average of the lsat 3 days
+data['S_9'] = data['Close'].rolling(window=9).mean()        # this is for the average of the last 9 days
 print(data.head())
-data = data.dropna()
+data = data.dropna()                                            # remove rows with null values
 
-
+# set the independent and dependent dataframes
 y = data['Close']
 x = data[['S_3', 'S_9']]
 
+# split the data into test and train datasets
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=.2)
 
+# train the model
 model = LinearRegression()
 model.fit(x_train.values, y_train.values)
 pred = model.predict(x_test.values)
 
+
+# description of the model
 print("Linear Regression model")
 print("Gold ETF Price (y) = %.2f * 3 Days Moving Average (x1) \
 + %.2f * 9 Days Moving Average (x2) \
@@ -67,6 +81,7 @@ print(p)
 print('current date: ', current)
 print("Next day's closing price: ", p[0])
 
+# plot
 pred = pd.DataFrame(pred, index=y_test.index, columns=['price'])
 pred.plot(figsize=(10, 7), linewidth=2)
 y_test.plot()
