@@ -1,5 +1,5 @@
 {
-  "name": "client",
+  "name": "stock-market-analyser",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -16,12 +16,14 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint ./ --ext .js --ignore-path .gitignore",
+    "lint:fix": "npm run lint -- --fix",
+    "format": "prettier --write \"{,!(node_modules)/**/}*.js\""
   },
   "eslintConfig": {
     "extends": [
-      "react-app",
-      "react-app/jest"
+      "@imaginary-cloud/eslint-config-react"
     ]
   },
   "browserslist": {
@@ -36,9 +38,19 @@
       "last 1 safari version"
     ]
   },
+  "prettier": "@imaginary-cloud/prettier-config",
   "devDependencies": {
+    "@imaginary-cloud/eslint-config-react": "^1.0.1",
     "autoprefixer": "^9.8.8",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^3.4.1",
+    "eslint-plugin-react": "^7.27.1",
+    "eslint-plugin-react-hooks": "^2.5.1",
     "postcss": "^7.0.39",
+    "prettier": "^2.4.1",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17"
   }
 }
