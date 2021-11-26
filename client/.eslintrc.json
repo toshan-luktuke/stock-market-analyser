@@ -13,6 +13,7 @@
   },
   "plugins": ["react"],
   "rules": {
+    "linebreak-style": ["error", "windows"],
     "object-curly-newline": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/function-component-definition": [
