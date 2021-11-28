@@ -1,0 +1,13 @@
+const axios = require('axios');
+
+module.exports.getCryptoLength = async (req, res, next) => {
+  try {
+    const {
+      data: { data },
+    } = await axios.get('https://api.coincap.io/v2/assets');
+    const length = data.length;
+    res.status(200).json({ success: true, data: length });
+  } catch (error) {
+    next(error);
+  }
+};

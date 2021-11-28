@@ -5,18 +5,15 @@ module.exports.getStockQuote = async (req, res, next) => {
     const { symbol } = req.params;
     const symbolize = symbol.toUpperCase();
     const { data } = await axios.get(
-      `https://yfapi.net/v6/finance/quote?region=US&lang=en&symbols=${symbolize}`,
-      {
-        headers: {
-          'X-API-KEY': process.env.API_KEY,
-        },
-      },
+      `https://query1.finance.yahoo.com/v8/finance/chart/${symbolize}`,
     );
     const {
-      quoteResponse: { result },
+      chart: { result },
     } = data;
-    const { ask } = result[0];
-    res.status(200).json({ success: true, data: ask });
+    const {
+      meta: { regularMarketPrice },
+    } = result[0];
+    res.status(200).json({ success: true, data: regularMarketPrice });
   } catch (error) {
     next(error);
   }

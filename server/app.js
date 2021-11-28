@@ -6,6 +6,7 @@ const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
 const stock = require('./routes/router-stock');
+const crypto = require('./routes/router-crypto');
 
 const app = express();
 const accessLogStream = fs.createWriteStream(
@@ -20,6 +21,7 @@ app.use(cors());
 app.use(express.urlencoded({ extended: false })); // for the searchbar
 app.use(express.json()); // for the HTTP request
 app.use('/stock', stock);
+app.use('/crypto', crypto);
 
 const port = process.env.PORT;
 app.listen(port, () => {
