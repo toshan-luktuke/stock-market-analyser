@@ -31,3 +31,15 @@ module.exports.getStockChart = async (req, res, next) => {
     next(error);
   }
 };
+
+module.exports.getStockLength = async (req, res, next) => {
+  try {
+    const { data } = await axios.get(
+      `https://financialmodelingprep.com/api/v3/financial-statement-symbol-lists?apikey=${process.env.API_KEY_FMP}`,
+    );
+    const length = data.length;
+    res.status(200).json({ success: true, data: length });
+  } catch (error) {
+    next(error);
+  }
+};
