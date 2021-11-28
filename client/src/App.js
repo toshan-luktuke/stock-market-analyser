@@ -1,16 +1,15 @@
-import React from 'react';
-import { HashRouter as Router, Switch } from 'react-router-dom';
-import Sidebar from './partials/Sidebar';
+import React, { lazy } from 'react';
+import { HashRouter as Router, Switch, Route } from 'react-router-dom';
+
+const Layout = lazy(() => import('./containers/Layout'));
 
 const App = () => {
   return (
-    <div>
-      <Router>
-        <Switch>
-          <Sidebar />
-        </Switch>
-      </Router>
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/" component={Layout} />
+      </Switch>
+    </Router>
   );
 };
 

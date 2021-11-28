@@ -1,31 +1,43 @@
 {
-  "name": "client",
+  "name": "stock-market-analyser",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@craco/craco": "^6.4.2",
-    "@testing-library/jest-dom": "^5.15.1",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-router-dom": "^5.3.0",
-    "react-scripts": "4.0.3",
-    "web-vitals": "^1.1.2"
-  },
   "scripts": {
-    "start": "craco start",
-    "build": "craco build",
-    "test": "craco test",
-    "eject": "react-scripts eject",
-    "lint": "eslint ./ --ext .js --ignore-path .gitignore",
-    "lint:fix": "npm run lint -- --fix"
+    "tailwind:dev": "tailwindcss build src/assets/css/tailwind.css -o src/assets/css/tailwind.output.css",
+    "tailwind:build": "cross-env NODE_ENV=production postcss src/assets/css/tailwind.css -o src/assets/css/tailwind.output.css",
+    "prestart": "npm run tailwind:dev",
+    "start": "react-scripts start",
+    "prebuild": "npm run tailwind:build",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "@testing-library/jest-dom": "4.2.4",
+    "@testing-library/react": "9.5.0",
+    "@testing-library/user-event": "7.2.1",
+    "@windmill/react-ui": "0.3.1",
+    "chart.js": "2.9.3",
+    "classnames": "2.2.6",
+    "react": "^16.13.1",
+    "react-chartjs-2": "2.9.0",
+    "react-dom": "^16.13.1",
+    "react-focus-lock": "2.4.0",
+    "react-router-dom": "5.2.0",
+    "react-scripts": "3.4.1",
+    "react-transition-group": "4.4.1"
+  },
+  "devDependencies": {
+    "@svgr/webpack": "5.4.0",
+    "autoprefixer": "9.8.0",
+    "cross-env": "7.0.2",
+    "cssnano": "4.1.10",
+    "postcss-cli": "7.1.1",
+    "react-axe": "3.5.2",
+    "tailwindcss": "1.4.6"
   },
   "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "extends": "react-app"
   },
   "browserslist": {
     "production": [
@@ -38,15 +50,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "autoprefixer": "^9.8.8",
-    "eslint-config-airbnb": "^19.0.1",
-    "eslint-plugin-import": "^2.25.3",
-    "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-react": "^7.27.1",
-    "eslint-plugin-react-hooks": "^4.3.0",
-    "postcss": "^7.0.39",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17"
   }
 }
