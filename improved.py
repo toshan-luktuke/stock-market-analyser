@@ -11,11 +11,11 @@ import yfinance as yf
 plt.style.use('dark_background')
 
 
-# ignore useless warnings
+# ignore useless warnings of Linear regression
 import warnings
 warnings.filterwarnings("ignore")
 
-
+# print sample menu (to be taken down eventually)
 def menu():
     print("Here are some of the popular stocks and cryptos along with their codes")
     print("TATA MTRS \t\t\t\t\t TATAMOTORS.NS")
@@ -29,6 +29,7 @@ menu()
 name = input("Enter the code of the portfolio or cryptocurrency or individual stock on the market: ")
 data = yf.download(name, auto_adjust=True)
 
+# check for valid stock code entered by the user
 if data.empty:
     print("You did not enter a valid stock code")
     exit(1)
@@ -39,9 +40,10 @@ data = data[['Close']]
 data = data.dropna()
 # print(data)
 
+# plot the data
 data.plot(figsize=(10, 7), color='r')
 plt.ylabel("Stock Closing Prices")
-plt.title("Stock ETF Price Series")
+plt.title("Stock Price Series")
 plt.show()
 
 data['S_3'] = data['Close'].rolling(window=3).mean()        # this is for the average of the lsat 3 days
