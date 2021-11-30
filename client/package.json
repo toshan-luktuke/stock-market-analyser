@@ -17,6 +17,7 @@
     "@testing-library/react": "9.5.0",
     "@testing-library/user-event": "7.2.1",
     "@windmill/react-ui": "0.3.1",
+    "animate.css": "^4.1.1",
     "chart.js": "2.9.3",
     "classnames": "2.2.6",
     "react": "^16.14.0",
