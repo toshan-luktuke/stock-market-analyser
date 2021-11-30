@@ -1,4 +1,5 @@
 import React from 'react';
+import 'animate.css';
 import { ForbiddenIcon } from '../icons';
 
 const Page404 = () => {
@@ -8,7 +9,7 @@ const Page404 = () => {
         className="w-12 h-12 mt-8 text-purple-200"
         aria-hidden="true"
       />
-      <h1 className="text-6xl font-semibold text-gray-700 dark:text-gray-200">
+      <h1 className="text-6xl font-semibold text-gray-700 dark:text-gray-200 animate__animated animate__fast animate__pulse  animate__infinite">
         404
       </h1>
       <p className="text-gray-700 dark:text-gray-300">
