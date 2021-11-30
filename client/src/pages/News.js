@@ -1,5 +1,4 @@
 import React from 'react';
-// import InfiniteScroll from 'react-infinite-scroll-component';
 
 import PageTitle from '../components/Typography/PageTitle';
 import NewsArticle from '../components/Cards/NewsArticle';
