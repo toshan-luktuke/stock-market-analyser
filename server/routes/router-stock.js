@@ -5,10 +5,12 @@ const {
   getStockQuote,
   getStockChart,
   getStockLength,
+  getWSB,
 } = require('../controllers/controller-stock');
 
 router.route('/quote/:symbol').get(getStockQuote);
 router.route('/chart/:symbol').get(getStockChart);
 router.route('/length').get(getStockLength);
+router.route('/wsb').get(getWSB);
 
 module.exports = router;

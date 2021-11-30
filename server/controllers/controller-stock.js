@@ -43,3 +43,14 @@ module.exports.getStockLength = async (req, res, next) => {
     next(error);
   }
 };
+
+module.exports.getWSB = async (req, res, next) => {
+  try {
+    const { data } = await axios.get(
+      `https://tradestie.com/api/v1/apps/reddit`,
+    );
+    res.status(200).json({ success: true, data });
+  } catch (error) {
+    next(error);
+  }
+};

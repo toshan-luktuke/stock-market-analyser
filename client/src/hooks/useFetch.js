@@ -4,11 +4,10 @@ import { get } from 'axios';
 export const useFetch = (url) => {
   const [recdata, setRecdata] = useState({});
   const [isLoading, setisLoading] = useState(true);
-  // const [quantity, setQuantity] = useState(0);
 
   const getData = useCallback(async () => {
     try {
-      const { data } = await get(url);
+      const { data } = await get(url, { crossdomain: true });
       setRecdata(data);
       setisLoading(false);
     } catch (error) {
@@ -17,7 +16,6 @@ export const useFetch = (url) => {
   }, [url]);
 
   useEffect(() => {
-    // setQuantity(6);
     getData();
   }, [url, getData]);
 

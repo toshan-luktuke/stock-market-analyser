@@ -4,6 +4,7 @@ const Dashboard = lazy(() => import('../pages/Dashboard'));
 const Search = lazy(() => import('../pages/Search'));
 const News = lazy(() => import('../pages/News'));
 const Page404 = lazy(() => import('../pages/404'));
+const WSB = lazy(() => import('../pages/WSB'));
 
 const routes = [
   {
@@ -21,6 +22,10 @@ const routes = [
   {
     path: '/404',
     component: Page404,
+  },
+  {
+    path: '/wsb',
+    component: WSB,
   },
 ];
 
