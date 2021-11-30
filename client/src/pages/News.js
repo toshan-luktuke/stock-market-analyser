@@ -1,70 +1,43 @@
 import React from 'react';
 import { Card, CardBody } from '@windmill/react-ui';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 import PageTitle from '../components/Typography/PageTitle';
 import SectionTitle from '../components/Typography/SectionTitle';
 import CTA from '../components/CTA';
-
+import { useFetch } from '../hooks/useFetch';
 
 const Cards = () => {
+  const url = 'https://inshortsapi.vercel.app/news?category=business';
+  const {
+    recdata: { data },
+    isLoading,
+  } = useFetch(url);
+  console.log(data);
   return (
     <>
-      <PageTitle>Latest News</PageTitle>
-
-      <SectionTitle>Latest Stock News</SectionTitle>
-
+      <PageTitle>Latest Finance News</PageTitle>
       <div className="grid gap-6 mb-8 md:grid-cols-2">
-        <Card colored className="bg-red-400 dark:bg-yellow-500 text-white">
-          <CardBody>
-            <p className="mb-4 font-semibold">News 1</p>
-            <p className="">We'll fetch from News APIs with stock and crypto keywords :)</p>
-          </CardBody>
-        </Card>
-
-        <Card colored className="text-white bg-red-400 dark:bg-yellow-500">
-          <CardBody>
-            <p className="mb-4 font-semibold">News 2</p>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga,
-              cum commodi a omnis numquam quod? Totam exercitationem quos hic
-              ipsam at qui cum numquam, sed amet ratione! Ratione, nihil
-              dolorum.
-            </p>
-          </CardBody>
-        </Card>
+        {/* <InfiniteScroll> </InfiniteScroll> */}
+        {!isLoading &&
+          data.map((news_article) => {
+            return <NewsArticle {...news_article} key={news_article.url} />;
+          })}
       </div>
-
-      <SectionTitle>Latest Crypto News</SectionTitle>
-
-      <div className="grid gap-6 mb-8 md:grid-cols-2">
-        <Card colored className="text-white bg-red-400 dark:bg-yellow-500">
-          <CardBody>
-            <p className="mb-4 font-semibold">News 3</p>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga,
-              cum commodi a omnis numquam quod? Totam exercitationem quos hic
-              ipsam at qui cum numquam, sed amet ratione! Ratione, nihil
-              dolorum.
-            </p>
-          </CardBody>
-        </Card>
-
-        <Card colored className="text-white bg-red-400 dark:bg-yellow-500">
-          <CardBody>
-            <p className="mb-4 font-semibold">News 4</p>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga,
-              cum commodi a omnis numquam quod? Totam exercitationem quos hic
-              ipsam at qui cum numquam, sed amet ratione! Ratione, nihil
-              dolorum.
-            </p>
-          </CardBody>
-        </Card>
-      </div>
-
       <CTA />
     </>
   );
 };
 
 export default Cards;
+
+const NewsArticle = ({ title, content }) => {
+  return (
+    <Card colored className="bg-red-400 dark:bg-teal-600 text-white">
+      <CardBody>
+        <p className="mb-4 font-semibold text-center font-ticker1">{title}</p>
+        <p className="font-sadha text-sm font-medium">{content}</p>
+      </CardBody>
+    </Card>
+  );
+};
