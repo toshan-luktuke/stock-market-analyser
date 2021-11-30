@@ -1,9 +1,8 @@
 import React from 'react';
-import { Card, CardBody } from '@windmill/react-ui';
-import InfiniteScroll from 'react-infinite-scroll-component';
+// import InfiniteScroll from 'react-infinite-scroll-component';
 
 import PageTitle from '../components/Typography/PageTitle';
-import SectionTitle from '../components/Typography/SectionTitle';
+import NewsArticle from '../components/Cards/NewsArticle';
 import CTA from '../components/CTA';
 import { useFetch } from '../hooks/useFetch';
 
@@ -30,14 +29,3 @@ const Cards = () => {
 };
 
 export default Cards;
-
-const NewsArticle = ({ title, content }) => {
-  return (
-    <Card colored className="bg-red-400 dark:bg-teal-600 text-white">
-      <CardBody>
-        <p className="mb-4 font-semibold text-center font-ticker1">{title}</p>
-        <p className="font-sadha text-sm font-medium">{content}</p>
-      </CardBody>
-    </Card>
-  );
-};
