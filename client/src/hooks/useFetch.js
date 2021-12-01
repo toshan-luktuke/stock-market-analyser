@@ -4,6 +4,7 @@ import { get } from 'axios';
 export const useFetch = (url) => {
   const [recdata, setRecdata] = useState({});
   const [isLoading, setisLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   const getData = useCallback(async () => {
     try {
@@ -11,6 +12,7 @@ export const useFetch = (url) => {
       setRecdata(data);
       setisLoading(false);
     } catch (error) {
+      setError(true);
       throw new Error(error);
     }
   }, [url]);
@@ -19,5 +21,5 @@ export const useFetch = (url) => {
     getData();
   }, [url, getData]);
 
-  return { recdata, isLoading };
+  return { recdata, isLoading, error };
 };
