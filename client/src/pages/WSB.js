@@ -7,7 +7,6 @@ import {
   TableRow,
   TableFooter,
   TableContainer,
-  Badge,
   Pagination,
 } from '@windmill/react-ui';
 
@@ -81,7 +80,7 @@ const WSB = () => {
                     </span>
                   </TableCell>
                   <TableCell className="text-center font-bold text-lg">
-                    {stonk.sentiment == 'Bullish' ? (
+                    {stonk.sentiment === 'Bullish' ? (
                       <p className="font-mono dark:text-green-400 text-green-600">
                         {stonk.sentiment}{' '}
                         <span className="font-black text-xl">&#8593;</span>
