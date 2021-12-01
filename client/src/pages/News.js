@@ -30,8 +30,8 @@ const Cards = () => {
     return (
       <>
         <PageTitle>Latest Finance News</PageTitle>
-        <p className="dark:text-white text-center animate__animated animate__flash animate__infinite">
-          Unable to fetch news :(
+        <p className="dark:text-white text-center">
+          Unable to fetch news right now :(
         </p>
       </>
     );
