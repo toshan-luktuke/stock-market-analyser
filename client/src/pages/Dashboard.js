@@ -7,6 +7,7 @@ import PageTitle from '../components/Typography/PageTitle';
 import { ChatIcon, CartIcon, MoneyIcon, PeopleIcon } from '../icons';
 import RoundIcon from '../components/RoundIcon';
 import SectionTitle from '../components/Typography/SectionTitle';
+import StockTicker from '../components/StockTicker';
 
 const Dashboard = () => {
   return (
@@ -53,7 +54,10 @@ const Dashboard = () => {
       <SectionTitle>
         Real-time general content like top performing stocks will be added here
       </SectionTitle>
-      <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-3">
+      <div className="p-2 pb-0 h-6.5">
+        <StockTicker rates={['$10', '$20', '$30']}></StockTicker>
+      </div>
+      <div className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-3">
         <IndexCard indexName="NASDAQ" value="$15736.35"></IndexCard>
         <IndexCard indexName="SENSEX" value="$50736.26"></IndexCard>
         <IndexCard indexName="CRYPTO" value="$700573.18"></IndexCard>

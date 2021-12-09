@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, CardBody } from '@windmill/react-ui';
-import { AreaChart, Area, CartesianGrid } from 'recharts';
+import { AreaChart, Area } from 'recharts';
 
 const data = [
   {
