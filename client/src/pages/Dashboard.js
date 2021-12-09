@@ -14,7 +14,7 @@ const Dashboard = () => {
     <>
       <PageTitle>Market Dashboard</PageTitle>
 
-      <div className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
+      <div className="grid gap-6 mb-4 md:grid-cols-2 xl:grid-cols-4">
         <InfoCard title="NYSE Indices Supported" value="S&P 500, DJIA & NASDAQ">
           <RoundIcon
             icon={PeopleIcon}
@@ -51,9 +51,7 @@ const Dashboard = () => {
           />
         </InfoCard>
       </div>
-      <SectionTitle>
-        Real-time general content like top performing stocks will be added here
-      </SectionTitle>
+
       <div className="p-2 pb-0 h-6.5">
         <StockTicker rates={['$10', '$20', '$30']}></StockTicker>
       </div>
@@ -62,6 +60,7 @@ const Dashboard = () => {
         <IndexCard indexName="SENSEX" value="$50736.26"></IndexCard>
         <IndexCard indexName="CRYPTO" value="$700573.18"></IndexCard>
       </div>
+
       <CTA />
     </>
   );

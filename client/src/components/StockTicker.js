@@ -4,8 +4,8 @@ import Ticker from 'react-ticker';
 const GetRatesList = ({ rates }) => {
   return rates ? (
     <p
-      className="mb-4 font-semibold text-black dark:text-white"
-      style={{ whiteSpace: 'nowrap' }}
+      className="mb-4 font-medium text-gray-700 dark:text-gray-100 tracking-widest text-2xl"
+      style={{ whiteSpace: 'nowrap', fontFamily: 'Black Ops One' }}
     >
       {rates.join(' +++ ')} +++{' '}
     </p>

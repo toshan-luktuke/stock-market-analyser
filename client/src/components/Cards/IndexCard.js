@@ -56,8 +56,12 @@ const IndexCard = ({ indexName, value }) => {
             <p className="mb-4 font-semibold text-black dark:text-white">
               {indexName}
             </p>
-            <p className=" font-medium">{value}</p>
-            <p className="text-xs font-light">Change in % here</p>
+            <p className="font-medium text-gray-600 dark:text-gray-300">
+              {value}
+            </p>
+            <p className="text-xs font-light text-gray-600 dark:text-gray-400">
+              Change in % here
+            </p>
           </div>
           <AreaChart height={80} width={150} data={data}>
             <Area
