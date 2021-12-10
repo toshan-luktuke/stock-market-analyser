@@ -54,3 +54,15 @@ module.exports.getWSB = async (req, res, next) => {
     next(error);
   }
 };
+
+module.exports.getAutosuggestions = async (req, res, next) => {
+  try {
+    const { name } = req.params;
+    const { data } = await axios.get(
+      `https://financialmodelingprep.com/api/v3/search-name?query=${name}&limit=10&exchange=NASDAQ&apikey=${process.env.API_KEY_FMP}`,
+    );
+    res.status(200).json(data);
+  } catch (error) {
+    next(error);
+  }
+};
