@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { get } from 'axios';
 import CTA from '../components/CTA';
 import PageTitle from '../components/Typography/PageTitle';
+import StockAnalysis from '../components/StockAnalysis';
 
 const Forms = () => {
   const [stock, setStock] = useState('');
   const [suggestions, setSuggestions] = useState([]);
+  const [submitted, setSubmitted] = useState(false);
+  const analysisKarneWalaStock = useRef(null);
 
   const getSuggestions = async (url) => {
     const { data } = await get(url);
@@ -14,10 +17,12 @@ const Forms = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setSubmitted(true);
+    sessionStorage.setItem('analyse', analysisKarneWalaStock.current.value);
   };
 
   useEffect(() => {
-    const url = `https://financialmodelingprep.com/api/v3/search-name?query=${stock}&limit=10&exchange=NASDAQ&apikey=${API_KEY}`;
+    const url = `http://localhost:5000/stock/autosuggest/${stock}`;
     if (stock.length === 0) {
       setSuggestions([]);
     }
@@ -43,6 +48,7 @@ const Forms = () => {
           className="w-full bg-cool-gray-200 dark:bg-cool-gray-800 rounded-lg py-2 px-4 dark:text-white"
           placeholder="Enter any stock name or symbol like AAPL, Tesla"
           onBeforeInput={() => setSuggestions([])}
+          ref={analysisKarneWalaStock}
         />
         <button
           type="submit"
@@ -66,11 +72,9 @@ const Forms = () => {
                 });
               }}
               onBlur={() => {
-                {
-                  setTimeout(() => {
-                    setSuggestions([]);
-                  }, 100);
-                }
+                setTimeout(() => {
+                  setSuggestions([]);
+                }, 100);
               }}
             >
               <p className="text-sm">{suggestion.symbol}</p>
@@ -78,6 +82,7 @@ const Forms = () => {
             </div>
           );
         })}
+      {submitted && <StockAnalysis name={sessionStorage.getItem('analyse')} />}
       <div className="mt-8">
         <CTA />
       </div>
