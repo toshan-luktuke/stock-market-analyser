@@ -66,3 +66,17 @@ module.exports.getAutosuggestions = async (req, res, next) => {
     next(error);
   }
 };
+
+module.exports.getStockDetails = async (req, res, next) => {
+  try {
+    const { symbol } = req.params;
+    const symbolize = symbol.toUpperCase();
+    const { data } = await axios.get(
+      `https://financialmodelingprep.com/api/v3/profile/${symbolize}?apikey=${process.env.API_KEY_FMP}`,
+    );
+    const stonkData = data[0];
+    res.status(200).json({ success: true, data: stonkData });
+  } catch (error) {
+    next(error);
+  }
+};
