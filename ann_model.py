@@ -90,5 +90,5 @@ plt.show()
 #print(Y_test)
 
 #Calculating the Accuracy of our trained Neural Network model
-score = model.evaluate(X_test, Y_test, verbose = 0) 
+score = model.evaluate(X_train, Y_train, verbose = 0) 
 print("Accuracy = ", (100-score), "%")
