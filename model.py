@@ -58,7 +58,7 @@ def find(name):
 
     # description of the model
     print("Linear Regression model")
-    print("Gold ETF Price (y) = %.2f * 3 Days Moving Average (x1) \
+    print("Stock price (y) = %.2f * 3 Days Moving Average (x1) \
     + %.2f * 9 Days Moving Average (x2) \
     + %.2f (constant)" % (model.coef_[0], model.coef_[1], model.intercept_))
     print("Accuracy = ", model.score(x_train, y_train)*100, " %")
