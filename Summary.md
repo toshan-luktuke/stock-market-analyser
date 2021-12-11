@@ -85,6 +85,7 @@ This can be done by trying to minimize our cost function.<br><br>
 <img alt = "Graph" src = "https://user-images.githubusercontent.com/84401192/144832933-cb1ac908-88c1-4db7-8814-1e6b3f5d9a4a.png">
 <b>Accuracy achieved by this model</b>
 <br>
-<img src = "https://user-images.githubusercontent.com/84401192/144830234-03d7679d-0323-492e-acfe-720e946c4a3d.png">
+<img src = "https://user-images.githubusercontent.com/84401192/145682873-e8bd209f-33b1-451d-a6e7-ec348af59dd4.png">
+
 
 
