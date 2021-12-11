@@ -58,7 +58,7 @@ We know split the dataset into training and testing datasets and the create and 
 Below is an example of a linear regression model
 <br>
 <br>
-<img width="718" alt="image" src="https://user-images.githubusercontent.com/68846562/144295795-85295129-6fb2-46c7-9b11-ba3838895aa7.png"><hr>
+<img width="744" alt="image" src="https://user-images.githubusercontent.com/68846562/145671812-c9bea30d-a2cc-4948-b006-e5af11f5079b.png">
 
 ## 2. Artificial Neural Networks
 
