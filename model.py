@@ -66,14 +66,31 @@ def find(name):
     current = dt.datetime.now()
     tom = current + timedelta(1)
 
-    s3 = data['Close'][-3:].mean()
-    s9 = data['Close'][-9:].mean()
-    print(s3, s9)
-    p = model.predict([[s3, s9]])
+    # day 1
+    s3_1 = data['Close'][-3:].mean()
+    s9_1 = data['Close'][-9:].mean()
+    print(s3_1, s9_1)
+    p = model.predict([[s3_1, s9_1]])
     print(p)
 
+    # day 2
+    s3_2 = (data['Close'][-2:].mean() + p[0])/2
+    s9_2 = (data['Close'][-8:].mean() + p[0])/2
+    print(s3_2, s9_2)
+    q = model.predict([[s3_2, s9_2]])
+    print(q)
+
+    # day 3
+    s3_3 = (data['Close'][-1:].mean() + p[0] + q[0]) / 3
+    s9_3 = (data['Close'][-7:].mean() + p[0] + q[0]) / 3
+    print(s3_3, s9_3)
+    r = model.predict([[s3_3, s9_3]])
+    print(r)
+
     print('current date: ', current)
-    print("Next day's closing price: ", p[0])
+    print("Today's predicted closing price: ", p[0])
+    print("Tomorrow's predicted closing price", q[0])
+    print("Day after tomorrow's predicted closing price", r[0])
 
     # plot
     pred = pd.DataFrame(pred, index=y_test.index, columns=['price'])
@@ -82,6 +99,11 @@ def find(name):
 
     plt.ylabel("Stock Price")
     plt.scatter(current, p[0], color='GREEN')
+    plt.scatter(current+timedelta(days=1), q[0], color="CYAN")
+    plt.scatter(current+timedelta(days=2), r[0], color="YELLOW")
     plt.legend(['predicted_price', 'actual_price', 'Next day'])
     plt.show()
-    return {'next_days_price': p[0]}
+    return {'p1': {'today_closing_price': p[0]},
+            'p2': {'tomorrow_closing_price': q[0]},
+            'p3': {'day_after_tomorrow_closing_price': r[0]}
+            }
