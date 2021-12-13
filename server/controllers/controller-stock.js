@@ -80,3 +80,31 @@ module.exports.getStockDetails = async (req, res, next) => {
     next(error);
   }
 };
+
+module.exports.getSocialSentiments = async (req, res, next) => {
+  try {
+    const { symbol } = req.params;
+    const symbolize = symbol.toUpperCase();
+    const { data } = await axios.get(
+      `https://financialmodelingprep.com/api/v4/historical/social-sentiment?symbol=${symbolize}&apikey=${process.env.API_KEY_FMP}`,
+    );
+    const sentiments = data[0];
+    res.status(200).json({ success: true, data: sentiments });
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports.getRating = async (req, res, next) => {
+  try {
+    const { symbol } = req.params;
+    const symbolize = symbol.toUpperCase();
+    const { data } = await axios.get(
+      `https://financialmodelingprep.com/api/v3/rating/${symbolize}?apikey=${process.env.API_KEY_FMP}`,
+    );
+    const rating = data[0];
+    res.status(200).json({ success: true, data: rating });
+  } catch (error) {
+    next(error);
+  }
+};

@@ -8,6 +8,8 @@ const {
   getWSB,
   getAutosuggestions,
   getStockDetails,
+  getSocialSentiments,
+  getRating,
 } = require('../controllers/controller-stock');
 
 router.route('/quote/:symbol').get(getStockQuote);
@@ -16,5 +18,7 @@ router.route('/autosuggest/:name').get(getAutosuggestions);
 router.route('/length').get(getStockLength);
 router.route('/wsb').get(getWSB);
 router.route('/details/:symbol').get(getStockDetails);
+router.route('/social/:symbol').get(getSocialSentiments);
+router.route('/rating/:symbol').get(getRating);
 
 module.exports = router;

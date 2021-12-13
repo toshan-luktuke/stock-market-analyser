@@ -20,6 +20,8 @@ module.exports = windmill({
         marker: 'Permanent Marker',
         marker2: 'Rock Salt',
         ticker: 'Black Ops One',
+        info: 'PT Sans',
+        info2: 'Comfortaa',
       },
       boxShadow: {
         bottom:
