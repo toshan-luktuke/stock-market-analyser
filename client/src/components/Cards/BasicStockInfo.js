@@ -1,8 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Card, CardBody } from '@windmill/react-ui';
 import { get } from 'axios';
 
 import { useFetch } from '../../hooks/useFetch';
+
+const directionEmojis = {
+  up: '🚀',
+  down: '💩',
+  '': '',
+};
 
 const BasicStockInfo = ({ symbol }) => {
   const url = `http://localhost:5000/stock/details/${symbol}`;
@@ -14,6 +20,7 @@ const BasicStockInfo = ({ symbol }) => {
     const url1 = `http://localhost:5000/stock/rating/${symbol}`;
     fetcherConditional(url1);
   }, [recdata, symbol]);
+
   const fetcherConditional = async (url1) => {
     try {
       const { data } = await get(url1, { crossdomain: true });
@@ -23,6 +30,40 @@ const BasicStockInfo = ({ symbol }) => {
       throw new Error(error);
     }
   };
+
+  const getData = async () => {
+    const { data } = await get(`http://localhost:5000/stock/chart/${symbol}`);
+    return data;
+  };
+
+  let [price, setPrice] = useState(-1);
+  let [prevPrice, setPrevPrice] = useState(-1);
+  let [priceTime, setPriceTime] = useState(null);
+  useEffect(() => {
+    let timeoutId;
+    const getLatestPrice = async () => {
+      try {
+        const rdata = await getData();
+        const stockData = rdata.data.chart.result[0];
+        console.log(stockData);
+        setPrevPrice(price);
+        setPrice(stockData.meta.regularMarketPrice.toFixed(2));
+        setPriceTime(new Date(stockData.meta.regularMarketTime * 1000));
+      } catch (error) {
+        throw new Error(error);
+      }
+      timeoutId = setTimeout(getLatestPrice, 10000);
+    };
+    getLatestPrice();
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [recdata, symbol]);
+
+  const direction = useMemo(
+    () => (prevPrice < price ? 'up' : prevPrice > price ? 'down' : ''),
+    [prevPrice, price],
+  );
 
   if (!isLoading) {
     return (
@@ -91,7 +132,27 @@ const BasicStockInfo = ({ symbol }) => {
             </p>
           </CardBody>
         </Card>
-        <Card>
+        <Card className="my-8 shadow-md">
+          <CardBody>
+            <h1 className="my-2 font-semibold font-mono text-xl dark:text-gray-200 ml-4 w-full text-center">
+              Real-time Analysis
+            </h1>
+            <p
+              className="text-3xl dark:text-gray-200 ml-4 w-full text-center font"
+              style={{ fontFamily: 'Black Ops One' }}
+            >
+              💲{' '}
+              <span>
+                {price} {directionEmojis[direction]}
+              </span>
+            </p>
+            <p className="text-base dark:text-gray-200 ml-4 w-full text-center">
+              ⌚ Time:{' '}
+              <span> {priceTime && priceTime.toLocaleTimeString()}</span>
+            </p>
+          </CardBody>
+        </Card>
+        <Card className="mt-8 mb-4 shadow-md">
           <CardBody>
             <h1 className="my-2 font-semibold font-mono text-lg dark:text-gray-200 ml-4">
               Ratings (Based on DCF, ROA, DES, PB scores)
@@ -103,20 +164,16 @@ const BasicStockInfo = ({ symbol }) => {
               }}
             >
               <p>
-                📅 <span className="font-semibold">Date:</span>{' '}
-                <span>{rating.data.date}</span>
-              </p>
-              <p>
                 ⭐ <span className="font-semibold">Rating:</span>{' '}
-                <span>{rating.data.rating}</span>
+                <span>{rating && rating.data.rating}</span>
               </p>
               <p>
                 💯 <span className="font-semibold">Score:</span>{' '}
-                <span>{rating.data.ratingScore}</span>
+                <span>{rating && rating.data.ratingScore}</span>
               </p>
               <p>
                 💹 <span className="font-semibold">Recommendation:</span>{' '}
-                <span>{rating.data.ratingRecommendation}</span>
+                <span>{rating && rating.data.ratingRecommendation}</span>
               </p>
             </div>
           </CardBody>
