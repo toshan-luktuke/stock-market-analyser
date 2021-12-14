@@ -101,5 +101,5 @@ def find(name):
 
     data = data.iloc[len(data)-10:]
     data = data[['High','Open', 'Volume']]
-    pred = model.predict(X*100, verbose=0)
+    pred = model.predict(data*100, verbose=0)
     return pred[0]
