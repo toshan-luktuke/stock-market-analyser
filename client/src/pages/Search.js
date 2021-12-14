@@ -22,7 +22,7 @@ const Forms = () => {
   };
 
   useEffect(() => {
-    const url = `http://localhost:5000/stock/autosuggest/${stock}`;
+    const url = `https://stock-market-analyser-backend.herokuapp.com/stock/autosuggest/${stock}`;
     if (stock.length === 0) {
       setSuggestions([]);
     }

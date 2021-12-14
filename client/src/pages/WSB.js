@@ -19,7 +19,7 @@ const WSB = () => {
   const [dataTable, setDataTable] = useState([]);
 
   const resultsPerPage = 10;
-  const url = 'http://localhost:5000/stock/wsb';
+  const url = 'https://stock-market-analyser-backend.herokuapp.com/stock/wsb';
 
   const {
     recdata: { data: response },

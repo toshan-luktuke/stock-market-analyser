@@ -11,13 +11,13 @@ const directionEmojis = {
 };
 
 const BasicStockInfo = ({ symbol }) => {
-  const url = `http://localhost:5000/stock/details/${symbol}`;
+  const url = `https://stock-market-analyser-backend.herokuapp.com/stock/details/${symbol}`;
   const { recdata, isLoading } = useFetch(url);
   const { data } = recdata;
 
   const [rating, setRating] = useState({});
   useEffect(() => {
-    const url1 = `http://localhost:5000/stock/rating/${symbol}`;
+    const url1 = `https://stock-market-analyser-backend.herokuapp.com/stock/rating/${symbol}`;
     fetcherConditional(url1);
   }, [recdata, symbol]);
 
@@ -32,7 +32,9 @@ const BasicStockInfo = ({ symbol }) => {
   };
 
   const getData = async () => {
-    const { data } = await get(`http://localhost:5000/stock/chart/${symbol}`);
+    const { data } = await get(
+      `https://stock-market-analyser-backend.herokuapp.com/stock/chart/${symbol}`,
+    );
     return data;
   };
 

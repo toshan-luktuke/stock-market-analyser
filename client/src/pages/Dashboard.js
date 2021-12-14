@@ -32,7 +32,7 @@ const Dashboard = () => {
           />
         </InfoCard>
 
-        <InfoCard title="Total Stock Symbols Supported real-time" value="13130">
+        <InfoCard title="Total Stock Symbols Supported real-time" value="13131">
           <RoundIcon
             icon={CartIcon}
             iconColorClass="text-blue-500 dark:text-blue-100"
