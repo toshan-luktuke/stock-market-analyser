@@ -18,7 +18,7 @@ warnings.filterwarnings("ignore")
 
 
 # loading the data
-def find(name):
+def find_r(name):
     # name = input("Enter the code of the portfolio or cryptocurrency or individual stock on the market: ")
     data = yf.download(name, auto_adjust=True)
 
@@ -27,7 +27,7 @@ def find(name):
         print("You did not enter a valid stock code")
         return -1
 
-    print(data)
+    # print(data)
 
     data = data[['Close']]
     data = data.dropna()
@@ -41,7 +41,7 @@ def find(name):
 
     data['S_3'] = data['Close'].rolling(window=3).mean()        # this is for the average of the lsat 3 days
     data['S_9'] = data['Close'].rolling(window=9).mean()        # this is for the average of the last 9 days
-    print(data.head())
+    # print(data.head())
     data = data.dropna()                                            # remove rows with null values
 
     # set the independent and dependent dataframes
@@ -69,40 +69,40 @@ def find(name):
     # day 1
     s3_1 = data['Close'][-3:].mean()
     s9_1 = data['Close'][-9:].mean()
-    print(s3_1, s9_1)
+    # print(s3_1, s9_1)
     p = model.predict([[s3_1, s9_1]])
-    print(p)
+    # print(p)
 
     # day 2
     s3_2 = (data['Close'][-2:].mean() + p[0])/2
     s9_2 = (data['Close'][-8:].mean() + p[0])/2
-    print(s3_2, s9_2)
+    # print(s3_2, s9_2)
     q = model.predict([[s3_2, s9_2]])
-    print(q)
+    # print(q)
 
     # day 3
     s3_3 = (data['Close'][-1:].mean() + p[0] + q[0]) / 3
     s9_3 = (data['Close'][-7:].mean() + p[0] + q[0]) / 3
-    print(s3_3, s9_3)
+    # print(s3_3, s9_3)
     r = model.predict([[s3_3, s9_3]])
-    print(r)
+    # print(r)
 
-    print('current date: ', current)
-    print("Today's predicted closing price: ", p[0])
-    print("Tomorrow's predicted closing price", q[0])
-    print("Day after tomorrow's predicted closing price", r[0])
+    # print('current date: ', current)
+    # print("Today's predicted closing price: ", p[0])
+    # print("Tomorrow's predicted closing price", q[0])
+    # print("Day after tomorrow's predicted closing price", r[0])
 
     # plot
     pred = pd.DataFrame(pred, index=y_test.index, columns=['price'])
-    pred.plot(figsize=(10, 7), linewidth=2)
-    y_test.plot()
+    # pred.plot(figsize=(10, 7), linewidth=2)
+    # y_test.plot()
 
-    plt.ylabel("Stock Price")
-    plt.scatter(current, p[0], color='GREEN')
-    plt.scatter(current+timedelta(days=1), q[0], color="CYAN")
-    plt.scatter(current+timedelta(days=2), r[0], color="YELLOW")
-    plt.legend(['predicted_price', 'actual_price', 'Next day'])
-    plt.show()
+    # plt.ylabel("Stock Price")
+    # plt.scatter(current, p[0], color='GREEN')
+    # plt.scatter(current+timedelta(days=1), q[0], color="CYAN")
+    # plt.scatter(current+timedelta(days=2), r[0], color="YELLOW")
+    # plt.legend(['predicted_price', 'actual_price', 'Next day'])
+    # plt.show()
     return {'p1': {'today_closing_price': p[0]},
             'p2': {'tomorrow_closing_price': q[0]},
             'p3': {'day_after_tomorrow_closing_price': r[0]}

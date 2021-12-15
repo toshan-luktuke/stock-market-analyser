@@ -21,7 +21,7 @@ def find(name):
     data = data.reset_index()
     data = data.set_index(pd.DatetimeIndex(data['Date'].values))
     #Dropping unwanted columns
-    data.drop(data.columns[[3,5]], axis=1, inplace=True)
+    data.drop(data.columns[[3]], axis=1, inplace=True)
     print(data)
 
     #Normalizing/Removing null data points
@@ -102,4 +102,4 @@ def find(name):
     data = data.iloc[len(data)-10:]
     data = data[['High','Open', 'Volume']]
     pred = model.predict(data*100, verbose=0)
-    return pred[0]
+    return pred[0][0]
