@@ -128,14 +128,14 @@ A web or computer application to analyze the current trends in the stock a user 
     $ conda create -n test python=3.8 anaconda
     $ conda activate test
     ```
-2. Enter the `model` directory look for requirments.txt and install the packages.
+2. Enter the `Model` directory look for requirments.txt and install the packages.
    ```
    $ pip install -r requirements.txt
    ```
 
 ### For the Flask API:
 
-1. Look for the `main.py` and `test.py` files in the `model` directory and have them ready. (The packages for flask would already be installed when you run previous command number 2 in the above section)
+1. Look for the `main.py` and `test.py` files in the `Model` directory and have them ready. (The packages for flask would already be installed when you run previous command number 2 in the above section)
 
 ## 💻Usage
 Once the required setup and installation is completed, you can start developing and running the project.
@@ -165,14 +165,14 @@ Once the required setup and installation is completed, you can start developing 
 
 ### For the model and for the Flask API:
 
-1. Locate to the `model` directory. The models for the project are in `model.py` and `ann_model.py` files.
+1. Locate to the `Model` directory. The models for the project are in `linear_reg_model.py` and `ann_model.py` files.
 
-2. Open the command prompt for anaconda and switch to the virtual enivronment that you created and locate to the `model` directory. (example: test)
+2. Open the command prompt for anaconda and switch to the virtual environment that you created and locate to the `Model` directory. (example: test)
    ```
    $ conda activate test
    ```
 
-3. Open another command prompt for anaconda and switch to the virtual enivronment that you created and locate to the `model` directory. (example: test)
+3. Open another command prompt for anaconda and switch to the virtual environment that you created and locate to the `Model` directory. (example: test)
    ```
    $ conda activate test
    ```
