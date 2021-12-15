@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_restful import Api, Resource, abort
-from linear_reg_model import find_r
-from ann_model import find
+from Model.linear_reg_model import find_r
+from Model.ann_model import find
 
 app = Flask(__name__)
 api = Api(app)
