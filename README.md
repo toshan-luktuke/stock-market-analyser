@@ -165,7 +165,7 @@ Once the required setup and installation is completed, you can start developing 
 
 ### For the model and for the Flask API:
 
-1. Locate to the `model` directory. The models for the project are in `model.py` and `ann_model.py` files.
+1. Locate to the `model` directory. The models for the project are in `linear_reg_model.py` and `ann_model.py` files.
 
 2. Open the command prompt for anaconda and switch to the virtual environment that you created and locate to the `Model` directory. (example: test)
    ```
