@@ -7,6 +7,7 @@ import PageTitle from '../components/Typography/PageTitle';
 import { ChatIcon, CartIcon, MoneyIcon, PeopleIcon } from '../icons';
 import RoundIcon from '../components/RoundIcon';
 import StockTicker from '../components/StockTicker';
+import LargeStockChart from '../components/Cards/LargeStockChart';
 
 const Dashboard = () => {
   return (
@@ -60,6 +61,7 @@ const Dashboard = () => {
         <IndexCard indexName="CRYPTO" value="$700573.18"></IndexCard>
       </div>
 
+      <LargeStockChart className="flex" />
       <CTA />
     </>
   );
