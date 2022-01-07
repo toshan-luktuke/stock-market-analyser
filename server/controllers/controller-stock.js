@@ -108,3 +108,45 @@ module.exports.getRating = async (req, res, next) => {
     next(error);
   }
 };
+
+module.exports.getIndexQuote = async (req, res, next) => {
+  try {
+    const { symbol } = req.params;
+    // BNSX - SENSEX
+    // BSEN - NIFTY 50
+    const symbolize = symbol.toUpperCase();
+    const {
+      data: { data },
+    } = await axios.get(
+      `https://priceapi.moneycontrol.com/pricefeed/notapplicable/inidicesindia/in%3${symbolize}`,
+    );
+    // pricecurrent attribute is the live price of the index
+    res.status(200).json(data);
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports.getIndexChart = async (req, res, next) => {
+  try {
+    const { symbol, start, end } = req.params;
+    // BNSX - SENSEX
+    // BSEN - NIFTY 50
+    const symbolize = symbol.toUpperCase();
+    let ticker;
+    if (symbolize === 'BNSX') {
+      ticker = 4;
+    } else {
+      ticker = 9;
+    }
+    const {
+      data: { c, t },
+    } = await axios.get(
+      `https://priceapi.moneycontrol.com/techCharts/history?symbol=${ticker}&resolution=1&from=${start}&to=${end}`,
+    );
+    const toSend = { c, t };
+    res.status(200).json(toSend);
+  } catch (error) {
+    next(error);
+  }
+};

@@ -10,6 +10,8 @@ const {
   getStockDetails,
   getSocialSentiments,
   getRating,
+  getIndexQuote,
+  getIndexChart,
 } = require('../controllers/controller-stock');
 
 router.route('/quote/:symbol').get(getStockQuote);
@@ -20,5 +22,8 @@ router.route('/wsb').get(getWSB);
 router.route('/details/:symbol').get(getStockDetails);
 router.route('/social/:symbol').get(getSocialSentiments);
 router.route('/rating/:symbol').get(getRating);
+router.route('/index/quote/:symbol').get(getIndexQuote);
+router.route('/index/chart/:symbol/:start/:end').get(getIndexChart);
+// cut down on the response size
 
 module.exports = router;
