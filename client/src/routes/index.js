@@ -5,6 +5,7 @@ const Search = lazy(() => import('../pages/Search'));
 const News = lazy(() => import('../pages/News'));
 const Page404 = lazy(() => import('../pages/404'));
 const WSB = lazy(() => import('../pages/WSB'));
+const Predictions = lazy(() => import('../pages/Predictions'));
 
 const routes = [
   {
@@ -26,6 +27,10 @@ const routes = [
   {
     path: '/wsb',
     component: WSB,
+  },
+  {
+    path: '/predictions',
+    component: Predictions,
   },
 ];
 
