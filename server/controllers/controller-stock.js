@@ -1,4 +1,5 @@
 const axios = require('axios');
+const { tick } = require('./../tick');
 
 module.exports.getStockQuote = async (req, res, next) => {
   try {
@@ -146,6 +147,19 @@ module.exports.getIndexChart = async (req, res, next) => {
     );
     const toSend = { c, t };
     res.status(200).json(toSend);
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports.getPredSuggestion = async (req, res, next) => {
+  try {
+    const { name } = req.params;
+    const nameToSearch = name.charAt(0).toUpperCase() + name.slice(1);
+    const queryResults = tick.filter((stock) => {
+      return stock.name.includes(nameToSearch);
+    });
+    res.status(200).json(queryResults);
   } catch (error) {
     next(error);
   }
