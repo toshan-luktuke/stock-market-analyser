@@ -17,7 +17,7 @@ def find(name):
     #Loading the data
     data = yf.download(name, auto_adjust=True)
 
-    # check for valid stock code entered by the user
+    #Check for valid stock code entered by the user
     if data.empty:
         print("You did not enter a valid stock code")
         return -1
