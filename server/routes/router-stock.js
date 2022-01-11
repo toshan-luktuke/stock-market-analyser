@@ -13,6 +13,7 @@ const {
   getIndexQuote,
   getIndexChart,
   getPredSuggestion,
+  getNewAutoSuggestions,
 } = require('../controllers/controller-stock');
 
 router.route('/quote/:symbol').get(getStockQuote);
@@ -27,5 +28,6 @@ router.route('/index/quote/:symbol').get(getIndexQuote);
 router.route('/index/chart/:symbol/:start/:end').get(getIndexChart);
 // cut down on the response size
 router.route('/predautosuggest/:name').get(getPredSuggestion);
+router.route('/newautosuggest/:name').get(getNewAutoSuggestions);
 
 module.exports = router;

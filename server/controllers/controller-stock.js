@@ -1,5 +1,6 @@
 const axios = require('axios');
 const { tick } = require('./../tick');
+const { list } = require('./../list');
 
 module.exports.getStockQuote = async (req, res, next) => {
   try {
@@ -157,6 +158,19 @@ module.exports.getPredSuggestion = async (req, res, next) => {
     const { name } = req.params;
     const nameToSearch = name.charAt(0).toUpperCase() + name.slice(1);
     const queryResults = tick.filter((stock) => {
+      return stock.name.includes(nameToSearch);
+    });
+    res.status(200).json(queryResults);
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports.getNewAutoSuggestions = async (req, res, next) => {
+  try {
+    const { name } = req.params;
+    const nameToSearch = name.charAt(0).toUpperCase() + name.slice(1);
+    const queryResults = list.filter((stock) => {
       return stock.name.includes(nameToSearch);
     });
     res.status(200).json(queryResults);
