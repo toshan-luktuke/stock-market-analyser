@@ -12,7 +12,7 @@ def find(name):
     #Loading the data
     data = yf.download(name, auto_adjust=True)
 
-    # check for valid stock code entered by the user
+    #Check for valid stock code entered by the user
     if data.empty:
         print("You did not enter a valid stock code")
         return -1
@@ -22,14 +22,14 @@ def find(name):
     data = data.set_index(pd.DatetimeIndex(data['Date'].values))
     #Dropping unwanted columns
     data.drop(data.columns[[3]], axis=1, inplace=True)
-    print(data)
+    #print(data)
 
     #Normalizing/Removing null data points
     data['Open'] = data['Open']/100
     data['Close'] = data['Close']/100
     data['High'] = data['High']/100
     data['Volume'] = data['Volume']/1000000
-    print(data)
+    #print(data)
 
     nan_value_index = []
 
@@ -83,7 +83,7 @@ def find(name):
 
     #Predicted Values
     prediction = model.predict(X_test)
-    print(prediction*100)
+    #print(prediction*100)
 
     #Predictions vs Actual results
     plt.plot(prediction*100,color='blue', label='Predictions by the model')
@@ -97,7 +97,7 @@ def find(name):
 
     #Calculating the Accuracy of our trained Neural Network model
     score = model.evaluate(X_train, Y_train, verbose = 0) 
-    print("Accuracy = ", (100-score), "%")
+    #print("Accuracy = ", (100-score), "%")
 
     data = data.iloc[len(data)-10:]
     data = data[['High','Open', 'Volume']]
