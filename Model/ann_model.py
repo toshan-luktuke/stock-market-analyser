@@ -7,6 +7,11 @@ import datetime as dt
 from keras.models import Sequential
 from keras.layers.core import Dense, Dropout, Activation
 import yfinance as yf
+import os
+import pickle
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+
 
 def find(name):
     #Loading the data
@@ -22,14 +27,14 @@ def find(name):
     data = data.set_index(pd.DatetimeIndex(data['Date'].values))
     #Dropping unwanted columns
     data.drop(data.columns[[3]], axis=1, inplace=True)
-    print(data)
+    # print(data)
 
     #Normalizing/Removing null data points
     data['Open'] = data['Open']/100
     data['Close'] = data['Close']/100
     data['High'] = data['High']/100
     data['Volume'] = data['Volume']/1000000
-    print(data)
+    # print(data)
 
     nan_value_index = []
 
@@ -69,37 +74,43 @@ def find(name):
     #print("X_test", X_test.shape)
     #print("y_test", Y_test.shape)
 
-    #Training the Neural Network Model
+    # Training the Neural Network Model
     model = Sequential()
-    #Adding the input and hidden layers
+    # Adding the input and hidden layers
     model.add(Dense(units = 32, kernel_initializer = 'uniform', activation = 'relu', input_dim = 3))
     model.add(Dense(units = 10, kernel_initializer = 'uniform', activation = 'relu'))
-    #Adding output layer
+    # Adding output layer
     model.add(Dense(units = 1, kernel_initializer = 'uniform', activation = 'linear'))
-    #To compile the neural network model
+    # To compile the neural network model
     model.compile(optimizer = 'adam', loss = 'mean_squared_error', metrics = [])
-    #Fitting the model to the training data
+    # Fitting the model to the training data
     model.fit(X_train, Y_train, batch_size = 128, epochs = 10, validation_split=0.05)
 
-    #Predicted Values
+    filename = 'ANNmodel.sav'
+    pickle.dump(model, open(filename, 'wb'))
+
+    # Loading the saved model
+    model = pickle.load(open(filename, 'rb'))
+
+    # Predicted Values
     prediction = model.predict(X_test)
-    print(prediction*100)
+    # print(prediction*100)
 
-    #Predictions vs Actual results
-    plt.plot(prediction*100,color='blue', label='Predictions by the model')
-    plt.legend(loc='upper left')
-    plt.show()
-    plt.plot(Y_test*100,color='black', label='Actual stock values')
-    plt.legend(loc='upper left')
-    plt.show()
-    #print(prediction)
-    #print(Y_test)
+    # Predictions vs Actual results
+    # plt.plot(prediction*100,color='blue', label='Predictions by the model')
+    # plt.legend(loc='upper left')
+    # plt.show()
+    # plt.plot(Y_test*100,color='black', label='Actual stock values')
+    # plt.legend(loc='upper left')
+    # plt.show()
+    # print(prediction)
+    # print(Y_test)
 
-    #Calculating the Accuracy of our trained Neural Network model
-    score = model.evaluate(X_train, Y_train, verbose = 0) 
+    # Calculating the Accuracy of our trained Neural Network model
+    score = model.evaluate(X_train, Y_train, verbose = 0)
     print("Accuracy = ", (100-score), "%")
 
     data = data.iloc[len(data)-10:]
     data = data[['High','Open', 'Volume']]
     pred = model.predict(data*100, verbose=0)
-    return pred[0][0]
+    return {'p1': {'today_closing_price': pred[0][0]}}
