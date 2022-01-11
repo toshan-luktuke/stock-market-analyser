@@ -21,6 +21,10 @@ export default (state, action) => {
   const { type, payload } = action;
 
   switch (type) {
+    case 'CLEAR': {
+      const notid = !state.id;
+      return { ...state, suggestionList: [], id: notid };
+    }
     case 'SUGGEST': {
       const notid = !state.id;
       if (payload.length > 2) {
@@ -37,20 +41,16 @@ export default (state, action) => {
             console.log(result);
             return { ...state, suggestionList: result, id: notid };
           })
-          .catch((err) => console.log(err));
+          .catch((err) => {
+            throw new Error(err);
+          });
       } else {
         return { ...state, id: notid };
       }
+      break;
     }
-    case 'CLEAR': {
-      const notid = !state.id;
-      return { ...state, suggestionList: [], id: notid };
-    }
-    case 'NONE': {
-      const notid = !state.id;
-      return { ...state, id: notid };
-    }
-    default:
+    default: {
       throw new Error('No such dispatch type');
+    }
   }
 };
