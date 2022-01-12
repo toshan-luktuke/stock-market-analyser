@@ -152,32 +152,34 @@ const BasicStockInfo = ({ symbol }) => {
             </p>
           </CardBody>
         </Card>
-        <Card className="mt-8 mb-4 shadow-md">
-          <CardBody>
-            <h1 className="my-2 font-semibold font-mono text-lg dark:text-gray-200 ml-4">
-              Ratings (Based on DCF, ROA, DES, PB scores)
-            </h1>
-            <div
-              className="text-sm text-gray-700 dark:text-gray-300 mt-0 pl-4"
-              style={{
-                fontFamily: 'Comfortaa',
-              }}
-            >
-              <p>
-                ⭐ <span className="font-semibold">Rating:</span>{' '}
-                <span>{rating && rating.data.rating}</span>
-              </p>
-              <p>
-                💯 <span className="font-semibold">Score:</span>{' '}
-                <span>{rating && rating.data.ratingScore}</span>
-              </p>
-              <p>
-                💹 <span className="font-semibold">Recommendation:</span>{' '}
-                <span>{rating && rating.data.ratingRecommendation}</span>
-              </p>
-            </div>
-          </CardBody>
-        </Card>
+        {rating && (
+          <Card className="mt-8 mb-4 shadow-md">
+            <CardBody>
+              <h1 className="my-2 font-semibold font-mono text-lg dark:text-gray-200 ml-4">
+                Ratings (Based on DCF, ROA, DES, PB scores)
+              </h1>
+              <div
+                className="text-sm text-gray-700 dark:text-gray-300 mt-0 pl-4"
+                style={{
+                  fontFamily: 'Comfortaa',
+                }}
+              >
+                <p>
+                  ⭐ <span className="font-semibold">Rating:</span>{' '}
+                  <span>{rating && rating.data.rating}</span>
+                </p>
+                <p>
+                  💯 <span className="font-semibold">Score:</span>{' '}
+                  <span>{rating && rating.data.ratingScore}</span>
+                </p>
+                <p>
+                  💹 <span className="font-semibold">Recommendation:</span>{' '}
+                  <span>{rating && rating.data.ratingRecommendation}</span>
+                </p>
+              </div>
+            </CardBody>
+          </Card>
+        )}
       </div>
     );
   }

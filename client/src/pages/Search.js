@@ -2,34 +2,61 @@ import React, { useState, useEffect, useRef } from 'react';
 import { get } from 'axios';
 import CTA from '../components/CTA';
 import PageTitle from '../components/Typography/PageTitle';
-import StockAnalysis from '../components/StockAnalysis';
 
 const Forms = () => {
   const [stock, setStock] = useState('');
   const [suggestions, setSuggestions] = useState([]);
-  const [submitted, setSubmitted] = useState(false);
-  const analysisKarneWalaStock = useRef(null);
+  const [symbol, setSymbol] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const getSuggestions = async (url) => {
-    const { data } = await get(url);
-    setSuggestions(data);
+  const getSuggestions = async (searchName) => {
+    try {
+      const { data } = await get(
+        `http://127.0.0.1:5000/stock/predautosuggest/${searchName}`,
+      );
+      if (data.length > 10) {
+        setSuggestions(data.slice(0, 10));
+      } else {
+        setSuggestions(data);
+      }
+    } catch (error) {
+      throw new Error(error);
+    }
+  };
+
+  const getStockDetails = async (symbolize) => {
+    try {
+      let { data } = await get(
+        `http://localhost:5000/stock/details/${symbolize}`,
+      );
+      let { data: ratings } = await get(
+        `http://localhost:5000/stock/rating/${symbolize}`,
+      );
+      setLoading(false);
+      if (data) {
+        data = data.data;
+      }
+      if (ratings) {
+        ratings = ratings.data;
+      }
+      console.log(data);
+      console.log(ratings);
+    } catch (error) {
+      throw new Error(error);
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    sessionStorage.setItem('analyse', analysisKarneWalaStock.current.value);
+    setSuggestions([]);
+    setLoading(true);
   };
 
   useEffect(() => {
-    const url = `http://localhost:5000/stock/autosuggest/${stock}`;
-    if (stock.length === 0) {
-      setSuggestions([]);
-    }
-    if (stock.length >= 1) {
-      getSuggestions(url);
-    }
-  }, [stock]);
+    console.log(suggestions);
+    console.log(stock);
+    console.log(symbol);
+  }, [suggestions]);
 
   return (
     <>
@@ -44,11 +71,16 @@ const Forms = () => {
           id="stock"
           name="stock"
           value={stock}
-          onChange={(e) => setStock(e.target.value)}
+          onInput={(e) => {
+            setStock(e.target.value);
+            if (e.target.value.length > 1) {
+              getSuggestions(e.target.value);
+            } else {
+              setSuggestions([]);
+            }
+          }}
           className="w-full bg-cool-gray-200 dark:bg-cool-gray-800 rounded-lg py-2 px-4 dark:text-white"
           placeholder="Enter any stock name or symbol like AAPL, Tesla"
-          onBeforeInput={() => setSuggestions([])}
-          ref={analysisKarneWalaStock}
         />
         <button
           type="submit"
@@ -59,7 +91,6 @@ const Forms = () => {
         </button>
       </form>
       {suggestions &&
-        stock.length > 0 &&
         suggestions.map((suggestion) => {
           return (
             <div
@@ -67,9 +98,10 @@ const Forms = () => {
               className="bg-cool-gray-200 dark:bg-cool-gray-800 dark:text-gray-200 py-2 px-4 ml-2 mr-24 cursor-pointer bg-opacity-50 hover:bg-gray-300 dark:hover:bg-cool-gray-600"
               onClick={() => {
                 setStock(suggestion.name);
-                setSuggestions((prev) => {
-                  return [];
-                });
+                setSymbol(suggestion.symbol);
+                getStockDetails(suggestion.symbol);
+                setSuggestions([]);
+                setLoading(true);
               }}
               onBlur={() => {
                 setTimeout(() => {
@@ -82,10 +114,12 @@ const Forms = () => {
             </div>
           );
         })}
-      {submitted && <StockAnalysis name={sessionStorage.getItem('analyse')} />}
-      <div className="mt-8">
-        <CTA />
-      </div>
+      {symbol && <p>Hello</p>}
+      {loading && (
+        <p className="dark:text-white text-center animate__animated animate__flash animate__infinite">
+          Loading...
+        </p>
+      )}
     </>
   );
 };
