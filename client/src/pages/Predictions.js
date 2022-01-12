@@ -61,7 +61,7 @@ const Predictions = () => {
           name="stock"
           onInput={(e) => {
             setStock(e.target.value);
-            if (e.target.value.length > 2) {
+            if (e.target.value.length > 1) {
               getSuggestions(e.target.value);
             } else {
               setSuggestions([]);
