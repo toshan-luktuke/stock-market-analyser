@@ -57,13 +57,13 @@ const data = [
 ];
 
 const LargeStockChart = () => {
-  let [no, setNo] = useState(10);
+  let [graphHeight, setGraphHeight] = useState(400);
   return (
     <Card>
       <CardBody>
-        <div className="grid grid-cols-3">
+        <div className="lg:grid grid-cols-3">
           <div className="col-span-2 mr-5">
-            <div className="grid grid-cols-2 basis-1/2 mb-5 font-semibold">
+            <div className="mb-5 font-semibold lg:grid grid-cols-2 basis-1/2 ">
               <div className="">
                 <p className="text-3xl text-center">{'Name of Stock'}</p>
               </div>
@@ -72,7 +72,7 @@ const LargeStockChart = () => {
               </div>
             </div>
             <div width="100%" height="100%">
-              <ResponsiveContainer width="100%" height={400}>
+              <ResponsiveContainer width="100%" height={graphHeight}>
                 <AreaChart data={data}>
                   <defs>
                     <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
