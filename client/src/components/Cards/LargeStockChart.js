@@ -58,6 +58,25 @@ const data = [
 
 const LargeStockChart = () => {
   let [graphHeight, setGraphHeight] = useState(400);
+  let [stockName, setStockName] = useState('Name of Stock');
+  let [stockPrice, setStockPrice] = useState('12307.82$'); //setting this as string as different currencies might be required
+  let [open, setOpen] = useState(100);
+  let [high, setHigh] = useState(124);
+  let [low, setLow] = useState(1344);
+  let [close, setClose] = useState(1278);
+  let [perChange, setPerChange] = useState(4.07);
+
+  useEffect(() => {
+    window.addEventListener('resize', changeGraphHeight);
+    return () => {
+      window.removeEventListener('resize', changeGraphHeight);
+    };
+  }, [window.innerHeight, window.innerWidth]);
+
+  const changeGraphHeight = () => {
+    setGraphHeight(300);
+  };
+
   return (
     <Card>
       <CardBody>
@@ -65,10 +84,14 @@ const LargeStockChart = () => {
           <div className="col-span-2 mr-5">
             <div className="mb-5 font-semibold lg:grid grid-cols-2 basis-1/2 ">
               <div className="">
-                <p className="text-3xl text-center">{'Name of Stock'}</p>
+                <p className="text-3xl text-center dark:text-white">
+                  {stockName}
+                </p>
               </div>
               <div>
-                <p className="text-3xl text-center">{'1223.07$'}</p>
+                <p className="text-3xl text-center dark:text-white ">
+                  {stockPrice}
+                </p>
               </div>
             </div>
             <div width="100%" height="100%">
@@ -76,20 +99,24 @@ const LargeStockChart = () => {
                 <AreaChart data={data}>
                   <defs>
                     <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
-                      <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
+                      <stop offset="5%" stopColor="#4FC82D" stopOpacity={0.9} />
+                      <stop
+                        offset="95%"
+                        stopColor="#4FC82D"
+                        stopOpacity={0.1}
+                      />
                     </linearGradient>
                   </defs>
                   <Area
                     type="monotone"
                     dataKey="uv"
-                    stroke="#8884d8"
+                    stroke="#64CE1D"
                     fillOpacity={1}
                     fill="url(#colorUv)"
                   />
                   <XAxis dataKey="name" />
                   <YAxis />
-                  <CartesianGrid strokeDasharray="3 3" />
+                  {/* <CartesianGrid strokeDasharray="3 3" /> Line that generates grid*/}
                   <Tooltip />
                 </AreaChart>
               </ResponsiveContainer>
@@ -97,7 +124,7 @@ const LargeStockChart = () => {
           </div>
 
           <div className="grid grid-rows-4">
-            <div>
+            <div class="row-span-1">
               <Card>
                 <CardBody>
                   <div className="grid grid-cols-12">
@@ -116,33 +143,43 @@ const LargeStockChart = () => {
                 </CardBody>
               </Card>
             </div>
-            <div className="row-span-2">
+            <div className="row-span-2 row-start-3">
               <Card>
                 <CardBody>
                   <table
                     className="table-fixed text-md font-semibold"
                     width="100%"
                   >
-                    <tbody className="px-6 py-0.5">
+                    <tbody className="px-6 py-0.5 ">
                       <tr>
-                        <td className="">Open</td>
-                        <td className="">{100}</td>
+                        <td className=" dark:text-white">Open</td>
+                        <td className="text-gray-600 dark:text-gray-400">
+                          {open}
+                        </td>
                       </tr>
                       <tr>
-                        <td className="">High</td>
-                        <td className="">{124}</td>
+                        <td className="text-gray-700 dark:text-white">High</td>
+                        <td className="text-gray-600 dark:text-gray-400">
+                          {high}
+                        </td>
                       </tr>
                       <tr>
-                        <td className="">Low</td>
-                        <td className="">{1344}</td>
+                        <td className="dark:text-white">Low</td>
+                        <td className="text-gray-600 dark:text-gray-400">
+                          {low}
+                        </td>
                       </tr>
                       <tr>
-                        <td className="">Close</td>
-                        <td className="">{1278}</td>
+                        <td className="dark:text-white">Close</td>
+                        <td className="text-gray-600 dark:text-gray-400">
+                          {close}
+                        </td>
                       </tr>
                       <tr>
-                        <td className="">% Change</td>
-                        <td className="">{32}%</td>
+                        <td className="dark:text-white">% Change</td>
+                        <td className="text-gray-600 dark:text-gray-400">
+                          {perChange}%
+                        </td>
                       </tr>
                     </tbody>
                   </table>
