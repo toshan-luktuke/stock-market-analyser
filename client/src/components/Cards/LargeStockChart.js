@@ -57,7 +57,7 @@ const data = [
 ];
 
 const LargeStockChart = () => {
-  let [graphHeight, setGraphHeight] = useState(400);
+  let [graphHeight, setGraphHeight] = useState(0.4 * window.innerHeight);
   let [stockName, setStockName] = useState('Name of Stock');
   let [stockPrice, setStockPrice] = useState('12307.82$'); //setting this as string as different currencies might be required
   let [open, setOpen] = useState(100);
@@ -74,7 +74,7 @@ const LargeStockChart = () => {
   }, [window.innerHeight, window.innerWidth]);
 
   const changeGraphHeight = () => {
-    setGraphHeight(300);
+    setGraphHeight(0.4 * window.innerHeight);
   };
 
   return (
