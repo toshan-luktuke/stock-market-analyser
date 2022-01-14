@@ -15,7 +15,7 @@ const CTA = () => {
         </svg>
         <span>Star our project on GitHub</span>
       </div>
-      <span>
+      <span class="md:visible hidden">
         View here
         {/* eslint-disable-next-line react/no-danger */}
         <span dangerouslySetInnerHTML={{ __html: '&RightArrow;' }} />
