@@ -105,7 +105,11 @@ module.exports.getRating = async (req, res, next) => {
       `https://financialmodelingprep.com/api/v3/rating/${symbolize}?apikey=${process.env.API_KEY_FMP}`,
     );
     const rating = data[0];
-    res.status(200).json({ success: true, data: rating });
+    let success = false;
+    if (rating) {
+      success = true;
+    }
+    res.status(200).json({ success, data: rating });
   } catch (error) {
     next(error);
   }

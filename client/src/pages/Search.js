@@ -1,13 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { get } from 'axios';
-import CTA from '../components/CTA';
 import PageTitle from '../components/Typography/PageTitle';
+import BasicStockInfo from '../components/Cards/BasicStockInfo';
 
 const Forms = () => {
   const [stock, setStock] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   const [symbol, setSymbol] = useState('');
-  const [loading, setLoading] = useState(false);
 
   const getSuggestions = async (searchName) => {
     try {
@@ -24,32 +23,9 @@ const Forms = () => {
     }
   };
 
-  const getStockDetails = async (symbolize) => {
-    try {
-      let { data } = await get(
-        `http://localhost:5000/stock/details/${symbolize}`,
-      );
-      let { data: ratings } = await get(
-        `http://localhost:5000/stock/rating/${symbolize}`,
-      );
-      setLoading(false);
-      if (data) {
-        data = data.data;
-      }
-      if (ratings) {
-        ratings = ratings.data;
-      }
-      console.log(data);
-      console.log(ratings);
-    } catch (error) {
-      throw new Error(error);
-    }
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setSuggestions([]);
-    setLoading(true);
   };
 
   useEffect(() => {
@@ -99,9 +75,7 @@ const Forms = () => {
               onClick={() => {
                 setStock(suggestion.name);
                 setSymbol(suggestion.symbol);
-                getStockDetails(suggestion.symbol);
                 setSuggestions([]);
-                setLoading(true);
               }}
               onBlur={() => {
                 setTimeout(() => {
@@ -114,12 +88,7 @@ const Forms = () => {
             </div>
           );
         })}
-      {symbol && <p>Hello</p>}
-      {loading && (
-        <p className="dark:text-white text-center animate__animated animate__flash animate__infinite">
-          Loading...
-        </p>
-      )}
+      {symbol && <BasicStockInfo symbol={symbol} />}
     </>
   );
 };

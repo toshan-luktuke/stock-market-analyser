@@ -14,8 +14,8 @@ const BasicStockInfo = ({ symbol }) => {
   const url = `http://localhost:5000/stock/details/${symbol}`;
   const { recdata, isLoading } = useFetch(url);
   const { data } = recdata;
-
-  const [rating, setRating] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [rating, setRating] = useState({ success: false });
   useEffect(() => {
     const url1 = `http://localhost:5000/stock/rating/${symbol}`;
     fetcherConditional(url1);
@@ -23,8 +23,15 @@ const BasicStockInfo = ({ symbol }) => {
 
   const fetcherConditional = async (url1) => {
     try {
-      const { data } = await get(url1, { crossdomain: true });
-      setRating(data);
+      let data1 = await get(url1, { crossdomain: true });
+      console.log(data1);
+      if (data1) {
+        data1 = data1.data;
+        setRating(data1);
+      } else {
+        setRating({ success: false });
+      }
+      setLoading(false);
       console.log(rating);
     } catch (error) {
       throw new Error(error);
@@ -65,7 +72,7 @@ const BasicStockInfo = ({ symbol }) => {
     [prevPrice, price],
   );
 
-  if (!isLoading) {
+  if (!isLoading && !loading) {
     return (
       <div className="mt-4">
         <Card className="mb-8 shadow-md pl-4">
@@ -152,7 +159,7 @@ const BasicStockInfo = ({ symbol }) => {
             </p>
           </CardBody>
         </Card>
-        {rating && (
+        {rating && rating.success && (
           <Card className="mt-8 mb-4 shadow-md">
             <CardBody>
               <h1 className="my-2 font-semibold font-mono text-lg dark:text-gray-200 ml-4">
