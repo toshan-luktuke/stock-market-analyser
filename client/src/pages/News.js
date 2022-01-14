@@ -6,7 +6,8 @@ import CTA from '../components/CTA';
 import { useFetch } from '../hooks/useFetch';
 
 const Cards = () => {
-  const url = 'https://inshortsapi.vercel.app/news?category=business';
+  const url =
+    'https://inshorts-news-api-8vpo9a88a.vercel.app/news?category=business';
   const {
     recdata: { data },
     isLoading,
