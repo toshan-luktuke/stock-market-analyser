@@ -60,7 +60,7 @@ const BasicStockInfo = ({ symbol }) => {
       } catch (error) {
         throw new Error(error);
       }
-      timeoutId = setTimeout(getLatestPrice, 10000);
+      timeoutId = setTimeout(getLatestPrice, 2500);
     };
     getLatestPrice();
     return () => {
