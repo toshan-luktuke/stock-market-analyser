@@ -139,13 +139,13 @@ const BasicStockInfo = ({ symbol }) => {
             </p>
           </CardBody>
         </Card>
-        <Card className="my-8 shadow-md">
+        <Card className="my-8 shadow-md flex justify-center">
           <CardBody>
-            <h1 className="my-2 font-semibold font-mono text-xl dark:text-gray-200 ml-4 w-full text-center">
+            <h1 className="my-2 font-semibold font-mono text-xl dark:text-gray-200 w-full text-center">
               Real-time Analysis
             </h1>
             <p
-              className="text-3xl dark:text-gray-200 ml-4 w-full text-center font"
+              className="text-3xl dark:text-gray-200 w-full text-center font"
               style={{ fontFamily: 'Black Ops One' }}
             >
               💲{' '}
@@ -153,7 +153,7 @@ const BasicStockInfo = ({ symbol }) => {
                 {price} {directionEmojis[direction]}
               </span>
             </p>
-            <p className="text-base dark:text-gray-200 ml-4 w-full text-center">
+            <p className="text-base dark:text-gray-200 w-full text-center">
               ⌚ Time:{' '}
               <span> {priceTime && priceTime.toLocaleTimeString()}</span>
             </p>
