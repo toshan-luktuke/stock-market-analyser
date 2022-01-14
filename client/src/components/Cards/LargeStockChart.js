@@ -74,14 +74,19 @@ const LargeStockChart = () => {
   }, [window.innerHeight, window.innerWidth]);
 
   const changeGraphHeight = () => {
-    setGraphHeight(0.4 * window.innerHeight);
+    if (window.innerWidth < 550) {
+      setGraphHeight(0.3 * window.innerHeight);
+    } else {
+      setGraphHeight(0.4 * window.innerHeight);
+    }
+    console.log(window.innerHeight, window.innerWidth);
   };
 
   return (
     <Card>
       <CardBody>
         <div className="lg:grid grid-cols-3">
-          <div className="col-span-2 mr-5">
+          <div className="col-span-2 mr-12">
             <div className="mb-5 font-semibold lg:grid grid-cols-2 basis-1/2 ">
               <div className="">
                 <p className="text-3xl text-center dark:text-white">
@@ -94,8 +99,8 @@ const LargeStockChart = () => {
                 </p>
               </div>
             </div>
-            <div width="100%" height="100%">
-              <ResponsiveContainer width="100%" height={graphHeight}>
+            <div width="100%" height="100%" class="md:mr-10">
+              <ResponsiveContainer width="110%" height={graphHeight}>
                 <AreaChart data={data}>
                   <defs>
                     <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
