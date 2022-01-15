@@ -59,7 +59,7 @@ const Dashboard = () => {
         <Card className="shadow-md">
           <CardBody>
             <p className="text-base font-extrabold text-green-700 dark:text-green-400 text-center">
-              The U.S. Markets are open &#10004;
+              The U.S. Markets are open
             </p>
           </CardBody>
         </Card>
@@ -67,7 +67,7 @@ const Dashboard = () => {
         <Card className="shadow-md">
           <CardBody>
             <p className="text-base font-extrabold text-red-600 dark:text-red-400 text-center">
-              The U.S. Markets are closed &#10008;
+              The U.S. Markets are closed
             </p>
           </CardBody>
         </Card>
