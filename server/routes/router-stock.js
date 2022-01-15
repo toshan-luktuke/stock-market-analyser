@@ -14,6 +14,7 @@ const {
   getIndexChart,
   getPredSuggestion,
   getNewAutoSuggestions,
+  isOpen,
 } = require('../controllers/controller-stock');
 
 router.route('/quote/:symbol').get(getStockQuote);
@@ -29,5 +30,6 @@ router.route('/index/chart/:symbol/:start/:end').get(getIndexChart);
 // cut down on the response size
 router.route('/predautosuggest/:name').get(getPredSuggestion);
 router.route('/newautosuggest/:name').get(getNewAutoSuggestions);
+router.route('/isopen').get(isOpen);
 
 module.exports = router;

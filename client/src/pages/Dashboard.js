@@ -1,5 +1,7 @@
 import React from 'react';
+import { Card, CardBody } from '@windmill/react-ui';
 
+import { useFetch } from '../hooks/useFetch';
 import CTA from '../components/CTA';
 import InfoCard from '../components/Cards/InfoCard';
 import IndexCard from '../components/Cards/IndexCard';
@@ -10,6 +12,8 @@ import StockTicker from '../components/StockTicker';
 import LargeStockChart from '../components/Cards/LargeStockChart';
 
 const Dashboard = () => {
+  const { recdata } = useFetch('http://127.0.0.1:5000/stock/isopen');
+
   return (
     <>
       <PageTitle>Market Dashboard</PageTitle>
@@ -51,7 +55,23 @@ const Dashboard = () => {
           />
         </InfoCard>
       </div>
-
+      {recdata.isTheStockMarketOpen ? (
+        <Card className="shadow-md">
+          <CardBody>
+            <p className="text-base font-extrabold text-green-700 dark:text-green-400 text-center">
+              The U.S. Markets are open &#10004;
+            </p>
+          </CardBody>
+        </Card>
+      ) : (
+        <Card className="shadow-md">
+          <CardBody>
+            <p className="text-base font-extrabold text-red-600 dark:text-red-400 text-center">
+              The U.S. Markets are closed &#10008;
+            </p>
+          </CardBody>
+        </Card>
+      )}
       <div className="p-2 pb-0 h-6.5">
         <StockTicker rates={['$10', '$20', '$30']}></StockTicker>
       </div>

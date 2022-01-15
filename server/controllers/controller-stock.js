@@ -182,3 +182,14 @@ module.exports.getNewAutoSuggestions = async (req, res, next) => {
     next(error);
   }
 };
+
+module.exports.isOpen = async (req, res, next) => {
+  try {
+    const { data } = await axios.get(
+      `https://financialmodelingprep.com/api/v3/is-the-market-open?apikey=${process.env.API_KEY_FMP}`,
+    );
+    res.status(200).json(data);
+  } catch (error) {
+    next(error);
+  }
+};
