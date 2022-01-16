@@ -48,13 +48,30 @@ const data = [
   },
 ];
 
-const IndexCard = ({ indexName, value }) => {
-  const getData = async (symbol) => {
-    const { data } = await get(symbol);
+const IndexCard = ({ indexName, symbol }) => {
+  const [value, setValue] = useState(-1);
+  const [percentChange, setPercentChange] = useState(-1);
+
+  const getData = async () => {
+    const {
+      data: {
+        data: {
+          chart: { result },
+        },
+      },
+    } = await get(`http://localhost:5000/stock/chart/${symbol}`);
+    const rec = result[0].meta;
+    console.log(rec);
+    setValue(rec.regularMarketPrice);
+    const price = rec.regularMarketPrice;
+    const prev = rec.chartPreviousClose;
+    console.log(price, prev);
+    setPercentChange((((price - prev) / price) * 100).toFixed(3));
   };
 
   useEffect(() => {
-    setInterval(() => {}, 5000);
+    getData();
+    // setInterval(getData, 5000);
   }, []);
 
   return (
@@ -66,11 +83,17 @@ const IndexCard = ({ indexName, value }) => {
               {indexName}
             </p>
             <p className="font-medium text-gray-600 dark:text-gray-300">
-              {value}
+              {value} points
             </p>
-            <p className="text-xs font-light text-gray-600 dark:text-gray-400">
-              Change in % here
-            </p>
+            {percentChange > 0 ? (
+              <p className="text-sm font-bold text-green-600 dark:text-green-400">
+                {percentChange}% &uarr;
+              </p>
+            ) : (
+              <p className="text-sm font-bold text-red-600 dark:text-red-400">
+                {percentChange}% &darr;
+              </p>
+            )}
           </div>
           <AreaChart height={80} width={150} data={data}>
             <Area

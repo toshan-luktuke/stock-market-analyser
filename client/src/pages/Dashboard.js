@@ -14,7 +14,6 @@ import LargeStockChart from '../components/Cards/LargeStockChart';
 const Dashboard = () => {
   const { recdata } = useFetch('http://127.0.0.1:5000/stock/isopen');
 
-
   return (
     <>
       <PageTitle>Market Dashboard</PageTitle>
@@ -77,9 +76,9 @@ const Dashboard = () => {
         <StockTicker rates={['$10', '$20', '$30']}></StockTicker>
       </div>
       <div className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-3">
-        <IndexCard indexName="S&P 500" value="$15736.35"></IndexCard>
-        <IndexCard indexName="NASDAQ" value="$50736.26"></IndexCard>
-        <IndexCard indexName="BSE SENSEX" value="$700573.18"></IndexCard>
+        <IndexCard indexName="S&P 500" symbol="SPY"></IndexCard>
+        <IndexCard indexName="NASDAQ" symbol="NDAQ"></IndexCard>
+        <IndexCard indexName="BSE SENSEX" symbol=""></IndexCard>
       </div>
 
       <LargeStockChart className="flex" />
