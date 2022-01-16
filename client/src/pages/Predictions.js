@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { get } from 'axios';
+import { Card, CardBody } from '@windmill/react-ui';
+
 import PageTitle from '../components/Typography/PageTitle';
 import CTA from '../components/CTA';
 
 const Predictions = () => {
   const [suggestions, setSuggestions] = useState([]);
   const [stock, setStock] = useState('');
+  const [finalStock, setFinalStock] = useState('');
   const [symbol, setSymbol] = useState('');
+  const [prediction, setPrediction] = useState(0);
 
   const getSuggestions = async (searchName) => {
     try {
@@ -25,11 +29,17 @@ const Predictions = () => {
 
   const getPredictions = async (symbol) => {
     try {
-      const { data } = await get(`http://127.0.0.1:4000/stock_lr/${symbol}`, {
-        headers: {
-          'Access-Control-Allow-Origin': '*',
+      const {
+        data: { data },
+      } = await get(
+        `https://stock-ml-backend.herokuapp.com/stock_lr/${symbol}`,
+        {
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+          },
         },
-      });
+      );
+      setPrediction(data);
       console.log(data);
     } catch (error) {
       throw new Error(error);
@@ -40,12 +50,6 @@ const Predictions = () => {
     e.preventDefault();
     setSuggestions([]);
   };
-
-  useEffect(() => {
-    console.log(suggestions);
-    console.log(stock);
-    console.log(symbol);
-  }, [suggestions]);
 
   return (
     <>
@@ -89,6 +93,7 @@ const Predictions = () => {
                 setStock(suggestion.name);
                 setSymbol(suggestion.symbol);
                 getPredictions(suggestion.symbol);
+                setFinalStock(suggestion.name);
                 setSuggestions([]);
               }}
               onBlur={() => {
@@ -102,9 +107,30 @@ const Predictions = () => {
             </div>
           );
         })}
-      <div className="mt-8">
-        <CTA />
-      </div>
+      {prediction && (
+        <Card className="my-8 shadow-md flex justify-center">
+          <CardBody>
+            <h1 className="mb-1 font-semibold font-mono text-2xl dark:text-gray-200 w-full text-center">
+              {finalStock} (
+              <span className="dark:text-red-400 text-red-700">{symbol}</span>)
+            </h1>
+            <h1 className="my-2 font-semibold font-mono text-xl dark:text-gray-200 w-full text-center">
+              Prediction for tomorrow's price
+            </h1>
+            <p
+              className="text-3xl dark:text-gray-200 w-full text-center font"
+              style={{ fontFamily: 'Black Ops One' }}
+            >
+              💲 <span>{prediction.toFixed(2)}</span>
+            </p>
+          </CardBody>
+        </Card>
+      )}
+      {prediction && (
+        <div className="mt-8">
+          <CTA />
+        </div>
+      )}
     </>
   );
 };
