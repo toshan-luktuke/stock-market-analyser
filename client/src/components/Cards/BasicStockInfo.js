@@ -25,7 +25,6 @@ const BasicStockInfo = ({ symbol }) => {
   const fetcherConditional = async (url1) => {
     try {
       let data1 = await get(url1, { crossdomain: true });
-      console.log(data1);
       if (data1) {
         data1 = data1.data;
         setRating(data1);
@@ -33,7 +32,6 @@ const BasicStockInfo = ({ symbol }) => {
         setRating({ success: false });
       }
       setLoading(false);
-      console.log(rating);
     } catch (error) {
       throw new Error(error);
     }
@@ -53,7 +51,6 @@ const BasicStockInfo = ({ symbol }) => {
       try {
         const rdata = await getData();
         const stockData = rdata.data.chart.result[0];
-        console.log(stockData);
         setPrevPrice(price);
         setPrice(stockData.meta.regularMarketPrice.toFixed(2));
         setPriceTime(new Date(stockData.meta.regularMarketTime * 1000));

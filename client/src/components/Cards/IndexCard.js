@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { get } from 'axios';
 import { Card, CardBody } from '@windmill/react-ui';
 import { AreaChart, Area } from 'recharts';
 
@@ -48,6 +49,14 @@ const data = [
 ];
 
 const IndexCard = ({ indexName, value }) => {
+  const getData = async (symbol) => {
+    const { data } = await get(symbol);
+  };
+
+  useEffect(() => {
+    setInterval(() => {}, 5000);
+  }, []);
+
   return (
     <Card>
       <CardBody>

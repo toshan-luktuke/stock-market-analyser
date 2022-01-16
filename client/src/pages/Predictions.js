@@ -1,4 +1,4 @@
-import React, { useState, useReducer, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { get } from 'axios';
 import PageTitle from '../components/Typography/PageTitle';
 import CTA from '../components/CTA';

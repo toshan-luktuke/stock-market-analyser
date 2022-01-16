@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { get } from 'axios';
 import PageTitle from '../components/Typography/PageTitle';
 import BasicStockInfo from '../components/Cards/BasicStockInfo';
@@ -27,12 +27,6 @@ const Forms = () => {
     e.preventDefault();
     setSuggestions([]);
   };
-
-  useEffect(() => {
-    console.log(suggestions);
-    console.log(stock);
-    console.log(symbol);
-  }, [suggestions]);
 
   return (
     <>
