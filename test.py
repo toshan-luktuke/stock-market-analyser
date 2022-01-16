@@ -9,6 +9,8 @@ print("Predictions by linear regression")
 response = requests.get(BASE + f'stock_lr/{inp}')
 print(response.json())
 
+'''
 print("Predictions by Ann model")
 response = requests.get(BASE + f'stock_ann/{inp}')
 print(response.json())
+'''
