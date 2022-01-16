@@ -1,7 +1,5 @@
 from flask import Flask, jsonify
 from flask_restful import Api, Resource, abort
-from Model.linear_reg_model import find_r
-from Model.ann_model import find
 from flask_cors import CORS
 import pickle
 import yfinance as yf
