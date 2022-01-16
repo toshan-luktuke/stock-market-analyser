@@ -86,11 +86,11 @@ def find(name):
     # Fitting the model to the training data
     model.fit(X_train, Y_train, batch_size = 128, epochs = 10, validation_split=0.05)
 
-    # filename = 'ANNmodel.sav'
-    # pickle.dump(model, open(filename, 'wb'))
+    #filename = 'ANNmodel.sav'
+    #pickle.dump(model, open(filename, 'wb'))
 
     # Loading the saved model
-    # model = pickle.load(open(filename, 'rb'))
+    #model = pickle.load(open(filename, 'rb'))
 
     # Predicted Values
     prediction = model.predict(X_test)

@@ -57,20 +57,20 @@ def find_r(name):
     model.fit(x_train.values, y_train.values)
 
     # Saving the model
-    filename = 'LinearReg_model.sav'
-    pickle.dump(model, open(filename, 'wb'))
+    filepath = "../Models/Linear regression/TTM.pkl"
+    pickle.dump(model, open(filepath, 'wb'))
 
     # Loading the saved model
-    loaded_model = pickle.load(open(filename, 'rb'))
+    loaded_model = pickle.load(open(filepath, 'rb'))
 
-    pred = loaded_model.predict(x_test.values)
+    pred = model.predict(x_test.values)
 
     # description of the model
     print("Linear Regression model")
     print("Stock price (y) = %.2f * 3 Days Moving Average (x1) \
     + %.2f * 9 Days Moving Average (x2) \
-    + %.2f (constant)" % (loaded_model.coef_[0], loaded_model.coef_[1], loaded_model.intercept_))
-    print("Accuracy = ", loaded_model.score(x_train, y_train)*100, " %")
+    + %.2f (constant)" % (model.coef_[0], model.coef_[1], model.intercept_))
+    print("Accuracy = ", model.score(x_train, y_train)*100, " %")
 
     current = dt.datetime.now()
     tom = current + timedelta(1)
@@ -79,21 +79,21 @@ def find_r(name):
     s3_1 = data['Close'][-3:].mean()
     s9_1 = data['Close'][-9:].mean()
     # print(s3_1, s9_1)
-    p = loaded_model.predict([[s3_1, s9_1]])
+    p = model.predict([[s3_1, s9_1]])
     # print(p)
 
     # day 2
     s3_2 = (data['Close'][-2:].mean() + p[0])/2
     s9_2 = (data['Close'][-8:].mean() + p[0])/2
     # print(s3_2, s9_2)
-    q = loaded_model.predict([[s3_2, s9_2]])
+    q = model.predict([[s3_2, s9_2]])
     # print(q)
 
     # day 3
     s3_3 = (data['Close'][-1:].mean() + p[0] + q[0]) / 3
     s9_3 = (data['Close'][-7:].mean() + p[0] + q[0]) / 3
     # print(s3_3, s9_3)
-    r = loaded_model.predict([[s3_3, s9_3]])
+    r = model.predict([[s3_3, s9_3]])
     # print(r)
 
     # print('current date: ', current)
