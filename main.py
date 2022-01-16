@@ -54,3 +54,6 @@ class Stock_ANN(Resource):
 
 api.add_resource(Stock_Reg, '/stock_lr/<string:stock_name>')
 # api.add_resource(Stock_ANN, '/stock_ann/<string:stock_name>')
+
+if __name__ == "__main__":
+    app.run()
