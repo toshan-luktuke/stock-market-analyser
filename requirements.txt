@@ -61,3 +61,4 @@ wincertstore==0.2
 wrapt==1.13.3
 yfinance==0.1.67
 zipp==3.6.0
+gunicorn==20.1.0
