@@ -8,6 +8,7 @@ const SearchIndian = () => {
   const [stock, setStock] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   const [symbol, setSymbol] = useState('');
+  const [sector, setSector] = useState('');
 
   const getSuggestions = async (searchName) => {
     try {
@@ -50,7 +51,7 @@ const SearchIndian = () => {
             }
           }}
           className="w-full bg-cool-gray-200 dark:bg-cool-gray-800 rounded-lg py-2 px-4 dark:text-white"
-          placeholder="Enter any stock name or symbol like AAPL, Tesla"
+          placeholder="Enter any stock name like Reliance, Tata"
         />
         <button
           type="submit"
@@ -68,7 +69,8 @@ const SearchIndian = () => {
               className="bg-cool-gray-200 dark:bg-cool-gray-800 dark:text-gray-200 py-2 px-4 ml-2 mr-24 cursor-pointer bg-opacity-50 hover:bg-gray-300 dark:hover:bg-cool-gray-600"
               onClick={() => {
                 setStock(suggestion.stock_name);
-                setSymbol(suggestion.sc_id);
+                setSymbol(suggestion.pdt_dis_nm);
+                setSector(suggestion.sc_sector);
                 setSuggestions([]);
               }}
               onBlur={() => {
@@ -82,7 +84,7 @@ const SearchIndian = () => {
             </div>
           );
         })}
-      {symbol && <BasicIndianStockInfo symbol={symbol} />}
+      {symbol && <BasicIndianStockInfo symbol={symbol} sector={sector} />}
     </>
   );
 };
