@@ -62,8 +62,8 @@ const IndexCard = ({ indexName, symbol, open }) => {
   useEffect(() => {
     getData();
     if (
-      (symbol == 'NDAQ' && recdata.isTheStockMarketOpen) ||
-      (isIndianOpen() && symbol != 'NDAQ')
+      (symbol === 'NDAQ' && recdata.isTheStockMarketOpen) ||
+      (isIndianOpen() && symbol !== 'NDAQ')
     ) {
       setInterval(getData, 5000);
     }

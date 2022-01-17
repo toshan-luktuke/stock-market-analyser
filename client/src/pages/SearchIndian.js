@@ -9,6 +9,7 @@ const SearchIndian = () => {
   const [suggestions, setSuggestions] = useState([]);
   const [symbol, setSymbol] = useState('');
   const [sector, setSector] = useState('');
+  const [id, setId] = useState('');
 
   const getSuggestions = async (searchName) => {
     try {
@@ -65,12 +66,13 @@ const SearchIndian = () => {
         suggestions.map((suggestion) => {
           return (
             <div
-              key={suggestion.symbol}
+              key={suggestion.pdt_dis_nm}
               className="bg-cool-gray-200 dark:bg-cool-gray-800 dark:text-gray-200 py-2 px-4 ml-2 mr-24 cursor-pointer bg-opacity-50 hover:bg-gray-300 dark:hover:bg-cool-gray-600"
               onClick={() => {
                 setStock(suggestion.stock_name);
                 setSymbol(suggestion.pdt_dis_nm);
                 setSector(suggestion.sc_sector);
+                setId(suggestion.sc_id);
                 setSuggestions([]);
               }}
               onBlur={() => {
@@ -84,7 +86,9 @@ const SearchIndian = () => {
             </div>
           );
         })}
-      {symbol && <BasicIndianStockInfo symbol={symbol} sector={sector} />}
+      {symbol && (
+        <BasicIndianStockInfo symbol={symbol} sector={sector} stock_id={id} />
+      )}
     </>
   );
 };
