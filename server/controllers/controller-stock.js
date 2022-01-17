@@ -193,3 +193,53 @@ module.exports.isOpen = async (req, res, next) => {
     next(error);
   }
 };
+
+module.exports.indianAutoSuggest = async (req, res, next) => {
+  try {
+    const { name } = req.params;
+    const { data } = await axios.get(
+      `https://www.moneycontrol.com/mccode/common/autosuggestion_solr.php?classic=true&query=${name}&type=1&format=json&callback=suggest1`,
+    );
+    const toSend = JSON.parse(data.slice(9, -1));
+    res.status(200).json(toSend);
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports.isIndianOpen = async (req, res, next) => {
+  try {
+    const {
+      data: {
+        data: { lastupd },
+      },
+    } = await axios.get(
+      'https://priceapi.moneycontrol.com/pricefeed/notapplicable/inidicesindia/in%3BSEN',
+    );
+    const toSend = { time: lastupd };
+    res.status(200).json(toSend);
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports.getChartIndia = async (req, res, next) => {
+  try {
+    const { symbol } = req.params;
+    // BNSX - SENSEX
+    // BSEN - NIFTY 50
+    const symbolize = symbol.toUpperCase();
+    let ticker;
+    if (symbolize === 'BNSX') {
+      ticker = 4;
+    } else {
+      ticker = 9;
+    }
+    const { data } = await axios.get(
+      `https://appfeeds.moneycontrol.com/jsonapi/market/graph&format=json&ind_id=${ticker}&range=1d&type=area`,
+    );
+    res.status(200).json(data.graph);
+  } catch (error) {
+    next(error);
+  }
+};

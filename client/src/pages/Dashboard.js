@@ -13,6 +13,21 @@ import LargeStockChart from '../components/Cards/LargeStockChart';
 
 const Dashboard = () => {
   const { recdata } = useFetch('http://127.0.0.1:5000/stock/isopen');
+  const { recdata: recdata1 } = useFetch(
+    'http://localhost:5000/stock/indian/isopen',
+  );
+
+  const isIndianOpen = () => {
+    const now = new Date();
+    const market = new Date(recdata1.time);
+    if (now - market < 60000) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  isIndianOpen();
 
   return (
     <>
@@ -55,30 +70,35 @@ const Dashboard = () => {
           />
         </InfoCard>
       </div>
-      {recdata.isTheStockMarketOpen ? (
-        <Card className="shadow-md">
-          <CardBody>
+      <Card className="shadow-md">
+        <CardBody>
+          {recdata.isTheStockMarketOpen ? (
             <p className="text-base font-extrabold text-green-700 dark:text-green-400 text-center">
               The U.S. Markets are open
             </p>
-          </CardBody>
-        </Card>
-      ) : (
-        <Card className="shadow-md">
-          <CardBody>
+          ) : (
             <p className="text-base font-extrabold text-red-600 dark:text-red-400 text-center">
               The U.S. Markets are closed
             </p>
-          </CardBody>
-        </Card>
-      )}
+          )}
+          {isIndianOpen() ? (
+            <p className="text-base font-extrabold text-green-700 dark:text-green-400 text-center">
+              The Indian Markets are open
+            </p>
+          ) : (
+            <p className="text-base font-extrabold text-red-600 dark:text-red-400 text-center">
+              The Indian Markets are closed
+            </p>
+          )}
+        </CardBody>
+      </Card>
       <div className="p-2 pb-0 h-6.5">
         <StockTicker rates={['$10', '$20', '$30']}></StockTicker>
       </div>
       <div className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-3">
-        <IndexCard indexName="S&P 500" symbol="SPY"></IndexCard>
+        <IndexCard indexName="NIFTY 50" symbol="BSEN"></IndexCard>
         <IndexCard indexName="NASDAQ" symbol="NDAQ"></IndexCard>
-        <IndexCard indexName="BSE SENSEX" symbol=""></IndexCard>
+        <IndexCard indexName="SENSEX" symbol="BNSX"></IndexCard>
       </div>
 
       <LargeStockChart className="flex" />
