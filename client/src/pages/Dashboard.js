@@ -6,7 +6,7 @@ import CTA from '../components/CTA';
 import InfoCard from '../components/Cards/InfoCard';
 import IndexCard from '../components/Cards/IndexCard';
 import PageTitle from '../components/Typography/PageTitle';
-import { ChatIcon, CartIcon, MoneyIcon, PeopleIcon } from '../icons';
+import { CartIcon, MoneyIcon, PeopleIcon, HomeIcon } from '../icons';
 import RoundIcon from '../components/RoundIcon';
 import StockTicker from '../components/StockTicker';
 import LargeStockChart from '../components/Cards/LargeStockChart';
@@ -50,7 +50,7 @@ const Dashboard = () => {
           />
         </InfoCard>
 
-        <InfoCard title="Total Stock Symbols Supported real-time" value="13130">
+        <InfoCard title="Total Stock Symbols Supported" value="13130">
           <RoundIcon
             icon={CartIcon}
             iconColorClass="text-blue-500 dark:text-blue-100"
@@ -59,9 +59,12 @@ const Dashboard = () => {
           />
         </InfoCard>
 
-        <InfoCard title="Total Cryptocurrencies Supported" value="100">
+        <InfoCard
+          title="Indian Stock Indices Supported"
+          value="BSE Sensex, NSE Nifty"
+        >
           <RoundIcon
-            icon={ChatIcon}
+            icon={HomeIcon}
             iconColorClass="text-teal-500 dark:text-teal-100"
             bgColorClass="bg-teal-100 dark:bg-teal-500 fill-current stroke-current"
             className="mr-4"
@@ -112,7 +115,9 @@ const Dashboard = () => {
       </div>
 
       <LargeStockChart className="flex" />
-      <CTA />
+      <div class="mt-8">
+        <CTA />
+      </div>
     </>
   );
 };

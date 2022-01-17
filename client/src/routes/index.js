@@ -2,6 +2,7 @@ import { lazy } from 'react';
 
 const Dashboard = lazy(() => import('../pages/Dashboard'));
 const Search = lazy(() => import('../pages/Search'));
+const SearchIndian = lazy(() => import('../pages/SearchIndian'));
 const News = lazy(() => import('../pages/News'));
 const Page404 = lazy(() => import('../pages/404'));
 const WSB = lazy(() => import('../pages/WSB'));
@@ -15,6 +16,10 @@ const routes = [
   {
     path: '/search',
     component: Search,
+  },
+  {
+    path: '/searchindian',
+    component: SearchIndian,
   },
   {
     path: '/news',

@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { get } from 'axios';
-import PageTitle from '../components/Typography/PageTitle';
-import BasicStockInfo from '../components/Cards/BasicStockInfo';
 
-const Forms = () => {
+import PageTitle from '../components/Typography/PageTitle';
+import BasicIndianStockInfo from '../components/Cards/BasicIndianStockInfo';
+
+const SearchIndian = () => {
   const [stock, setStock] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   const [symbol, setSymbol] = useState('');
@@ -11,7 +12,7 @@ const Forms = () => {
   const getSuggestions = async (searchName) => {
     try {
       const { data } = await get(
-        `http://127.0.0.1:5000/stock/predautosuggest/${searchName}`,
+        `http://localhost:5000/stock/indian/autosuggest/${searchName}`,
       );
       if (data.length > 10) {
         setSuggestions(data.slice(0, 10));
@@ -27,10 +28,9 @@ const Forms = () => {
     e.preventDefault();
     setSuggestions([]);
   };
-
   return (
     <>
-      <PageTitle>Search Any NYSE Stock</PageTitle>
+      <PageTitle>Search Any Indian Stock</PageTitle>
       <form
         onSubmit={handleSubmit}
         className="flex justify-between p-2 mt-8 mb-0"
@@ -67,8 +67,8 @@ const Forms = () => {
               key={suggestion.symbol}
               className="bg-cool-gray-200 dark:bg-cool-gray-800 dark:text-gray-200 py-2 px-4 ml-2 mr-24 cursor-pointer bg-opacity-50 hover:bg-gray-300 dark:hover:bg-cool-gray-600"
               onClick={() => {
-                setStock(suggestion.name);
-                setSymbol(suggestion.symbol);
+                setStock(suggestion.stock_name);
+                setSymbol(suggestion.sc_id);
                 setSuggestions([]);
               }}
               onBlur={() => {
@@ -77,14 +77,14 @@ const Forms = () => {
                 }, 100);
               }}
             >
-              <p className="text-sm">{suggestion.symbol}</p>
-              <p className="text-xs">{suggestion.name}</p>
+              <p className="text-sm">{suggestion.stock_name}</p>
+              <p className="text-xs">{suggestion.sc_id}</p>
             </div>
           );
         })}
-      {symbol && <BasicStockInfo symbol={symbol} />}
+      {symbol && <BasicIndianStockInfo symbol={symbol} />}
     </>
   );
 };
 
-export default Forms;
+export default SearchIndian;
