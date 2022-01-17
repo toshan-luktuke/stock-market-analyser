@@ -95,7 +95,10 @@ const IndexCard = ({ indexName, symbol, open }) => {
               {symbol === 'NDAQ' ? (
                 <AreaChart data={data}>
                   <XAxis dataKey="time" hide></XAxis>
-                  <YAxis padding={{ top: graphPadding }} hide></YAxis>
+                  <YAxis
+                    padding={{ top: graphPadding, bottom: 5 }}
+                    hide
+                  ></YAxis>
                   <Area
                     type="natural"
                     dataKey="price"
@@ -108,7 +111,10 @@ const IndexCard = ({ indexName, symbol, open }) => {
                 </AreaChart>
               ) : (
                 <AreaChart data={data} stackOffset="expand">
-                  <YAxis padding={{ top: graphPadding }} hide></YAxis>
+                  <YAxis
+                    padding={{ top: graphPadding, bottom: 5 }}
+                    hide
+                  ></YAxis>
                   <Area
                     type="natural"
                     dataKey="_chg"
