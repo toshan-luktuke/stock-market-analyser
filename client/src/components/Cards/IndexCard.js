@@ -3,7 +3,8 @@ import { get } from 'axios';
 import { Card, CardBody } from '@windmill/react-ui';
 import { AreaChart, Area, ResponsiveContainer, XAxis, YAxis } from 'recharts';
 
-const IndexCard = ({ indexName, symbol }) => {
+const IndexCard = ({ indexName, symbol, open }) => {
+  const { isIndianOpen, recdata } = open;
   const [value, setValue] = useState(-1);
   const [percentChange, setPercentChange] = useState(-1);
   const [data, setData] = useState({});
@@ -13,7 +14,7 @@ const IndexCard = ({ indexName, symbol }) => {
   } else if (symbol === 'BNSX') {
     graphPadding = 20;
   } else {
-    graphPadding = 3;
+    graphPadding = 0;
   }
 
   const getData = async () => {
@@ -60,7 +61,12 @@ const IndexCard = ({ indexName, symbol }) => {
 
   useEffect(() => {
     getData();
-    setInterval(getData, 5000);
+    if (
+      (symbol == 'NDAQ' && recdata.isTheStockMarketOpen) ||
+      (isIndianOpen() && symbol != 'NDAQ')
+    ) {
+      setInterval(getData, 5000);
+    }
   }, []);
 
   return (
