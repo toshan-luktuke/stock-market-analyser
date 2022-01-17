@@ -27,8 +27,6 @@ const Dashboard = () => {
     }
   };
 
-  isIndianOpen();
-
   return (
     <>
       <PageTitle>Market Dashboard</PageTitle>

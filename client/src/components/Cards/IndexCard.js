@@ -1,52 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { get } from 'axios';
 import { Card, CardBody } from '@windmill/react-ui';
 import { AreaChart, Area, ResponsiveContainer, XAxis, YAxis } from 'recharts';
-
-// const data = [
-//   {
-//     name: 'Page A',
-//     uv: 4000,
-//     pv: 2400,
-//     amt: 2400,
-//   },
-//   {
-//     name: 'Page B',
-//     uv: 3000,
-//     pv: 1398,
-//     amt: 2210,
-//   },
-//   {
-//     name: 'Page C',
-//     uv: 2000,
-//     pv: 9800,
-//     amt: 2290,
-//   },
-//   {
-//     name: 'Page D',
-//     uv: 2780,
-//     pv: 3908,
-//     amt: 2000,
-//   },
-//   {
-//     name: 'Page E',
-//     uv: 1890,
-//     pv: 4800,
-//     amt: 2181,
-//   },
-//   {
-//     name: 'Page F',
-//     uv: 2390,
-//     pv: 3800,
-//     amt: 2500,
-//   },
-//   {
-//     name: 'Page G',
-//     uv: 3490,
-//     pv: 4300,
-//     amt: 2100,
-//   },
-// ];
 
 const IndexCard = ({ indexName, symbol }) => {
   const [value, setValue] = useState(-1);
@@ -56,7 +11,9 @@ const IndexCard = ({ indexName, symbol }) => {
   if (symbol === 'BSEN') {
     graphPadding = 70;
   } else if (symbol === 'BNSX') {
-    graphPadding = 25;
+    graphPadding = 20;
+  } else {
+    graphPadding = 3;
   }
 
   const getData = async () => {
@@ -70,8 +27,20 @@ const IndexCard = ({ indexName, symbol }) => {
       } = await get(`http://localhost:5000/stock/chart/${symbol}`);
       const rec = result[0].meta;
       setValue(rec.regularMarketPrice);
+      setData(result[0].indicators.quote[0].close);
+      const priceArr = result[0].indicators.quote[0].close;
+      const timestampArr = result[0].timestamp;
+      let toSet = [];
+      for (let i = 0; i < priceArr.length; ++i) {
+        if (priceArr[i] - priceArr[0] > 0) {
+          toSet.push({
+            time: timestampArr[i],
+            price: priceArr[i] - priceArr[0],
+          });
+        }
+      }
+      setData(toSet);
       const price = rec.regularMarketPrice;
-      console.log(result[0].timestamp);
       const prev = rec.chartPreviousClose;
       setPercentChange((((price - prev) / price) * 100).toFixed(3));
     } else {
@@ -79,7 +48,6 @@ const IndexCard = ({ indexName, symbol }) => {
         `http://localhost:5000/stock/indian/index/${symbol}`,
       );
       setValue(data.current_close);
-      console.log(data);
       setPercentChange(
         (
           ((data.current_close - data.prev_close) / data.current_close) *
@@ -87,7 +55,6 @@ const IndexCard = ({ indexName, symbol }) => {
         ).toFixed(3),
       );
       setData(data.values);
-      console.log(data.values);
     }
   };
 
@@ -119,18 +86,34 @@ const IndexCard = ({ indexName, symbol }) => {
           </div>
           <div style={{ marginLeft: -50 }}>
             <ResponsiveContainer width="100%">
-              <AreaChart data={data} stackOffset="expand">
-                <YAxis padding={{ top: graphPadding }} hide></YAxis>
-                <Area
-                  type="natural"
-                  dataKey="_chg"
-                  stroke="#f97316"
-                  fill="#A3D4BB"
-                  strokeOpacity={0.8}
-                  fillOpacity={0}
-                  strokeWidth={2}
-                />
-              </AreaChart>
+              {symbol === 'NDAQ' ? (
+                <AreaChart data={data}>
+                  <XAxis dataKey="time" hide></XAxis>
+                  <YAxis padding={{ top: graphPadding }} hide></YAxis>
+                  <Area
+                    type="natural"
+                    dataKey="price"
+                    stroke={'#00c853'}
+                    fill="#A3D4BB"
+                    strokeOpacity={0.8}
+                    fillOpacity={0}
+                    strokeWidth={2}
+                  />
+                </AreaChart>
+              ) : (
+                <AreaChart data={data} stackOffset="expand">
+                  <YAxis padding={{ top: graphPadding }} hide></YAxis>
+                  <Area
+                    type="natural"
+                    dataKey="_chg"
+                    stroke={'#00c853'}
+                    fill="#A3D4BB"
+                    strokeOpacity={0.8}
+                    fillOpacity={0}
+                    strokeWidth={2}
+                  />
+                </AreaChart>
+              )}
             </ResponsiveContainer>
           </div>
         </div>
