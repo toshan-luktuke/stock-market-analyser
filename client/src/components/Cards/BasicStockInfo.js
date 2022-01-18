@@ -97,7 +97,7 @@ const BasicStockInfo = ({ symbol }) => {
             Time:{' '}
             {`${new Date(payload[0].payload.time * 1000).toLocaleTimeString()}`}
           </p>
-          <p>Open: {payload[0].payload.close.toFixed(2)}</p>
+          <p>Close: {payload[0].payload.close.toFixed(2)}</p>
         </div>
       );
     }
