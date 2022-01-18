@@ -3,6 +3,7 @@ import { Card, CardBody } from '@windmill/react-ui';
 import { get } from 'axios';
 
 import { useFetch } from '../../hooks/useFetch';
+import CTA from '../CTA';
 
 const directionEmojis = {
   up: '🚀',
@@ -14,8 +15,8 @@ const BasicStockInfo = ({ symbol }) => {
   const url = `https://stock-market-analyser-backend.herokuapp.com/stock/details/${symbol}`;
   const { recdata, isLoading } = useFetch(url);
   const { data } = recdata;
-
-  const [rating, setRating] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [rating, setRating] = useState({ success: false });
   useEffect(() => {
     const url1 = `https://stock-market-analyser-backend.herokuapp.com/stock/rating/${symbol}`;
     fetcherConditional(url1);
@@ -23,9 +24,14 @@ const BasicStockInfo = ({ symbol }) => {
 
   const fetcherConditional = async (url1) => {
     try {
-      const { data } = await get(url1, { crossdomain: true });
-      setRating(data);
-      console.log(rating);
+      let data1 = await get(url1, { crossdomain: true });
+      if (data1) {
+        data1 = data1.data;
+        setRating(data1);
+      } else {
+        setRating({ success: false });
+      }
+      setLoading(false);
     } catch (error) {
       throw new Error(error);
     }
@@ -47,27 +53,26 @@ const BasicStockInfo = ({ symbol }) => {
       try {
         const rdata = await getData();
         const stockData = rdata.data.chart.result[0];
-        console.log(stockData);
         setPrevPrice(price);
         setPrice(stockData.meta.regularMarketPrice.toFixed(2));
         setPriceTime(new Date(stockData.meta.regularMarketTime * 1000));
       } catch (error) {
         throw new Error(error);
       }
-      timeoutId = setTimeout(getLatestPrice, 10000);
+      timeoutId = setTimeout(getLatestPrice, 2500);
     };
     getLatestPrice();
     return () => {
       clearTimeout(timeoutId);
     };
-  }, [recdata, symbol]);
+  }, [symbol]);
 
   const direction = useMemo(
     () => (prevPrice < price ? 'up' : prevPrice > price ? 'down' : ''),
     [prevPrice, price],
   );
 
-  if (!isLoading) {
+  if (!isLoading && !loading) {
     return (
       <div className="mt-4">
         <Card className="mb-8 shadow-md pl-4">
@@ -134,13 +139,13 @@ const BasicStockInfo = ({ symbol }) => {
             </p>
           </CardBody>
         </Card>
-        <Card className="my-8 shadow-md">
+        <Card className="my-8 shadow-md flex justify-center">
           <CardBody>
-            <h1 className="my-2 font-semibold font-mono text-xl dark:text-gray-200 ml-4 w-full text-center">
+            <h1 className="my-2 font-semibold font-mono text-xl dark:text-gray-200 w-full text-center">
               Real-time Analysis
             </h1>
             <p
-              className="text-3xl dark:text-gray-200 ml-4 w-full text-center font"
+              className="text-3xl dark:text-gray-200 w-full text-center font"
               style={{ fontFamily: 'Black Ops One' }}
             >
               💲{' '}
@@ -148,38 +153,41 @@ const BasicStockInfo = ({ symbol }) => {
                 {price} {directionEmojis[direction]}
               </span>
             </p>
-            <p className="text-base dark:text-gray-200 ml-4 w-full text-center">
+            <p className="text-base dark:text-gray-200 w-full text-center">
               ⌚ Time:{' '}
               <span> {priceTime && priceTime.toLocaleTimeString()}</span>
             </p>
           </CardBody>
         </Card>
-        <Card className="mt-8 mb-4 shadow-md">
-          <CardBody>
-            <h1 className="my-2 font-semibold font-mono text-lg dark:text-gray-200 ml-4">
-              Ratings (Based on DCF, ROA, DES, PB scores)
-            </h1>
-            <div
-              className="text-sm text-gray-700 dark:text-gray-300 mt-0 pl-4"
-              style={{
-                fontFamily: 'Comfortaa',
-              }}
-            >
-              <p>
-                ⭐ <span className="font-semibold">Rating:</span>{' '}
-                <span>{rating && rating.data.rating}</span>
-              </p>
-              <p>
-                💯 <span className="font-semibold">Score:</span>{' '}
-                <span>{rating && rating.data.ratingScore}</span>
-              </p>
-              <p>
-                💹 <span className="font-semibold">Recommendation:</span>{' '}
-                <span>{rating && rating.data.ratingRecommendation}</span>
-              </p>
-            </div>
-          </CardBody>
-        </Card>
+        {rating && rating.success && (
+          <Card className="mt-8 mb-4 shadow-md">
+            <CardBody>
+              <h1 className="my-2 font-semibold font-mono text-lg dark:text-gray-200 ml-4">
+                Ratings (Based on DCF, ROA, DES, PB scores)
+              </h1>
+              <div
+                className="text-sm text-gray-700 dark:text-gray-300 mt-0 pl-4"
+                style={{
+                  fontFamily: 'Comfortaa',
+                }}
+              >
+                <p>
+                  ⭐ <span className="font-semibold">Rating:</span>{' '}
+                  <span>{rating && rating.data.rating}</span>
+                </p>
+                <p>
+                  💯 <span className="font-semibold">Score:</span>{' '}
+                  <span>{rating && rating.data.ratingScore}</span>
+                </p>
+                <p>
+                  💹 <span className="font-semibold">Recommendation:</span>{' '}
+                  <span>{rating && rating.data.ratingRecommendation}</span>
+                </p>
+              </div>
+            </CardBody>
+          </Card>
+        )}
+        {!loading && <CTA />}
       </div>
     );
   }

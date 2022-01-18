@@ -7,7 +7,12 @@ const routes = [
   {
     path: '/search',
     icon: 'SearchIcon',
-    name: 'Search',
+    name: 'Search (NYSE)',
+  },
+  {
+    path: '/searchindian',
+    icon: 'SearchIcon',
+    name: 'Search (BSE/NSE)',
   },
   {
     path: '/news',

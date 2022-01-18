@@ -10,7 +10,7 @@ const GetRatesList = ({ rates }) => {
       {rates.join(' +++ ')} +++{' '}
     </p>
   ) : (
-    <p style={{ visibility: 'hidden' }}>Placeholder</p>
+    <p style={{ visibility: 'hidden' }}>Fetching the latest rates</p>
   );
 };
 
