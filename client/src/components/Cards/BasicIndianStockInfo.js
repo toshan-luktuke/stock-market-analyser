@@ -20,7 +20,7 @@ const BasicIndianStockInfo = ({ symbol, sector, stock_id }) => {
 
   const getData = async () => {
     const { data } = await get(
-      `http://localhost:5000/stock/indian/chart/${stock_id}`,
+      `https://stock-market-analyser-backend.herokuapp.com/stock/indian/chart/${stock_id}`,
     );
     setGraphData(data);
   };

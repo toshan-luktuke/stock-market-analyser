@@ -12,9 +12,11 @@ import StockTicker from '../components/StockTicker';
 import LargeStockChart from '../components/Cards/LargeStockChart';
 
 const Dashboard = () => {
-  const { recdata, isLoading } = useFetch('http://127.0.0.1:5000/stock/isopen');
+  const { recdata, isLoading } = useFetch(
+    'https://stock-market-analyser-backend.herokuapp.com/stock/isopen',
+  );
   const { recdata: recdata1 } = useFetch(
-    'http://localhost:5000/stock/indian/isopen',
+    'https://stock-market-analyser-backend.herokuapp.com/stock/indian/isopen',
   );
 
   const isIndianOpen = () => {

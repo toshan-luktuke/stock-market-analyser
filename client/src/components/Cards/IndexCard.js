@@ -25,7 +25,9 @@ const IndexCard = ({ indexName, symbol, open }) => {
             chart: { result },
           },
         },
-      } = await get(`http://localhost:5000/stock/chart/${symbol}`);
+      } = await get(
+        `https://stock-market-analyser-backend.herokuapp.com/stock/chart/${symbol}`,
+      );
       const rec = result[0].meta;
       setValue(rec.regularMarketPrice);
       setData(result[0].indicators.quote[0].close);
@@ -46,7 +48,7 @@ const IndexCard = ({ indexName, symbol, open }) => {
       setPercentChange((((price - prev) / price) * 100).toFixed(3));
     } else {
       const { data } = await get(
-        `http://localhost:5000/stock/indian/index/${symbol}`,
+        `https://stock-market-analyser-backend.herokuapp.com/stock/indian/index/${symbol}`,
       );
       setValue(data.current_close);
       setPercentChange(

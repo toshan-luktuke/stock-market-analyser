@@ -11,7 +11,7 @@ const Forms = () => {
   const getSuggestions = async (searchName) => {
     try {
       const { data } = await get(
-        `http://127.0.0.1:5000/stock/predautosuggest/${searchName}`,
+        `https://stock-market-analyser-backend.herokuapp.com/stock/autosuggest/${searchName}`,
       );
       if (data.length > 10) {
         setSuggestions(data.slice(0, 10));

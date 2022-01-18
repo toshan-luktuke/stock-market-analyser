@@ -3,7 +3,7 @@ import { get } from 'axios';
 const getSuggestions = async (stock) => {
   try {
     const { data } = await get(
-      `http://127.0.0.1:5000/stock/predautosuggest/${stock}`,
+      `https://stock-market-analyser-backend.herokuapp.com/stock/predautosuggest/${stock}`,
     );
     return new Promise((resolve, reject) => {
       if (data) {
