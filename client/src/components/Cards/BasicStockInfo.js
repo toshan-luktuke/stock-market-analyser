@@ -1,6 +1,14 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Card, CardBody } from '@windmill/react-ui';
 import { get } from 'axios';
+import {
+  AreaChart,
+  Area,
+  ResponsiveContainer,
+  XAxis,
+  YAxis,
+  Tooltip,
+} from 'recharts';
 
 import { useFetch } from '../../hooks/useFetch';
 import CTA from '../CTA';
@@ -17,6 +25,7 @@ const BasicStockInfo = ({ symbol }) => {
   const { data } = recdata;
   const [loading, setLoading] = useState(true);
   const [rating, setRating] = useState({ success: false });
+  const [graphData, setGraphData] = useState([]);
   useEffect(() => {
     const url1 = `https://stock-market-analyser-backend.herokuapp.com/stock/rating/${symbol}`;
     fetcherConditional(url1);
@@ -56,6 +65,14 @@ const BasicStockInfo = ({ symbol }) => {
         setPrevPrice(price);
         setPrice(stockData.meta.regularMarketPrice.toFixed(2));
         setPriceTime(new Date(stockData.meta.regularMarketTime * 1000));
+        let toPlot = [];
+        for (let i = 0; i < stockData.timestamp.length; ++i) {
+          toPlot.push({
+            time: stockData.timestamp[i],
+            close: stockData.indicators.quote[0].close[i],
+          });
+        }
+        setGraphData(toPlot);
       } catch (error) {
         throw new Error(error);
       }
@@ -71,6 +88,22 @@ const BasicStockInfo = ({ symbol }) => {
     () => (prevPrice < price ? 'up' : prevPrice > price ? 'down' : ''),
     [prevPrice, price],
   );
+
+  const CustomTooltip = ({ active, payload, label }) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800">
+          <p>
+            Time:{' '}
+            {`${new Date(payload[0].payload.time * 1000).toLocaleTimeString()}`}
+          </p>
+          <p>Open: {payload[0].payload.close.toFixed(2)}</p>
+        </div>
+      );
+    }
+
+    return null;
+  };
 
   if (!isLoading && !loading) {
     return (
@@ -157,6 +190,42 @@ const BasicStockInfo = ({ symbol }) => {
               ⌚ Time:{' '}
               <span> {priceTime && priceTime.toLocaleTimeString()}</span>
             </p>
+          </CardBody>
+        </Card>
+        <Card className="my-8 shadow-md">
+          <CardBody>
+            <h1 className="my-2 font-semibold font-mono text-xl dark:text-gray-200 w-full text-center">
+              Real-time Chart (Intraday)
+            </h1>
+
+            <div style={{ marginLeft: -20 }}>
+              <ResponsiveContainer width="100%" height={300}>
+                <AreaChart data={graphData}>
+                  <XAxis
+                    dataKey={(realdata) => {
+                      if (realdata.time) {
+                        new Date(Number(realdata.time));
+                      }
+                    }}
+                    hide
+                  ></XAxis>
+                  <YAxis
+                    domain={['auto', 'auto']}
+                    allowDataOverflow={true}
+                  ></YAxis>
+                  <Tooltip content={<CustomTooltip></CustomTooltip>}></Tooltip>
+                  <Area
+                    type="natural"
+                    dataKey="close"
+                    stroke={'#00c853'}
+                    fill="#A3D4BB"
+                    strokeOpacity={0.8}
+                    fillOpacity={0.5}
+                    strokeWidth={1}
+                  ></Area>
+                </AreaChart>
+              </ResponsiveContainer>
+            </div>
           </CardBody>
         </Card>
         {rating && rating.success && (

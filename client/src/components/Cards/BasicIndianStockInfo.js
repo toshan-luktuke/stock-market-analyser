@@ -215,30 +215,32 @@ const BasicIndianStockInfo = ({ symbol, sector, stock_id }) => {
               <h1 className="my-2 font-semibold font-mono text-xl dark:text-gray-200 w-full text-center">
                 Real-time Chart (Intraday)
               </h1>
-              <ResponsiveContainer width="100%" height={300}>
-                <AreaChart data={graphData.chartActulaData}>
-                  <XAxis
-                    dataKey={(realdata) => {
-                      new Date(Number(realdata.time));
-                    }}
-                    hide
-                  ></XAxis>
-                  <YAxis
-                    domain={['auto', 'auto']}
-                    allowDataOverflow={true}
-                  ></YAxis>
-                  {/* <Tooltip content={<CustomTooltip></CustomTooltip>}></Tooltip> */}
-                  <Area
-                    type="natural"
-                    dataKey="value"
-                    stroke={'#00c853'}
-                    fill="#A3D4BB"
-                    strokeOpacity={0.8}
-                    fillOpacity={0.5}
-                    strokeWidth={2}
-                  ></Area>
-                </AreaChart>
-              </ResponsiveContainer>
+              <div style={{ marginLeft: -20 }}>
+                <ResponsiveContainer width="100%" height={300}>
+                  <AreaChart data={graphData.chartActulaData}>
+                    <XAxis
+                      dataKey={(realdata) => {
+                        new Date(Number(realdata.time));
+                      }}
+                      hide
+                    ></XAxis>
+                    <YAxis
+                      domain={['auto', 'auto']}
+                      allowDataOverflow={true}
+                    ></YAxis>
+                    {/* <Tooltip content={<CustomTooltip></CustomTooltip>}></Tooltip> */}
+                    <Area
+                      type="natural"
+                      dataKey="value"
+                      stroke={'#00c853'}
+                      fill="#A3D4BB"
+                      strokeOpacity={0.8}
+                      fillOpacity={0.5}
+                      strokeWidth={2}
+                    ></Area>
+                  </AreaChart>
+                </ResponsiveContainer>
+              </div>
             </CardBody>
           </Card>
         </div>

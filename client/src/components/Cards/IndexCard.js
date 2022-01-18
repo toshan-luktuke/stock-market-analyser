@@ -108,7 +108,7 @@ const IndexCard = ({ indexName, symbol, open }) => {
                     fill={percentChange >= 0 ? '#A3D4BB' : '#ffcdd2'}
                     strokeOpacity={0.8}
                     fillOpacity={0}
-                    strokeWidth={1}
+                    strokeWidth={1.5}
                   />
                 </AreaChart>
               ) : (
@@ -138,4 +138,4 @@ const IndexCard = ({ indexName, symbol, open }) => {
   );
 };
 
-export default IndexCard;
+export default React.memo(IndexCard);
