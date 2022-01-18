@@ -10,7 +10,8 @@ const Predictions = () => {
   const [stock, setStock] = useState('');
   const [finalStock, setFinalStock] = useState('');
   const [symbol, setSymbol] = useState('');
-  const [prediction, setPrediction] = useState(0);
+  const [prediction, setPrediction] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const getSuggestions = async (searchName) => {
     try {
@@ -28,6 +29,7 @@ const Predictions = () => {
   };
 
   const getPredictions = async (symbol) => {
+    setIsLoading(true);
     try {
       const {
         data: { data },
@@ -40,7 +42,7 @@ const Predictions = () => {
         },
       );
       setPrediction(data);
-      console.log(data);
+      setIsLoading(false);
     } catch (error) {
       throw new Error(error);
     }
@@ -107,7 +109,12 @@ const Predictions = () => {
             </div>
           );
         })}
-      {prediction && (
+      {isLoading && (
+        <p className="dark:text-white text-center font-base animate__animated animate__flash animate__infinite mt-8">
+          Hol' up, lemme predict...
+        </p>
+      )}
+      {prediction && !isLoading && (
         <Card className="my-8 shadow-md flex justify-center">
           <CardBody>
             <h1 className="mb-1 font-semibold font-mono text-2xl dark:text-gray-200 w-full text-center">
@@ -126,7 +133,8 @@ const Predictions = () => {
           </CardBody>
         </Card>
       )}
-      {prediction && (
+
+      {prediction && !isLoading && (
         <div className="mt-8">
           <CTA />
         </div>

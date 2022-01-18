@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardBody } from '@windmill/react-ui';
 import { get } from 'axios';
+import {
+  AreaChart,
+  Area,
+  ResponsiveContainer,
+  XAxis,
+  YAxis,
+  Tooltip,
+} from 'recharts';
 
 import { useFetch } from '../../hooks/useFetch';
 import CTA from '../CTA';
@@ -8,6 +16,14 @@ import CTA from '../CTA';
 const BasicIndianStockInfo = ({ symbol, sector, stock_id }) => {
   const [realtime, setRealtime] = useState({});
   const [update, setUpdate] = useState({});
+  const [graphData, setGraphData] = useState({});
+
+  const getData = async () => {
+    const { data } = await get(
+      `http://localhost:5000/stock/indian/chart/${stock_id}`,
+    );
+    setGraphData(data);
+  };
 
   let code = symbol.split(',')[1].trim();
   const url = `https://priceapi.moneycontrol.com/techCharts/techChartController/symbols?symbol=${code}`;
@@ -31,8 +47,48 @@ const BasicIndianStockInfo = ({ symbol, sector, stock_id }) => {
   useEffect(() => {
     getInfo();
     getUpdates();
-    setInterval(getUpdates, 5000);
+    getData();
+    const updateInterval = setInterval(getUpdates, 5000);
+    const chartInterval = setInterval(getData, 5000);
+    return () => {
+      clearInterval(updateInterval);
+      clearInterval(chartInterval);
+    };
   }, [stock_id]);
+
+  // const CustomTooltip = ({ active, payload }) => {
+  //   const today = new Date();
+  //   const intradayStart = new Date(
+  //     today.getFullYear(),
+  //     today.getMonth(),
+  //     today.getDate(),
+  //     9,
+  //     15,
+  //     0,
+  //   );
+  //   console.log(intradayStart);
+  //   if (active && payload && payload.length) {
+  //     const diff = new Date(payload[0].payload.time - graphData.chartStartTime);
+  //     return (
+  //       <div className="p-2 bg-gray-300 dark:bg-gray-300">
+  //         <p className="label">{`${payload[0].payload.value}`}</p>
+  //         <p className="desc">{`${new Date(
+  //           today.getFullYear(),
+  //           today.getMonth(),
+  //           today.getDate(),
+  //           9,
+  //           15,
+  //           0,
+  //           (payload[0].payload.time - graphData.chartStartTime) * 10,
+  //         )}`}</p>
+  //         {/* <p className="desc">{`${intradayStart + diff}`}</p> */}
+  //       </div>
+  //     );
+  //   }
+
+  //   return null;
+  // };
+
   if (!isLoading) {
     return (
       <>
@@ -134,12 +190,12 @@ const BasicIndianStockInfo = ({ symbol, sector, stock_id }) => {
               >
                 <span class="font-black"> ₹</span>{' '}
                 <span>
-                  {update.pricecurrent} {update.pricechange > 0 ? '🚀' : '💩'}
+                  {update.pricecurrent} {update.pricechange >= 0 ? '🚀' : '💩'}
                 </span>
               </p>
               <p className="text-base dark:text-gray-200 w-full text-center">
                 💹 Price Change From Previous Close:{' '}
-                {update.pricechange > 0 ? (
+                {update.pricechange >= 0 ? (
                   <span class="text-green-700 dark:text-green-400">
                     {Number(update.pricepercentchange).toFixed(2)}% &uarr;
                   </span>
@@ -152,6 +208,37 @@ const BasicIndianStockInfo = ({ symbol, sector, stock_id }) => {
               <p className="text-base dark:text-gray-200 w-full text-center">
                 ⌚ Last Updated: <span> {update.lastupd}</span>
               </p>
+            </CardBody>
+          </Card>
+          <Card className="my-8 shadow-md">
+            <CardBody>
+              <h1 className="my-2 font-semibold font-mono text-xl dark:text-gray-200 w-full text-center">
+                Real-time Chart (Intraday)
+              </h1>
+              <ResponsiveContainer width="100%" height={300}>
+                <AreaChart data={graphData.chartActulaData}>
+                  <XAxis
+                    dataKey={(realdata) => {
+                      new Date(Number(realdata.time));
+                    }}
+                    hide
+                  ></XAxis>
+                  <YAxis
+                    domain={['auto', 'auto']}
+                    allowDataOverflow={true}
+                  ></YAxis>
+                  {/* <Tooltip content={<CustomTooltip></CustomTooltip>}></Tooltip> */}
+                  <Area
+                    type="natural"
+                    dataKey="value"
+                    stroke={'#00c853'}
+                    fill="#A3D4BB"
+                    strokeOpacity={0.8}
+                    fillOpacity={0.5}
+                    strokeWidth={2}
+                  ></Area>
+                </AreaChart>
+              </ResponsiveContainer>
             </CardBody>
           </Card>
         </div>

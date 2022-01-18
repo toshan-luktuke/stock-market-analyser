@@ -243,3 +243,16 @@ module.exports.getChartIndia = async (req, res, next) => {
     next(error);
   }
 };
+
+module.exports.getIndianStockChart = async (req, res, next) => {
+  try {
+    const { symbol } = req.params;
+    const symbolize = symbol.toUpperCase();
+    const { data } = await axios.get(
+      `https://www.moneycontrol.com/mc/widget/stockdetails/getChartInfo?classic=true&scId=${symbolize}&type=N`,
+    );
+    res.status(200).json(data);
+  } catch (error) {
+    next(error);
+  }
+};

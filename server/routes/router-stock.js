@@ -18,6 +18,7 @@ const {
   indianAutoSuggest,
   isIndianOpen,
   getChartIndia,
+  getIndianStockChart,
 } = require('../controllers/controller-stock');
 
 router.route('/quote/:symbol').get(getStockQuote);
@@ -37,5 +38,6 @@ router.route('/isopen').get(isOpen);
 router.route('/indian/autosuggest/:name').get(indianAutoSuggest);
 router.route('/indian/isopen').get(isIndianOpen);
 router.route('/indian/index/:symbol').get(getChartIndia);
+router.route('/indian/chart/:symbol').get(getIndianStockChart);
 
 module.exports = router;

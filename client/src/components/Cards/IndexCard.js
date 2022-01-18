@@ -10,7 +10,7 @@ const IndexCard = ({ indexName, symbol, open }) => {
   const [data, setData] = useState({});
   let graphPadding;
   if (symbol === 'BSEN') {
-    graphPadding = 70;
+    graphPadding = 0;
   } else if (symbol === 'BNSX') {
     graphPadding = 20;
   } else {
@@ -61,13 +61,11 @@ const IndexCard = ({ indexName, symbol, open }) => {
 
   useEffect(() => {
     getData();
-    if (
-      (symbol === 'NDAQ' && recdata.isTheStockMarketOpen) ||
-      (isIndianOpen() && symbol !== 'NDAQ')
-    ) {
-      setInterval(getData, 5000);
-    }
-  }, []);
+    const updateInterval = setInterval(getData, 5000);
+    return () => {
+      clearInterval(updateInterval);
+    };
+  }, [symbol]);
 
   return (
     <Card>
@@ -91,38 +89,42 @@ const IndexCard = ({ indexName, symbol, open }) => {
             )}
           </div>
           <div style={{ marginLeft: -50 }}>
-            <ResponsiveContainer width="100%">
+            <ResponsiveContainer width="100%" height={95}>
               {symbol === 'NDAQ' ? (
                 <AreaChart data={data}>
                   <XAxis dataKey="time" hide></XAxis>
                   <YAxis
-                    padding={{ top: graphPadding, bottom: 5 }}
+                    domain={['dataMin', 'dataMax']}
+                    allowDataOverflow={true}
+                    // padding={{ top: graphPadding, bottom: 5 }}
                     hide
                   ></YAxis>
                   <Area
                     type="natural"
                     dataKey="price"
                     stroke={'#00c853'}
-                    fill="#A3D4BB"
+                    fill={percentChange >= 0 ? '#A3D4BB' : '#ffcdd2'}
                     strokeOpacity={0.8}
                     fillOpacity={0}
-                    strokeWidth={2}
+                    strokeWidth={1}
                   />
                 </AreaChart>
               ) : (
                 <AreaChart data={data} stackOffset="expand">
+                  <XAxis dataKey="_time" hide></XAxis>
                   <YAxis
-                    padding={{ top: graphPadding, bottom: 5 }}
+                    domain={['auto', 'auto']}
+                    allowDataOverflow={true}
                     hide
                   ></YAxis>
                   <Area
                     type="natural"
-                    dataKey="_chg"
+                    dataKey="_value"
                     stroke={'#00c853'}
-                    fill="#A3D4BB"
+                    fill={percentChange >= 0 ? '#A3D4BB' : '#ffcdd2'}
                     strokeOpacity={0.8}
                     fillOpacity={0}
-                    strokeWidth={2}
+                    strokeWidth={1.5}
                   />
                 </AreaChart>
               )}
