@@ -29,20 +29,21 @@ class Stock_ANN(Resource):
                 #print("Accuracy = ", (100-score), "%")
 
                 data = data.iloc[len(data)-10:]
-                data = data[['High','Open', 'Volume']]
+                data = data[['High', 'Open', 'Volume']]
                 pred = model.predict(data, verbose=0)
                 res = {'p1': {'today_closing_price': pred[0][0]}}
 
-
                 # res = find(stock_name)
-                #if res[0] == -1 or
+                # if res[0] == -1 or
 
-                #print(res)
+                # print(res)
                 response = jsonify({'data': res})
                 response.headers.add("Access-Control-Allow-Origin", "*")
-                return response           
-        except:
+                return response
+        except Exception as e:
             print("SERVER ERROR 500")
+            print(e)
+            
 
-           
+
 api.add_resource(Stock_ANN, '/stock_ann/<string:stock_name>')
