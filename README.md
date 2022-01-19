@@ -50,10 +50,19 @@ A blazing fast web application to analyze the current trends in the stock a user
   </table>
   
 ## 🔗Links
-- [Stock Market Analyser Vercel App](https://stock-market-analyser.vercel.app/)
+
+### Frontend (Vercel)
+- [**Stock Market Analyser**](https://stock-market-analyser.vercel.app/) 🚀
+
+### Assets
 - [GitHub Repo](https://github.com/toshan-luktuke/stock-market-analyser)
 - [Drive link for Recordings & Screenshots](https://drive.google.com/drive/folders/1A4iOlkxtDlkG3PurklooRA8DYiPBIil9)
-  
+
+### Backend (Heroku)
+- [Stock Market Analyser Server](https://stock-market-analyser-backend.herokuapp.com/)
+- [Stock Market Analyser Linear Regression Model Deployment](https://stock-analyser-ann.herokuapp.com/)
+- [Stock Market Analyser ANN Model Deployment](https://stock-analyser-ann.herokuapp.com/)
+
 ## 🤖Tech-Stack
 <a href="https://www.python.org/" title="Python"><img src="https://github.com/get-icon/geticon/raw/master/icons/python.svg" alt="Python" width="31px" height="31px"></a>
 <a href="https://numpy.org/" title="Numpy"><img src="https://github.com/get-icon/geticon/blob/master/icons/numpy-icon.svg" alt="Numpy" width="31px" height="31px"></a>
@@ -83,11 +92,11 @@ A blazing fast web application to analyze the current trends in the stock a user
 - [x] Dark Mode implementation
 - [x] Server-side endpoint
 - [x] API for the linear regression model
-- [ ] API for the ANN model
-- [ ] Hosting the model
-- [ ] Market Dashboard
-- [ ] Linking the predictions page through the REST API for the model (has been tested on the localhost)
-- [ ] Real-time charts (partially added, dark-mode sync and responsiveness are remaining)
+- [x] API for the ANN model
+- [x] Hosting the model
+- [x] Market Dashboard
+- [x] Linking the predictions page through the REST API for the model (has been tested on the localhost)
+- [x] Real-time charts (partially added, dark-mode sync and responsiveness are remaining)
 
 ## 🔮Future Scope
 
@@ -98,7 +107,7 @@ A blazing fast web application to analyze the current trends in the stock a user
 
 ## 🛠Project Setup
 
-### For the web-app:
+### For the web-app
 
 1. Clone the GitHub repo
    ```
@@ -123,7 +132,7 @@ A blazing fast web application to analyze the current trends in the stock a user
    ```
 4. If you are working on Visual Studio Code or WebStorm, it'd be convenient to install the extensions for [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) and [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
 
-### For the model:
+### For the model
 
 1. Create a virtual environment on the anaconda command prompt (Install [conda](https://docs.conda.io/en/latest/) if not installed) and then switch to that virtual environment. Lets say the name of the env is test.
    ```
@@ -135,7 +144,7 @@ A blazing fast web application to analyze the current trends in the stock a user
    $ pip install -r requirements.txt
    ```
 
-### For the Flask API:
+### For the Flask API
 
 1. Look for the `main.py` and `test.py` files in the `Model` directory and have them ready. (The packages for flask would already be installed when you run previous command number 2 in the above section)
 
@@ -143,7 +152,7 @@ A blazing fast web application to analyze the current trends in the stock a user
 
 Once the required setup and installation is completed, you can start developing and running the project.
 
-### For the web-app:
+### For the web-app
 
 1. Backend: Go to the `server` directory and run the `dev` script to activate nodemon
    ```
@@ -167,7 +176,7 @@ Once the required setup and installation is completed, you can start developing 
    SKIP_PREFLIGHT_CHECK = true
    ```
 
-### For the model and for the Flask API:
+### For the model and for the Flask API
 
 1. Locate to the `Model` directory. The models for the project are in `linear_reg_model.py` and `ann_model.py` files.
 
@@ -201,13 +210,13 @@ It is important to know that these steps must be performed only after setting up
 
 ### Linear regression models
 
-STEP 1: pull the `ml-dev` branch onto your local machine
+1. Pull the `ml-dev` branch onto your local machine
 
 ```
 $ git switch ml-dev
 ```
         
-STEP 2: Once inside your text-editor, open the linear_reg_model.py file inside `Model` folder. At the end of the file call the `find_r` function    
+2. Once inside your text-editor, open the linear_reg_model.py file inside `Model` folder. At the end of the file call the `find_r` function    
 
 ```
 # At the file saving part edit the name of the file path as the code name of the stock.
@@ -215,12 +224,12 @@ STEP 2: Once inside your text-editor, open the linear_reg_model.py file inside `
 # At the end of the file
 find_r(Stock name)
 ```
-        
-STEP 3: This will create a `.pkl` file in the Models folder.
 
-STEP 4: Now add the stock name as a string in the array `list_stocks` in the file main.py
+3. This will create a `.pkl` file in the Models folder.
 
-STEP 5: You can now execute the main.py and test.py files on your local machine as stated in the above section
+4. Now add the stock name as a string in the array `list_stocks` in the file main.py
+
+5. You can now execute the main.py and test.py files on your local machine as stated in the above section
 
 ```
 # In the first conda prompt
@@ -234,12 +243,12 @@ Here you can enter the code name of the stock and the prediction will be display
 
 ## 👩‍💻Contributors
 
-Team members:
+Team members
 
-- [Sarvagnya Purohit](https://github.com/saRvaGnyA) - sarvagnyapurohit@gmail.com
-- [Toshan Luktuke](https://github.com/toshan-luktuke) - toshan1603@gmail.com
-- [Alisha Kamat](https://github.com/alisha-kamat) - alishakamat8@gmail.com
-- [Rushabh Maru](https://github.com/RushabhM03) - rushabh.maru123@gmail.com
+- [**S**arvagnya Purohit](https://github.com/saRvaGnyA) - sarvagnyapurohit@gmail.com
+- [**T**oshan Luktuke](https://github.com/toshan-luktuke) - toshan1603@gmail.com
+- [**A**lisha Kamat](https://github.com/alisha-kamat) - alishakamat8@gmail.com
+- [**R**ushabh Maru](https://github.com/RushabhM03) - rushabh.maru123@gmail.com
 
 ## 👨‍🏫Mentors
 
