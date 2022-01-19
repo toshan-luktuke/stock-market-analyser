@@ -21,7 +21,8 @@ class Stock_ANN(Resource):
             if stock_name not in list_stocks:
                 print("Invalid stock name")
             else:
-                model = keras.models.load_model("{}.h5".format(stock_name))
+                model = keras.models.load_model(
+                    "Models/ANN/{}.h5".format(stock_name))
                 #prediction = model.predict(X_test)
 
                 data = yf.download(stock_name, auto_adjust=True)
@@ -43,7 +44,6 @@ class Stock_ANN(Resource):
         except Exception as e:
             print("SERVER ERROR 500")
             print(e)
-            
 
 
 api.add_resource(Stock_ANN, '/stock_ann/<string:stock_name>')
