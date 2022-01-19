@@ -9,7 +9,6 @@ import PageTitle from '../components/Typography/PageTitle';
 import { CartIcon, MoneyIcon, PeopleIcon, HomeIcon } from '../icons';
 import RoundIcon from '../components/RoundIcon';
 import StockTicker from '../components/StockTicker';
-import LargeStockChart from '../components/Cards/LargeStockChart';
 
 const Dashboard = () => {
   const { recdata, isLoading } = useFetch(
@@ -116,7 +115,6 @@ const Dashboard = () => {
         ></IndexCard>
       </div>
 
-      <LargeStockChart className="flex" />
       <div class="mt-8">
         <CTA />
       </div>

@@ -216,6 +216,7 @@ const BasicStockInfo = ({ symbol }) => {
                   <Tooltip content={<CustomTooltip></CustomTooltip>}></Tooltip>
                   <Area
                     type="natural"
+                    connectNulls
                     dataKey="close"
                     stroke={'#00c853'}
                     fill="#A3D4BB"

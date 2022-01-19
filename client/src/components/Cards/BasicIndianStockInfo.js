@@ -57,31 +57,14 @@ const BasicIndianStockInfo = ({ symbol, sector, stock_id }) => {
   }, [stock_id]);
 
   // const CustomTooltip = ({ active, payload }) => {
-  //   const today = new Date();
-  //   const intradayStart = new Date(
-  //     today.getFullYear(),
-  //     today.getMonth(),
-  //     today.getDate(),
-  //     9,
-  //     15,
-  //     0,
-  //   );
-  //   console.log(intradayStart);
   //   if (active && payload && payload.length) {
-  //     const diff = new Date(payload[0].payload.time - graphData.chartStartTime);
+  //     console.log(payload[0].payload);
   //     return (
   //       <div className="p-2 bg-gray-300 dark:bg-gray-300">
   //         <p className="label">{`${payload[0].payload.value}`}</p>
   //         <p className="desc">{`${new Date(
-  //           today.getFullYear(),
-  //           today.getMonth(),
-  //           today.getDate(),
-  //           9,
-  //           15,
-  //           0,
-  //           (payload[0].payload.time - graphData.chartStartTime) * 10,
+  //           payload[0].payload.time * 1000,
   //         )}`}</p>
-  //         {/* <p className="desc">{`${intradayStart + diff}`}</p> */}
   //       </div>
   //     );
   //   }
@@ -220,7 +203,7 @@ const BasicIndianStockInfo = ({ symbol, sector, stock_id }) => {
                   <AreaChart data={graphData.chartActulaData}>
                     <XAxis
                       dataKey={(realdata) => {
-                        new Date(Number(realdata.time));
+                        new Date(Number(realdata.time * 1000));
                       }}
                       hide
                     ></XAxis>
@@ -228,7 +211,7 @@ const BasicIndianStockInfo = ({ symbol, sector, stock_id }) => {
                       domain={['auto', 'auto']}
                       allowDataOverflow={true}
                     ></YAxis>
-                    {/* <Tooltip content={<CustomTooltip></CustomTooltip>}></Tooltip> */}
+                    <Tooltip></Tooltip>
                     <Area
                       type="natural"
                       dataKey="value"

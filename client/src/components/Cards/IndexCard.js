@@ -8,14 +8,7 @@ const IndexCard = ({ indexName, symbol, open }) => {
   const [value, setValue] = useState(-1);
   const [percentChange, setPercentChange] = useState(-1);
   const [data, setData] = useState({});
-  let graphPadding;
-  if (symbol === 'BSEN') {
-    graphPadding = 0;
-  } else if (symbol === 'BNSX') {
-    graphPadding = 20;
-  } else {
-    graphPadding = 0;
-  }
+  const [isLoading, setIsLoading] = useState(true);
 
   const getData = async () => {
     if (symbol === 'SPY' || symbol === 'NDAQ') {
@@ -31,6 +24,7 @@ const IndexCard = ({ indexName, symbol, open }) => {
       const rec = result[0].meta;
       setValue(rec.regularMarketPrice);
       setData(result[0].indicators.quote[0].close);
+      setIsLoading(false);
       const priceArr = result[0].indicators.quote[0].close;
       const timestampArr = result[0].timestamp;
       let toSet = [];
@@ -58,6 +52,7 @@ const IndexCard = ({ indexName, symbol, open }) => {
         ).toFixed(3),
       );
       setData(data.values);
+      setIsLoading(false);
     }
   };
 
@@ -69,73 +64,80 @@ const IndexCard = ({ indexName, symbol, open }) => {
     };
   }, [symbol]);
 
-  return (
-    <Card>
-      <CardBody>
-        <div className="grid grid-cols-2">
-          <div className="grid grid-rows-2">
-            <p className="mb-4 font-semibold text-black dark:text-white">
-              {indexName}
-            </p>
-            <p className="font-extrabold text-gray-600 dark:text-gray-300 font-sadha">
-              {value}
-            </p>
-            {percentChange > 0 ? (
-              <p className="text-sm font-bold text-green-600 dark:text-green-400">
-                {percentChange}% &uarr;
+  if (!isLoading) {
+    return (
+      <Card>
+        <CardBody>
+          <div className="grid grid-cols-2">
+            <div className="grid grid-rows-2">
+              <p className="mb-4 font-semibold text-black dark:text-white">
+                {indexName}
               </p>
-            ) : (
-              <p className="text-sm font-bold text-red-600 dark:text-red-400">
-                {percentChange}% &darr;
+              <p className="font-extrabold text-gray-600 dark:text-gray-300 font-sadha">
+                {value}
               </p>
-            )}
-          </div>
-          <div style={{ marginLeft: -50 }}>
-            <ResponsiveContainer width="100%" height={95}>
-              {symbol === 'NDAQ' ? (
-                <AreaChart data={data}>
-                  <XAxis dataKey="time" hide></XAxis>
-                  <YAxis
-                    domain={['dataMin', 'dataMax']}
-                    allowDataOverflow={true}
-                    // padding={{ top: graphPadding, bottom: 5 }}
-                    hide
-                  ></YAxis>
-                  <Area
-                    type="natural"
-                    dataKey="price"
-                    stroke={'#00c853'}
-                    fill={percentChange >= 0 ? '#A3D4BB' : '#ffcdd2'}
-                    strokeOpacity={0.8}
-                    fillOpacity={0}
-                    strokeWidth={1.5}
-                  />
-                </AreaChart>
+              {percentChange > 0 ? (
+                <p className="text-sm font-bold text-green-600 dark:text-green-400">
+                  {percentChange}% &uarr;
+                </p>
               ) : (
-                <AreaChart data={data} stackOffset="expand">
-                  <XAxis dataKey="_time" hide></XAxis>
-                  <YAxis
-                    domain={['auto', 'auto']}
-                    allowDataOverflow={true}
-                    hide
-                  ></YAxis>
-                  <Area
-                    type="natural"
-                    dataKey="_value"
-                    stroke={'#00c853'}
-                    fill={percentChange >= 0 ? '#A3D4BB' : '#ffcdd2'}
-                    strokeOpacity={0.8}
-                    fillOpacity={0}
-                    strokeWidth={1.5}
-                  />
-                </AreaChart>
+                <p className="text-sm font-bold text-red-600 dark:text-red-400">
+                  {percentChange}% &darr;
+                </p>
               )}
-            </ResponsiveContainer>
+            </div>
+            <div style={{ marginLeft: -50 }}>
+              <ResponsiveContainer width="100%" height={95}>
+                {symbol === 'NDAQ' ? (
+                  <AreaChart data={data}>
+                    <XAxis dataKey="time" hide></XAxis>
+                    <YAxis
+                      domain={['dataMin', 'dataMax']}
+                      allowDataOverflow={true}
+                      // padding={{ top: graphPadding, bottom: 5 }}
+                      hide
+                    ></YAxis>
+                    <Area
+                      type="natural"
+                      dataKey="price"
+                      stroke={'#00c853'}
+                      fill={percentChange >= 0 ? '#A3D4BB' : '#ffcdd2'}
+                      strokeOpacity={0.8}
+                      fillOpacity={0}
+                      strokeWidth={1.5}
+                    />
+                  </AreaChart>
+                ) : (
+                  <AreaChart data={data} stackOffset="expand">
+                    <XAxis dataKey="_time" hide></XAxis>
+                    <YAxis
+                      domain={['auto', 'auto']}
+                      allowDataOverflow={true}
+                      hide
+                    ></YAxis>
+                    <Area
+                      type="natural"
+                      dataKey="_value"
+                      stroke={'#00c853'}
+                      fill={percentChange >= 0 ? '#A3D4BB' : '#ffcdd2'}
+                      strokeOpacity={0.8}
+                      fillOpacity={0}
+                      strokeWidth={1.5}
+                    />
+                  </AreaChart>
+                )}
+              </ResponsiveContainer>
+            </div>
           </div>
-        </div>
-      </CardBody>
-    </Card>
+        </CardBody>
+      </Card>
+    );
+  }
+  return (
+    <p className="dark:text-white text-center animate__animated animate__flash animate__infinite">
+      Loading...
+    </p>
   );
 };
 
-export default React.memo(IndexCard);
+export default IndexCard;
