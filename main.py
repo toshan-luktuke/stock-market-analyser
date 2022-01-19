@@ -18,6 +18,10 @@ list_stocks = ['SPY', 'TSLA', 'FB', 'GOOG', 'GOOGL', 'AAPL', 'TTM', 'RELI']
 class Stock_ANN(Resource):
     def get(self, stock_name):
         try:
+            
+            if stock_name not in list_stocks:
+                abort(404, message="Stock code is invalid")
+            
             model = keras.models.load_model("{}.h5".format(stock_name))
             #prediction = model.predict(X_test)
 
@@ -32,9 +36,7 @@ class Stock_ANN(Resource):
 
 
              # res = find(stock_name)
-            #if res[0] == -1 or 
-            if stock_name not in list_stocks:
-                abort(404, message="Stock code is invalid")
+            #if res[0] == -1 or
 
             #print(res)
             response = jsonify({'data': res})
