@@ -29,19 +29,19 @@ const IndexCard = ({ indexName, symbol, open }) => {
       const timestampArr = result[0].timestamp;
       let toSet = [];
       for (let i = 0; i < priceArr.length; ++i) {
-        if (symbol === 'NDAQ') {
-          if (priceArr[i] - priceArr[0] > 0) {
+        // if (symbol === 'NDAQ') {
+          if (priceArr[i] - priceArr[0] > 0.001) {
             toSet.push({
               time: timestampArr[i],
               price: priceArr[i] - priceArr[0],
             });
           }
-        } else {
-          toSet.push({
-            time: timestampArr[i],
-            price: priceArr[i] - priceArr[0],
-          });
-        }
+        // } else {
+        //   toSet.push({
+        //     time: timestampArr[i],
+        //     price: priceArr[i] - priceArr[0],
+        //   });
+        // }
       }
       setData(toSet);
       const price = rec.regularMarketPrice;
@@ -99,9 +99,9 @@ const IndexCard = ({ indexName, symbol, open }) => {
                   <AreaChart data={data}>
                     <XAxis dataKey="time" hide></XAxis>
                     <YAxis
-                      domain={['dataMin', 'dataMax']}
+                      domain={['auto', 'auto']}
                       allowDataOverflow={true}
-                      // padding={{ top: graphPadding, bottom: 5 }}
+                      padding={{ top: 3, bottom: 3 }}
                       hide
                     ></YAxis>
                     <Area
