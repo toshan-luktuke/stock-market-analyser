@@ -9,6 +9,9 @@ import PageTitle from '../components/Typography/PageTitle';
 import { CartIcon, MoneyIcon, PeopleIcon, HomeIcon } from '../icons';
 import RoundIcon from '../components/RoundIcon';
 import StockTicker from '../components/StockTicker';
+import Gainers from '../components/Tables/Gainers';
+import Losers from '../components/Tables/Losers';
+import SectionTitle from '../components/Typography/SectionTitle';
 
 const Dashboard = () => {
   const { recdata, isLoading } = useFetch(
@@ -94,9 +97,13 @@ const Dashboard = () => {
           )}
         </CardBody>
       </Card>
+
       <div className="p-2 pb-0 h-6.5">
         <StockTicker rates={['$10', '$20', '$30']}></StockTicker>
       </div>
+      
+      <SectionTitle>Major Indices Realtime</SectionTitle>
+
       <div className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-2">
         <IndexCard
           indexName="NIFTY 50"
@@ -119,6 +126,12 @@ const Dashboard = () => {
           open={{ isIndianOpen, recdata }}
         ></IndexCard>
       </div>
+
+      <SectionTitle>Top Gainers Today</SectionTitle>
+      <Gainers></Gainers>
+
+      <SectionTitle>Top Losers Today</SectionTitle>
+      <Losers></Losers>
 
       <div class="mt-8">
         <CTA />
