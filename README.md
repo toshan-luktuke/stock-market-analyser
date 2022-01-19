@@ -209,23 +209,23 @@ $ git switch ml-dev
         
 STEP 2: Once inside your text-editor, open the linear_reg_model.py file inside `Model` folder. At the end of the file call the `find_r` function    
 
-        ```
-        # At the file saving part edit the name of the file path as the code name of the stock.
-        # example: filename="../Models/Linear regression/stock_name.pkl"
-        # At the end of the file
-        find_r(Stock name)
-        ```
+```
+# At the file saving part edit the name of the file path as the code name of the stock.
+# example: filename="../Models/Linear regression/stock_name.pkl"
+# At the end of the file
+find_r(Stock name)
+```
         
 STEP 3: This will create a `.pkl` file in the Models folder.
 
 STEP 4: You can now execute the main.py and test.py files on your local machine as stated in the above section
 
-        ```
-        # In the first conda prompt
-        $ python main.py
-        # In the second conda prompt
-        $ python test.py 
-        ```
+```
+# In the first conda prompt
+$ python main.py
+# In the second conda prompt
+$ python test.py 
+```
         
 Here you can enter the code name of the stock and the prediction will be displayed
 
