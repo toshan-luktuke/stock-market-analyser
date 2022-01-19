@@ -11,6 +11,7 @@ const Predictions = () => {
   const [finalStock, setFinalStock] = useState('');
   const [symbol, setSymbol] = useState('');
   const [prediction, setPrediction] = useState(null);
+  const [ANNPrediction, setANNPrediction] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const getSuggestions = async (searchName) => {
@@ -43,6 +44,25 @@ const Predictions = () => {
       );
       setPrediction(data);
       setIsLoading(false);
+    } catch (error) {
+      throw new Error(error);
+    }
+  };
+
+  const getANNPredictions = async (symbol) => {
+    try {
+      const {
+        data: { data },
+      } = await get(
+        `https://stock-analyser-ann.herokuapp.com/stock_ann/${symbol}`,
+        {
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+          },
+        },
+      );
+      console.log(data, typeof data, JSON.parse(data));
+      setANNPrediction(data.p1);
     } catch (error) {
       throw new Error(error);
     }
@@ -95,6 +115,7 @@ const Predictions = () => {
                 setStock(suggestion.name);
                 setSymbol(suggestion.symbol);
                 getPredictions(suggestion.symbol);
+                // getANNPredictions(suggestion.symbol);
                 setFinalStock(suggestion.name);
                 setSuggestions([]);
               }}
@@ -110,7 +131,7 @@ const Predictions = () => {
           );
         })}
       {isLoading && (
-        <p className="dark:text-white text-center font-base animate__animated animate__flash animate__infinite mt-8">
+        <p className="dark:text-white text-center font-base animate__animated animate__bounce animate__infinite mt-16">
           Hol' up, lemme predict...
         </p>
       )}
@@ -122,10 +143,10 @@ const Predictions = () => {
               <span className="dark:text-red-400 text-red-700">{symbol}</span>)
             </h1>
             <h1 className="my-2 font-semibold font-mono text-xl dark:text-gray-200 w-full text-center">
-              Prediction for tomorrow's price
+              Prediction for tomorrow's closing price
             </h1>
             <p
-              className="text-3xl dark:text-gray-200 w-full text-center font"
+              className="text-3xl dark:text-gray-200 w-full text-center font animate__tada animate__animated animate__slow"
               style={{ fontFamily: 'Black Ops One' }}
             >
               💲 <span>{prediction.toFixed(2)}</span>
