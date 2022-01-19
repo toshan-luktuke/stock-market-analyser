@@ -1,6 +1,10 @@
 const axios = require('axios');
 const { tick } = require('./../tick');
 const { list } = require('./../list');
+const sector = require('./../daily/sector.json');
+const gainers = require('./../daily/gainers.json');
+const losers = require('./../daily/losers.json');
+const actives = require('./../daily/actives.json');
 
 module.exports.getStockQuote = async (req, res, next) => {
   try {
@@ -252,6 +256,38 @@ module.exports.getIndianStockChart = async (req, res, next) => {
       `https://www.moneycontrol.com/mc/widget/stockdetails/getChartInfo?classic=true&scId=${symbolize}&type=N`,
     );
     res.status(200).json(data);
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports.getSectorPerformance = async (req, res, next) => {
+  try {
+    res.status(200).json({ data: sector, success: true });
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports.getTickerData = async (req, res, next) => {
+  try {
+    res.status(200).json({ success: true, data: actives });
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports.getGainers = async (req, res, next) => {
+  try {
+    res.status(200).json({ success: true, data: gainers });
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports.getLosers = async (req, res, next) => {
+  try {
+    res.status(200).json({ success: true, data: losers });
   } catch (error) {
     next(error);
   }

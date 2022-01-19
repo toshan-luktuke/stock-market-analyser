@@ -1,0 +1,212 @@
+[
+  {
+    "symbol": "TKLF",
+    "name": "Yoshitsu Co., Ltd American Depositary Shares",
+    "change": 28.0,
+    "price": 32.0,
+    "changesPercentage": 700.0
+  },
+  {
+    "symbol": "DATS",
+    "name": "DatChat, Inc.",
+    "change": 0.93,
+    "price": 3.33,
+    "changesPercentage": 38.74999
+  },
+  {
+    "symbol": "INDO",
+    "name": "Indonesia Energy Corporation Limited",
+    "change": 1.02,
+    "price": 4.3,
+    "changesPercentage": 31.0976
+  },
+  {
+    "symbol": "NURO",
+    "name": "NeuroMetrix, Inc.",
+    "change": 1.45,
+    "price": 6.37,
+    "changesPercentage": 29.47154
+  },
+  {
+    "symbol": "BBIG",
+    "name": "Vinco Ventures, Inc.",
+    "change": 1.12,
+    "price": 5.19,
+    "changesPercentage": 27.518425
+  },
+  {
+    "symbol": "ATVI",
+    "name": "Activision Blizzard, Inc.",
+    "change": 16.92,
+    "price": 82.31,
+    "changesPercentage": 25.875515
+  },
+  {
+    "symbol": "IMRN",
+    "name": "Immuron Limited",
+    "change": 0.84,
+    "price": 4.23,
+    "changesPercentage": 24.778757
+  },
+  {
+    "symbol": "DWAC",
+    "name": "Digital World Acquisition Corp.",
+    "change": 15.43,
+    "price": 86.31,
+    "changesPercentage": 21.769188
+  },
+  {
+    "symbol": "AMPGW",
+    "name": "AmpliTech Group, Inc.",
+    "change": 0.2799,
+    "price": 1.5999,
+    "changesPercentage": 21.204542
+  },
+  {
+    "symbol": "GMVD",
+    "name": "G Medical Innovations Holdings Ltd",
+    "change": 0.71,
+    "price": 4.21,
+    "changesPercentage": 20.285715
+  },
+  {
+    "symbol": "IMTE",
+    "name": "Integrated Media Technology Limited",
+    "change": 1.75,
+    "price": 10.52,
+    "changesPercentage": 19.95439
+  },
+  {
+    "symbol": "IHT",
+    "name": "InnSuites Hospitality Trust",
+    "change": 0.55,
+    "price": 3.55,
+    "changesPercentage": 18.333332
+  },
+  {
+    "symbol": "RETO",
+    "name": "ReTo Eco-Solutions, Inc.",
+    "change": 0.27,
+    "price": 1.77,
+    "changesPercentage": 18.0
+  },
+  {
+    "symbol": "ISIG",
+    "name": "Insignia Systems, Inc.",
+    "change": 3.39,
+    "price": 22.79,
+    "changesPercentage": 17.474234
+  },
+  {
+    "symbol": "PRKR",
+    "name": "ParkerVision, Inc.",
+    "change": 0.156,
+    "price": 1.11,
+    "changesPercentage": 16.352203
+  },
+  {
+    "symbol": "OCX",
+    "name": "OncoCyte Corporation",
+    "change": 0.3,
+    "price": 2.19,
+    "changesPercentage": 15.873019
+  },
+  {
+    "symbol": "AGIL",
+    "name": "AgileThought, Inc.",
+    "change": 0.73,
+    "price": 5.42,
+    "changesPercentage": 15.565032
+  },
+  {
+    "symbol": "CRDL",
+    "name": "Cardiol Therapeutics Inc.",
+    "change": 0.31,
+    "price": 2.31,
+    "changesPercentage": 15.499997
+  },
+  {
+    "symbol": "VAXX",
+    "name": "Vaxxinity, Inc.",
+    "change": 0.92,
+    "price": 7.36,
+    "changesPercentage": 14.285715
+  },
+  {
+    "symbol": "SGBX",
+    "name": "SG Blocks, Inc.",
+    "change": 0.27,
+    "price": 2.17,
+    "changesPercentage": 14.210531
+  },
+  {
+    "symbol": "PHUN",
+    "name": "Phunware, Inc.",
+    "change": 0.36,
+    "price": 3.25,
+    "changesPercentage": 12.456743
+  },
+  {
+    "symbol": "YCBD",
+    "name": "cbdMD, Inc.",
+    "change": 0.13,
+    "price": 1.18,
+    "changesPercentage": 12.380953
+  },
+  {
+    "symbol": "EXAI",
+    "name": "Exscientia plc",
+    "change": 2.25,
+    "price": 21.05,
+    "changesPercentage": 11.968086
+  },
+  {
+    "symbol": "GNTY",
+    "name": "Guaranty Bancshares, Inc.",
+    "change": 4.44,
+    "price": 42.2,
+    "changesPercentage": 11.758482
+  },
+  {
+    "symbol": "PSTI",
+    "name": "Pluristem Therapeutics Inc.",
+    "change": 0.21,
+    "price": 2.14,
+    "changesPercentage": 10.880837
+  },
+  {
+    "symbol": "DOGZ",
+    "name": "Dogness (International) Corporation",
+    "change": 0.32,
+    "price": 3.31,
+    "changesPercentage": 10.702339
+  },
+  {
+    "symbol": "PIK",
+    "name": "Kidpik Corp.",
+    "change": 0.63,
+    "price": 6.69,
+    "changesPercentage": 10.396042
+  },
+  {
+    "symbol": "MDIA",
+    "name": "MediaCo Holding Inc.",
+    "change": 0.56,
+    "price": 6.08,
+    "changesPercentage": 10.144927
+  },
+  {
+    "symbol": "GOTU",
+    "name": "Gaotu Techedu Inc.",
+    "change": 0.18,
+    "price": 1.99,
+    "changesPercentage": 9.944756
+  },
+  {
+    "symbol": "CPSR",
+    "name": "Capstar Special Purpose Acquisition Corp.",
+    "change": 0.66,
+    "price": 7.36,
+    "changesPercentage": 9.85075
+  }
+]

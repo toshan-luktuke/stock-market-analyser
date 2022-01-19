@@ -1,0 +1,212 @@
+[
+  {
+    "symbol": "F",
+    "name": "Ford Motor Company",
+    "change": -0.81,
+    "price": 24.38,
+    "changesPercentage": -3.215567
+  },
+  {
+    "symbol": "AAPL",
+    "name": "Apple Inc.",
+    "change": -3.27,
+    "price": 169.8,
+    "changesPercentage": -1.8894113
+  },
+  {
+    "symbol": "LCID",
+    "name": "Lucid Group, Inc.",
+    "change": -3.01,
+    "price": 39.21,
+    "changesPercentage": -7.1293273
+  },
+  {
+    "symbol": "AMD",
+    "name": "Advanced Micro Devices, Inc.",
+    "change": -4.95,
+    "price": 131.93,
+    "changesPercentage": -3.6163151
+  },
+  {
+    "symbol": "T",
+    "name": "AT&T Inc.",
+    "change": 0.13,
+    "price": 27.31,
+    "changesPercentage": 0.47828978
+  },
+  {
+    "symbol": "NIO",
+    "name": "NIO Inc.",
+    "change": -1.34,
+    "price": 29.61,
+    "changesPercentage": -4.329564
+  },
+  {
+    "symbol": "NVDA",
+    "name": "NVIDIA Corporation",
+    "change": -10.39,
+    "price": 259.03,
+    "changesPercentage": -3.8564377
+  },
+  {
+    "symbol": "BAC",
+    "name": "Bank of America Corporation",
+    "change": -1.65,
+    "price": 46.26,
+    "changesPercentage": -3.4439604
+  },
+  {
+    "symbol": "PFE",
+    "name": "Pfizer Inc.",
+    "change": -0.84,
+    "price": 54.11,
+    "changesPercentage": -1.5286627
+  },
+  {
+    "symbol": "ITUB",
+    "name": "Itaú Unibanco Holding S.A.",
+    "change": -0.05,
+    "price": 4.2,
+    "changesPercentage": -1.176475
+  },
+  {
+    "symbol": "AMC",
+    "name": "AMC Entertainment Holdings, Inc.",
+    "change": -1.73,
+    "price": 18.84,
+    "changesPercentage": -8.410304
+  },
+  {
+    "symbol": "PHUN",
+    "name": "Phunware, Inc.",
+    "change": 0.36,
+    "price": 3.25,
+    "changesPercentage": 12.456743
+  },
+  {
+    "symbol": "EEM",
+    "name": "iShares MSCI Emerging Markets ETF",
+    "change": -0.89,
+    "price": 49.22,
+    "changesPercentage": -1.77609
+  },
+  {
+    "symbol": "CCL",
+    "name": "Carnival Corporation & plc",
+    "change": -0.97,
+    "price": 21.98,
+    "changesPercentage": -4.226585
+  },
+  {
+    "symbol": "PLTR",
+    "name": "Palantir Technologies Inc.",
+    "change": -1.04,
+    "price": 14.97,
+    "changesPercentage": -6.4959397
+  },
+  {
+    "symbol": "AAL",
+    "name": "American Airlines Group Inc.",
+    "change": -0.59,
+    "price": 17.9,
+    "changesPercentage": -3.1909149
+  },
+  {
+    "symbol": "INTC",
+    "name": "Intel Corporation",
+    "change": -0.94,
+    "price": 54.76,
+    "changesPercentage": -1.6876165
+  },
+  {
+    "symbol": "VALE",
+    "name": "Vale S.A.",
+    "change": 0.13,
+    "price": 15.51,
+    "changesPercentage": 0.8452543
+  },
+  {
+    "symbol": "EDU",
+    "name": "New Oriental Education & Technology Group Inc.",
+    "change": -0.12,
+    "price": 1.69,
+    "changesPercentage": -6.6298285
+  },
+  {
+    "symbol": "ZNGA",
+    "name": "Zynga Inc.",
+    "change": 0.03,
+    "price": 8.99,
+    "changesPercentage": 0.33481845
+  },
+  {
+    "symbol": "SOFI",
+    "name": "SoFi Technologies, Inc.",
+    "change": -1.14,
+    "price": 12.06,
+    "changesPercentage": -8.636359
+  },
+  {
+    "symbol": "OCGN",
+    "name": "Ocugen, Inc.",
+    "change": -0.25,
+    "price": 4.0,
+    "changesPercentage": -5.882353
+  },
+  {
+    "symbol": "FCEL",
+    "name": "FuelCell Energy, Inc.",
+    "change": -0.25,
+    "price": 4.58,
+    "changesPercentage": -5.1759834
+  },
+  {
+    "symbol": "PBR",
+    "name": "Petróleo Brasileiro S.A. - Petrobras",
+    "change": -0.15,
+    "price": 12.46,
+    "changesPercentage": -1.1895292
+  },
+  {
+    "symbol": "WISH",
+    "name": "ContextLogic Inc.",
+    "change": -0.06,
+    "price": 2.47,
+    "changesPercentage": -2.371539
+  },
+  {
+    "symbol": "UBER",
+    "name": "Uber Technologies, Inc.",
+    "change": -3.1,
+    "price": 38.41,
+    "changesPercentage": -7.4680767
+  },
+  {
+    "symbol": "TSLA",
+    "name": "Tesla, Inc.",
+    "change": -19.1,
+    "price": 1030.51,
+    "changesPercentage": -1.8197212
+  },
+  {
+    "symbol": "MSFT",
+    "name": "Microsoft Corporation",
+    "change": -7.55,
+    "price": 302.65,
+    "changesPercentage": -2.4339194
+  },
+  {
+    "symbol": "BBIG",
+    "name": "Vinco Ventures, Inc.",
+    "change": 1.12,
+    "price": 5.19,
+    "changesPercentage": 27.518425
+  },
+  {
+    "symbol": "WFC",
+    "name": "Wells Fargo & Company",
+    "change": -1.37,
+    "price": 56.69,
+    "changesPercentage": -2.3596325
+  }
+]
