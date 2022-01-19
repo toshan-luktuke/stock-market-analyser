@@ -97,7 +97,7 @@ const Dashboard = () => {
       <div className="p-2 pb-0 h-6.5">
         <StockTicker rates={['$10', '$20', '$30']}></StockTicker>
       </div>
-      <div className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-3">
+      <div className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-2">
         <IndexCard
           indexName="NIFTY 50"
           symbol="BSEN"
@@ -111,6 +111,11 @@ const Dashboard = () => {
         <IndexCard
           indexName="SENSEX"
           symbol="BNSX"
+          open={{ isIndianOpen, recdata }}
+        ></IndexCard>
+        <IndexCard
+          indexName="S&P 500"
+          symbol="SPY"
           open={{ isIndianOpen, recdata }}
         ></IndexCard>
       </div>

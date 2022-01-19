@@ -29,7 +29,14 @@ const IndexCard = ({ indexName, symbol, open }) => {
       const timestampArr = result[0].timestamp;
       let toSet = [];
       for (let i = 0; i < priceArr.length; ++i) {
-        if (priceArr[i] - priceArr[0] > 0) {
+        if (symbol === 'NDAQ') {
+          if (priceArr[i] - priceArr[0] > 0) {
+            toSet.push({
+              time: timestampArr[i],
+              price: priceArr[i] - priceArr[0],
+            });
+          }
+        } else {
           toSet.push({
             time: timestampArr[i],
             price: priceArr[i] - priceArr[0],
@@ -88,7 +95,7 @@ const IndexCard = ({ indexName, symbol, open }) => {
             </div>
             <div style={{ marginLeft: -50 }}>
               <ResponsiveContainer width="100%" height={95}>
-                {symbol === 'NDAQ' ? (
+                {symbol === 'NDAQ' || symbol === 'SPY' ? (
                   <AreaChart data={data}>
                     <XAxis dataKey="time" hide></XAxis>
                     <YAxis
