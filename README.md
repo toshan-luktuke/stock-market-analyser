@@ -218,7 +218,9 @@ find_r(Stock name)
         
 STEP 3: This will create a `.pkl` file in the Models folder.
 
-STEP 4: You can now execute the main.py and test.py files on your local machine as stated in the above section
+STEP 4: Now add the stock name as a string in the array `list_stocks` in the file main.py
+
+STEP 5: You can now execute the main.py and test.py files on your local machine as stated in the above section
 
 ```
 # In the first conda prompt
