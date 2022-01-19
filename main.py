@@ -20,22 +20,8 @@ list_stocks = ['SPY', 'TSLA', 'FB', 'GOOG', 'GOOGL', 'AAPL', 'TTM', 'RELI']
 class Stock_ANN(Resource):
     def get(self, stock_name):
         try:
-            model = keras.models.load_model("{}.h5".format(stock_name))
-            #prediction = model.predict(X_test)
-
-            data = yf.download(stock_name, auto_adjust=True)
-            #score = model.evaluate(X_train, Y_train, verbose = 0)
-            #print("Accuracy = ", (100-score), "%")
-
-            data = data.iloc[len(data)-10:]
-            data = data[['High','Open', 'Volume']]
-            pred = model.predict(data, verbose=0)
-            res = {'p1': {'today_closing_price': pred[0][0]}}
-
-
-             # res = find(stock_name)
-            #if res[0] == -1 or 
             if stock_name not in list_stocks:
+<<<<<<< HEAD
                 abort(404, message="Stock code is invalid")
 
             #print(res)
@@ -44,7 +30,33 @@ class Stock_ANN(Resource):
             response.headers.add("Access-Control-Allow-Origin", "*")
             return response
         except:
-            print("SERVER ERROR 500")
+=======
+                print("Invalid stock name")
+            else:
+                model = keras.models.load_model(
+                    "Models/ANN/{}.h5".format(stock_name))
+                #prediction = model.predict(X_test)
 
-           
+                data = yf.download(stock_name, auto_adjust=True)
+                #score = model.evaluate(X_train, Y_train, verbose = 0)
+                #print("Accuracy = ", (100-score), "%")
+
+                data = data.iloc[len(data)-10:]
+                data = data[['High', 'Open', 'Volume']]
+                pred = model.predict(data, verbose=0)
+                res = {'p1': {'today_closing_price': pred[0][0]}}
+
+                # res = find(stock_name)
+                # if res[0] == -1 or
+
+                # print(res)
+                response = jsonify({'data': res})
+                response.headers.add("Access-Control-Allow-Origin", "*")
+                return response
+        except Exception as e:
+>>>>>>> dc7f1c341b5ffbd85109166fd6d7b2b55720e03c
+            print("SERVER ERROR 500")
+            print(e)
+
+
 api.add_resource(Stock_ANN, '/stock_ann/<string:stock_name>')
