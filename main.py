@@ -1,3 +1,5 @@
+import json
+
 from flask import Flask, jsonify
 from flask_restful import Api, Resource, abort
 from flask_cors import CORS
@@ -37,6 +39,7 @@ class Stock_ANN(Resource):
                 abort(404, message="Stock code is invalid")
 
             #print(res)
+            res = json.dumps(str(res))
             response = jsonify({'data': res})
             response.headers.add("Access-Control-Allow-Origin", "*")
             return response
