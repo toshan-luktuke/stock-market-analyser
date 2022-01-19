@@ -261,7 +261,7 @@ module.exports.getIndianStockChart = async (req, res, next) => {
   }
 };
 
-module.exports.getSectorPerformance = async (req, res, next) => {
+module.exports.getSectorPerformanceData = async (req, res, next) => {
   try {
     res.status(200).json({ data: sector, success: true });
   } catch (error) {
@@ -277,7 +277,7 @@ module.exports.getTickerData = async (req, res, next) => {
   }
 };
 
-module.exports.getGainers = async (req, res, next) => {
+module.exports.getGainersData = async (req, res, next) => {
   try {
     res.status(200).json({ success: true, data: gainers });
   } catch (error) {
@@ -285,7 +285,7 @@ module.exports.getGainers = async (req, res, next) => {
   }
 };
 
-module.exports.getLosers = async (req, res, next) => {
+module.exports.getLosersData = async (req, res, next) => {
   try {
     res.status(200).json({ success: true, data: losers });
   } catch (error) {

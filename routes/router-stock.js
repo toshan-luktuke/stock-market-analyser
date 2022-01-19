@@ -19,14 +19,18 @@ const {
   isIndianOpen,
   getChartIndia,
   getIndianStockChart,
-  getSectorPerformance,
+  getSectorPerformanceData,
   getTickerData,
+  getGainersData,
+  getLosersData,
 } = require('../controllers/controller-stock');
 
 router.route('/quote/:symbol').get(getStockQuote);
 router.route('/chart/:symbol').get(getStockChart);
-router.route('/sector').get(getSectorPerformance);
+router.route('/sector').get(getSectorPerformanceData);
 router.route('/ticker').get(getTickerData);
+router.route('/gainers').route(getGainersData);
+router.route('/losers').route(getLosersData);
 router.route('/autosuggest/:name').get(getAutosuggestions);
 router.route('/length').get(getStockLength);
 router.route('/wsb').get(getWSB);
