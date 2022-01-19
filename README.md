@@ -57,7 +57,6 @@ A blazing fast web application to analyze the current trends in the stock a user
 ### Assets
 - [GitHub Repo](https://github.com/toshan-luktuke/stock-market-analyser)
 - [Drive link for Recordings & Screenshots](https://drive.google.com/drive/folders/1A4iOlkxtDlkG3PurklooRA8DYiPBIil9)
-- [The ](https://stock-market-analyser-seven.vercel.app/)
 
 ### Backend (Heroku)
 - [Stock Market Analyser Server](https://stock-market-analyser-backend.herokuapp.com/)
