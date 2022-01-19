@@ -20,7 +20,10 @@ const Dashboard = () => {
   const { recdata: recdata1 } = useFetch(
     'https://stock-market-analyser-backend.herokuapp.com/stock/indian/isopen',
   );
-
+  const { recdata: tickerdata, isLoading: loadingticker } = useFetch(
+    'https://stock-market-analyser-backend.herokuapp.com/stock/ticker',
+  );
+  console.log(tickerdata);
   const isIndianOpen = () => {
     const now = new Date();
     const market = new Date(recdata1.time);
@@ -99,9 +102,9 @@ const Dashboard = () => {
       </Card>
 
       <div className="p-2 pb-0 h-6.5">
-        <StockTicker rates={['$10', '$20', '$30']}></StockTicker>
+        <StockTicker rates={tickerdata.data} load={loadingticker}></StockTicker>
       </div>
-      
+
       <SectionTitle>Major Indices Realtime</SectionTitle>
 
       <div className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-2">
