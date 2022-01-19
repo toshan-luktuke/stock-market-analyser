@@ -57,7 +57,7 @@ def find_r(name):
     model.fit(x_train.values, y_train.values)
 
     # Saving the model
-    filename = 'LinearReg_model.sav'
+    filename = '../Models/Linear regression/TSLA.pkl'
     pickle.dump(model, open(filename, 'wb'))
 
     # Loading the saved model
