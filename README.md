@@ -60,7 +60,7 @@ A blazing fast web application to analyze the current trends in the stock a user
 
 ### Backend (Heroku)
 - [Stock Market Analyser Server](https://stock-market-analyser-backend.herokuapp.com/)
-- [Stock Market Analyser Linear Regression Model Deployment](https://stock-analyser-ann.herokuapp.com/)
+- [Stock Market Analyser Linear Regression Model Deployment](https://stock-ml-backend.herokuapp.com/stock_lr/)
 - [Stock Market Analyser ANN Model Deployment](https://stock-analyser-ann.herokuapp.com/)
 
 ## 🤖Tech-Stack
