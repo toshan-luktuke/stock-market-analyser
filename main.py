@@ -21,16 +21,6 @@ class Stock_ANN(Resource):
     def get(self, stock_name):
         try:
             if stock_name not in list_stocks:
-<<<<<<< HEAD
-                abort(404, message="Stock code is invalid")
-
-            #print(res)
-            res = json.dumps(str(res))
-            response = jsonify({'data': res})
-            response.headers.add("Access-Control-Allow-Origin", "*")
-            return response
-        except:
-=======
                 print("Invalid stock name")
             else:
                 model = keras.models.load_model(
@@ -50,11 +40,11 @@ class Stock_ANN(Resource):
                 # if res[0] == -1 or
 
                 # print(res)
+                res = json.dumps(str(res))
                 response = jsonify({'data': res})
                 response.headers.add("Access-Control-Allow-Origin", "*")
                 return response
         except Exception as e:
->>>>>>> dc7f1c341b5ffbd85109166fd6d7b2b55720e03c
             print("SERVER ERROR 500")
             print(e)
 
