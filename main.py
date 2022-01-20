@@ -3,7 +3,7 @@ import json
 from flask import Flask, jsonify
 from flask_restful import Api, Resource, abort
 from flask_cors import CORS
-from Model.ann_model import find
+from Model.ann_model import X_test
 import tensorflow as tf
 from tensorflow import keras
 import yfinance as yf
@@ -25,7 +25,7 @@ class Stock_ANN(Resource):
             else:
                 model = keras.models.load_model(
                     "Models/ANN/{}.h5".format(stock_name))
-                #prediction = model.predict(X_test)
+                prediction = model.predict(X_test)
 
                 data = yf.download(stock_name, auto_adjust=True)
                 #score = model.evaluate(X_train, Y_train, verbose = 0)
@@ -34,6 +34,7 @@ class Stock_ANN(Resource):
                 data = data.iloc[len(data)-10:]
                 data = data[['High', 'Open', 'Volume']]
                 pred = model.predict(data, verbose=0)
+                pred = (prediction[-1:]*10000)
                 res = {'p1': {'today_closing_price': pred[0][0]}}
 
                 # res = find(stock_name)
