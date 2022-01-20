@@ -8,7 +8,10 @@ from keras.models import Sequential
 from keras.layers.core import Dense, Dropout, Activation
 import yfinance as yf
 import os
-import pickle
+#import pickle
+#import tensorflow as tf
+#from tensorflow import keras
+
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
@@ -87,10 +90,10 @@ def find(name):
     model.fit(X_train, Y_train, batch_size = 128, epochs = 10, validation_split=0.05)
 
     # filename = 'ANNmodel.sav'
-    # pickle.dump(model, open(filename, 'wb'))
+    # model.save("../Models/ANN/stock_name.h5")
 
     # Loading the saved model
-    # model = pickle.load(open(filename, 'rb'))
+    # model = keras.models.load_model("../Models/ANN/stock_name.h5")
 
     # Predicted Values
     prediction = model.predict(X_test)
