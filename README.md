@@ -264,7 +264,7 @@ This will create a `.h5` file in the Models folder
 
 4. Once this is done, add the stock name in the array `list_stocks` in main.py on the same branch
 
-5. Execute the 2 files main.py & test.py locally as shown above (same as Linear Regression)
+5. Execute the 2 files main.py & test.py locally as shown above (similar to Step 5 of Linear Regression)
 
 On entering the valid stock name, your prediction will be displayed
 
