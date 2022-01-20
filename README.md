@@ -243,6 +243,31 @@ $ python test.py
         
 Here you can enter the code name of the stock and the prediction will be displayed
 
+### ANN models
+
+1. Switch over to the `ml-host-ann` branch locally
+
+```
+$ git checkout ml-host-ann
+```
+
+2. Open the ann_model.py file currently in the Model folder, and call the `find` function towards the very end
+
+```
+# While saving the file, rename the path of the file as the code name of the particular stock.
+# As: "../Models/ANN/stock_name.h5"
+# Towards the end, call the find function
+# find(Stock_name)
+```
+
+This will create a `.h5` file in the Models folder
+
+4. Once this is done, add the stock name in the array `list_stocks` in main.py on the same branch
+
+5. Execute the 2 files main.py & test.py locally as shown above (same as Linear Regression)
+
+On entering the valid stock name, your prediction will be displayed
+
 
 ## 👩‍💻Contributors
 
