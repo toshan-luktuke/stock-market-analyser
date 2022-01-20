@@ -15,8 +15,12 @@ import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
+X_test = 1
 
 def find(name):
+
+    global X_test
+
     #Loading the data
     data = yf.download(name, auto_adjust=True)
 
