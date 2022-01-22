@@ -2,211 +2,211 @@
   {
     "symbol": "F",
     "name": "Ford Motor Company",
-    "change": -1.93,
-    "price": 22.45,
-    "changesPercentage": -7.9163184
+    "change": -1.0,
+    "price": 20.65,
+    "changesPercentage": -4.618938
   },
   {
     "symbol": "AAPL",
     "name": "Apple Inc.",
-    "change": -3.57,
-    "price": 166.23,
-    "changesPercentage": -2.1024778
+    "change": -2.1,
+    "price": 162.41,
+    "changesPercentage": -1.2765126
   },
   {
     "symbol": "LCID",
     "name": "Lucid Group, Inc.",
-    "change": 0.82,
-    "price": 40.03,
-    "changesPercentage": 2.0913026
+    "change": -0.97,
+    "price": 37.75,
+    "changesPercentage": -2.5051684
   },
   {
     "symbol": "AMD",
     "name": "Advanced Micro Devices, Inc.",
-    "change": -3.66,
-    "price": 128.27,
-    "changesPercentage": -2.7741897
+    "change": -3.08,
+    "price": 118.81,
+    "changesPercentage": -2.52687
   },
   {
     "symbol": "T",
     "name": "AT&T Inc.",
-    "change": -0.03,
-    "price": 27.28,
-    "changesPercentage": -0.1098454
-  },
-  {
-    "symbol": "NIO",
-    "name": "NIO Inc.",
-    "change": -0.98,
-    "price": 28.63,
-    "changesPercentage": -3.3096976
+    "change": -0.41,
+    "price": 26.61,
+    "changesPercentage": -1.517394
   },
   {
     "symbol": "NVDA",
     "name": "NVIDIA Corporation",
-    "change": -8.36,
-    "price": 250.67,
-    "changesPercentage": -3.2274258
+    "change": -7.76,
+    "price": 233.74,
+    "changesPercentage": -3.2132485
+  },
+  {
+    "symbol": "NIO",
+    "name": "NIO Inc.",
+    "change": -1.78,
+    "price": 27.35,
+    "changesPercentage": -6.1105347
   },
   {
     "symbol": "BAC",
     "name": "Bank of America Corporation",
-    "change": 0.18,
-    "price": 46.44,
-    "changesPercentage": 0.38910574
+    "change": -0.83,
+    "price": 44.92,
+    "changesPercentage": -1.8142117
   },
   {
     "symbol": "PFE",
     "name": "Pfizer Inc.",
-    "change": -0.57,
-    "price": 53.54,
-    "changesPercentage": -1.0534092
-  },
-  {
-    "symbol": "ITUB",
-    "name": "Itaú Unibanco Holding S.A.",
-    "change": 0.05,
-    "price": 4.25,
-    "changesPercentage": 1.1904808
+    "change": -1.26,
+    "price": 52.79,
+    "changesPercentage": -2.3311718
   },
   {
     "symbol": "AMC",
     "name": "AMC Entertainment Holdings, Inc.",
-    "change": -0.52,
-    "price": 18.32,
-    "changesPercentage": -2.7600873
-  },
-  {
-    "symbol": "PHUN",
-    "name": "Phunware, Inc.",
-    "change": -0.42,
-    "price": 2.83,
-    "changesPercentage": -12.9230795
+    "change": -0.1,
+    "price": 17.97,
+    "changesPercentage": -0.5534056
   },
   {
     "symbol": "EEM",
     "name": "iShares MSCI Emerging Markets ETF",
-    "change": 0.21,
-    "price": 49.43,
-    "changesPercentage": 0.42665395
+    "change": -0.72,
+    "price": 49.0,
+    "changesPercentage": -1.44811
   },
   {
     "symbol": "CCL",
     "name": "Carnival Corporation & plc",
-    "change": -0.76,
-    "price": 21.22,
-    "changesPercentage": -3.45769
+    "change": -0.81,
+    "price": 19.99,
+    "changesPercentage": -3.8942285
   },
   {
     "symbol": "PLTR",
     "name": "Palantir Technologies Inc.",
-    "change": -0.41,
-    "price": 14.56,
-    "changesPercentage": -2.73881
-  },
-  {
-    "symbol": "BBD",
-    "name": "Banco Bradesco S.A.",
-    "change": 0.08,
-    "price": 3.85,
-    "changesPercentage": 2.1220138
-  },
-  {
-    "symbol": "AAL",
-    "name": "American Airlines Group Inc.",
-    "change": -0.59,
-    "price": 17.31,
-    "changesPercentage": -3.2960904
-  },
-  {
-    "symbol": "INTC",
-    "name": "Intel Corporation",
-    "change": -1.14,
-    "price": 53.62,
-    "changesPercentage": -2.0818105
-  },
-  {
-    "symbol": "VALE",
-    "name": "Vale S.A.",
-    "change": 0.67,
-    "price": 16.18,
-    "changesPercentage": 4.319794
-  },
-  {
-    "symbol": "EDU",
-    "name": "New Oriental Education & Technology Group Inc.",
-    "change": 0.04,
-    "price": 1.73,
-    "changesPercentage": 2.3668616
-  },
-  {
-    "symbol": "ZNGA",
-    "name": "Zynga Inc.",
-    "change": 0.03,
-    "price": 9.02,
-    "changesPercentage": 0.33371177
+    "change": -1.09,
+    "price": 13.53,
+    "changesPercentage": -7.455541
   },
   {
     "symbol": "SOFI",
     "name": "SoFi Technologies, Inc.",
-    "change": 1.65,
-    "price": 13.71,
-    "changesPercentage": 13.681589
+    "change": -1.11,
+    "price": 13.89,
+    "changesPercentage": -7.3999977
+  },
+  {
+    "symbol": "BBD",
+    "name": "Banco Bradesco S.A.",
+    "change": -0.03,
+    "price": 3.82,
+    "changesPercentage": -0.77922004
+  },
+  {
+    "symbol": "AAL",
+    "name": "American Airlines Group Inc.",
+    "change": -0.46,
+    "price": 16.3,
+    "changesPercentage": -2.744636
+  },
+  {
+    "symbol": "ZNGA",
+    "name": "Zynga Inc.",
+    "change": -0.04,
+    "price": 8.99,
+    "changesPercentage": -0.44296747
+  },
+  {
+    "symbol": "VALE",
+    "name": "Vale S.A.",
+    "change": -0.39,
+    "price": 15.6,
+    "changesPercentage": -2.4390206
+  },
+  {
+    "symbol": "EDU",
+    "name": "New Oriental Education & Technology Group Inc.",
+    "change": -0.13,
+    "price": 1.57,
+    "changesPercentage": -7.6470585
   },
   {
     "symbol": "OCGN",
     "name": "Ocugen, Inc.",
-    "change": -0.27,
-    "price": 3.73,
-    "changesPercentage": -6.7499995
-  },
-  {
-    "symbol": "FCEL",
-    "name": "FuelCell Energy, Inc.",
     "change": -0.28,
-    "price": 4.3,
-    "changesPercentage": -6.1135316
-  },
-  {
-    "symbol": "PBR",
-    "name": "Petróleo Brasileiro S.A. - Petrobras",
-    "change": 0.15,
-    "price": 12.61,
-    "changesPercentage": 1.2038493
-  },
-  {
-    "symbol": "UBER",
-    "name": "Uber Technologies, Inc.",
-    "change": -0.55,
-    "price": 37.86,
-    "changesPercentage": -1.4319167
-  },
-  {
-    "symbol": "TSLA",
-    "name": "Tesla, Inc.",
-    "change": -34.86,
-    "price": 995.65,
-    "changesPercentage": -3.3827896
-  },
-  {
-    "symbol": "MSFT",
-    "name": "Microsoft Corporation",
-    "change": 0.68,
-    "price": 303.33,
-    "changesPercentage": 0.22467957
-  },
-  {
-    "symbol": "WISH",
-    "name": "ContextLogic Inc.",
-    "change": -0.02,
-    "price": 2.45,
-    "changesPercentage": -0.8097158
+    "price": 3.28,
+    "changesPercentage": -7.865168
   },
   {
     "symbol": "BBIG",
     "name": "Vinco Ventures, Inc.",
-    "change": -0.66,
-    "price": 4.53,
-    "changesPercentage": -12.71676
+    "change": -0.74,
+    "price": 3.19,
+    "changesPercentage": -18.829517
+  },
+  {
+    "symbol": "PHUN",
+    "name": "Phunware, Inc.",
+    "change": -0.35,
+    "price": 2.38,
+    "changesPercentage": -12.820509
+  },
+  {
+    "symbol": "MSFT",
+    "name": "Microsoft Corporation",
+    "change": -5.57,
+    "price": 296.03,
+    "changesPercentage": -1.8468194
+  },
+  {
+    "symbol": "FCEL",
+    "name": "FuelCell Energy, Inc.",
+    "change": -0.23,
+    "price": 3.9,
+    "changesPercentage": -5.5690074
+  },
+  {
+    "symbol": "UBER",
+    "name": "Uber Technologies, Inc.",
+    "change": -1.88,
+    "price": 35.94,
+    "changesPercentage": -4.9709177
+  },
+  {
+    "symbol": "PBR",
+    "name": "Petróleo Brasileiro S.A. - Petrobras",
+    "change": 0.02,
+    "price": 12.67,
+    "changesPercentage": 0.1581064
+  },
+  {
+    "symbol": "TSLA",
+    "name": "Tesla, Inc.",
+    "change": -52.37,
+    "price": 943.9,
+    "changesPercentage": -5.2566066
+  },
+  {
+    "symbol": "WFC",
+    "name": "Wells Fargo & Company",
+    "change": -1.33,
+    "price": 53.67,
+    "changesPercentage": -2.4181852
+  },
+  {
+    "symbol": "WISH",
+    "name": "ContextLogic Inc.",
+    "change": -0.03,
+    "price": 2.47,
+    "changesPercentage": -1.1999989
+  },
+  {
+    "symbol": "RIVN",
+    "name": "Rivian Automotive, Inc.",
+    "change": -0.51,
+    "price": 64.51,
+    "changesPercentage": -0.78436565
   }
 ]

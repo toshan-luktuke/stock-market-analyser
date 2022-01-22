@@ -1,52 +1,31 @@
 [
   {
-    "symbol": "ZGNX",
-    "name": "Zogenix, Inc.",
-    "change": 10.28,
-    "price": 25.92,
-    "changesPercentage": 65.7289
+    "symbol": "PT",
+    "name": "Pintec Technology Holdings Limited",
+    "change": 0.495,
+    "price": 1.39,
+    "changesPercentage": 55.307262
   },
   {
-    "symbol": "GMVD",
-    "name": "G Medical Innovations Holdings Ltd",
-    "change": 1.91,
-    "price": 6.12,
-    "changesPercentage": 45.368168
+    "symbol": "DAVE",
+    "name": "Dave Inc.",
+    "change": 2.19,
+    "price": 9.43,
+    "changesPercentage": 30.248627
   },
   {
-    "symbol": "VALN",
-    "name": "Valneva SE",
-    "change": 14.75,
-    "price": 47.52,
-    "changesPercentage": 45.01068
+    "symbol": "SVFD",
+    "name": "Save Foods, Inc.",
+    "change": 1.06,
+    "price": 5.2,
+    "changesPercentage": 25.603863
   },
   {
-    "symbol": "VVOS",
-    "name": "Vivos Therapeutics, Inc.",
-    "change": 0.67,
-    "price": 2.3,
-    "changesPercentage": 41.104294
-  },
-  {
-    "symbol": "PIXY",
-    "name": "ShiftPixy, Inc.",
-    "change": 0.4,
-    "price": 1.67,
-    "changesPercentage": 31.496063
-  },
-  {
-    "symbol": "GMDA",
-    "name": "Gamida Cell Ltd.",
-    "change": 0.5,
-    "price": 2.72,
-    "changesPercentage": 22.522522
-  },
-  {
-    "symbol": "RETO",
-    "name": "ReTo Eco-Solutions, Inc.",
-    "change": 0.39,
-    "price": 2.16,
-    "changesPercentage": 22.033905
+    "symbol": "VMAC",
+    "name": "Vistas Media Acquisition Company Inc.",
+    "change": 2.17,
+    "price": 10.72,
+    "changesPercentage": 25.380117
   },
   {
     "symbol": "AMPGW",
@@ -56,157 +35,178 @@
     "changesPercentage": 21.204542
   },
   {
-    "symbol": "PLG",
-    "name": "Platinum Group Metals Ltd.",
-    "change": 0.34,
-    "price": 1.98,
-    "changesPercentage": 20.73171
+    "symbol": "ARDS",
+    "name": "Aridis Pharmaceuticals, Inc.",
+    "change": 0.27,
+    "price": 1.6,
+    "changesPercentage": 20.30075
   },
   {
-    "symbol": "FUSN",
-    "name": "Fusion Pharmaceuticals Inc.",
-    "change": 1.32,
-    "price": 8.17,
-    "changesPercentage": 19.270077
+    "symbol": "MTR",
+    "name": "Mesa Royalty Trust",
+    "change": 1.1,
+    "price": 8.0,
+    "changesPercentage": 15.942
   },
   {
-    "symbol": "WIMI",
-    "name": "WiMi Hologram Cloud Inc.",
-    "change": 0.43,
-    "price": 3.0,
-    "changesPercentage": 16.73152
+    "symbol": "LLNW",
+    "name": "Limelight Networks, Inc.",
+    "change": 0.51,
+    "price": 4.24,
+    "changesPercentage": 13.672915
   },
   {
-    "symbol": "HMY",
-    "name": "Harmony Gold Mining Company Limited",
-    "change": 0.59,
-    "price": 4.2,
-    "changesPercentage": 16.343489
+    "symbol": "SHPW",
+    "name": "Shapeways Holdings, Inc.",
+    "change": 0.38,
+    "price": 3.16,
+    "changesPercentage": 13.669069
   },
   {
-    "symbol": "BWMX",
-    "name": "Betterware de Mexico, S.A.B. de C.V.",
-    "change": 3.0,
-    "price": 22.02,
-    "changesPercentage": 15.77287
+    "symbol": "VNTR",
+    "name": "Venator Materials PLC",
+    "change": 0.31,
+    "price": 2.62,
+    "changesPercentage": 13.419911
   },
   {
-    "symbol": "RENN",
-    "name": "Renren Inc.",
-    "change": 2.79,
-    "price": 21.04,
-    "changesPercentage": 15.287677
+    "symbol": "CINC",
+    "name": "CinCor Pharma, Inc.",
+    "change": 2.13,
+    "price": 18.2,
+    "changesPercentage": 13.2545185
   },
   {
-    "symbol": "GLDG",
-    "name": "GoldMining Inc.",
-    "change": 0.23,
-    "price": 1.8,
-    "changesPercentage": 14.649674
+    "symbol": "VVOS",
+    "name": "Vivos Therapeutics, Inc.",
+    "change": 0.275,
+    "price": 2.47,
+    "changesPercentage": 12.528479
   },
   {
-    "symbol": "SOFI",
-    "name": "SoFi Technologies, Inc.",
-    "change": 1.65,
-    "price": 13.71,
-    "changesPercentage": 13.681589
+    "symbol": "PTON",
+    "name": "Peloton Interactive, Inc.",
+    "change": 2.84,
+    "price": 27.06,
+    "changesPercentage": 11.725847
   },
   {
-    "symbol": "RDIB",
-    "name": "Reading International, Inc.",
-    "change": 2.69,
-    "price": 22.7,
-    "changesPercentage": 13.443281
+    "symbol": "CYCCP",
+    "name": "Cyclacel Pharmaceuticals, Inc.",
+    "change": 0.74,
+    "price": 7.6,
+    "changesPercentage": 10.7871685
   },
   {
-    "symbol": "ORLA",
-    "name": "Orla Mining Ltd.",
-    "change": 0.47,
-    "price": 4.03,
-    "changesPercentage": 13.202254
+    "symbol": "LXEH",
+    "name": "Lixiang Education Holding Co., Ltd.",
+    "change": 0.7,
+    "price": 7.69,
+    "changesPercentage": 10.014311
   },
   {
-    "symbol": "GFI",
-    "name": "Gold Fields Limited",
-    "change": 1.26,
-    "price": 11.1,
-    "changesPercentage": 12.804881
+    "symbol": "FATH",
+    "name": "Fathom Digital Manufacturing Corporation",
+    "change": 0.93,
+    "price": 10.24,
+    "changesPercentage": 9.989251
   },
   {
-    "symbol": "AG",
-    "name": "First Majestic Silver Corp.",
-    "change": 1.34,
-    "price": 11.88,
-    "changesPercentage": 12.713474
-  },
-  {
-    "symbol": "STRN",
-    "name": "Stran & Company, Inc.",
-    "change": 0.53,
-    "price": 4.79,
-    "changesPercentage": 12.441307
-  },
-  {
-    "symbol": "AU",
-    "name": "AngloGold Ashanti Limited",
-    "change": 2.26,
-    "price": 20.78,
-    "changesPercentage": 12.203024
-  },
-  {
-    "symbol": "FREY",
-    "name": "FREYR Battery",
-    "change": 1.05,
-    "price": 9.7,
-    "changesPercentage": 12.138731
-  },
-  {
-    "symbol": "HL",
-    "name": "Hecla Mining Company",
-    "change": 0.61,
-    "price": 5.78,
-    "changesPercentage": 11.798841
-  },
-  {
-    "symbol": "DRD",
-    "name": "DRDGOLD Limited",
-    "change": 0.94,
-    "price": 8.95,
-    "changesPercentage": 11.735325
-  },
-  {
-    "symbol": "EXK",
-    "name": "Endeavour Silver Corp.",
-    "change": 0.49,
-    "price": 4.67,
-    "changesPercentage": 11.722495
-  },
-  {
-    "symbol": "BATL",
-    "name": "Battalion Oil Corporation",
-    "change": 1.42,
-    "price": 13.7,
-    "changesPercentage": 11.563519
-  },
-  {
-    "symbol": "IHT",
-    "name": "InnSuites Hospitality Trust",
+    "symbol": "RHE-PA",
+    "name": "Regional Health Properties, Inc.",
     "change": 0.41,
-    "price": 3.96,
-    "changesPercentage": 11.549298
+    "price": 4.53,
+    "changesPercentage": 9.951464
   },
   {
-    "symbol": "WRN",
-    "name": "Western Copper and Gold Corporation",
-    "change": 0.17,
-    "price": 1.65,
-    "changesPercentage": 11.486484
+    "symbol": "CPSR",
+    "name": "Capstar Special Purpose Acquisition Corp.",
+    "change": 0.66,
+    "price": 7.36,
+    "changesPercentage": 9.85075
   },
   {
-    "symbol": "LBPH",
-    "name": "Longboard Pharmaceuticals, Inc.",
-    "change": 0.49,
-    "price": 4.77,
-    "changesPercentage": 11.448592
+    "symbol": "ITCI",
+    "name": "Intra-Cellular Therapies, Inc.",
+    "change": 3.79,
+    "price": 42.66,
+    "changesPercentage": 9.750453
+  },
+  {
+    "symbol": "BON",
+    "name": "Bon Natural Life Limited",
+    "change": 0.31,
+    "price": 3.52,
+    "changesPercentage": 9.657319
+  },
+  {
+    "symbol": "OFED",
+    "name": "Oconee Federal Financial Corp.",
+    "change": 2.07,
+    "price": 23.95,
+    "changesPercentage": 9.460703
+  },
+  {
+    "symbol": "GMDA",
+    "name": "Gamida Cell Ltd.",
+    "change": 0.28,
+    "price": 3.24,
+    "changesPercentage": 9.459458
+  },
+  {
+    "symbol": "CELU",
+    "name": "Celularity Inc.",
+    "change": 0.35,
+    "price": 4.32,
+    "changesPercentage": 8.816125
+  },
+  {
+    "symbol": "WHLR",
+    "name": "Wheeler Real Estate Investment Trust, Inc.",
+    "change": 0.13,
+    "price": 1.64,
+    "changesPercentage": 8.609271
+  },
+  {
+    "symbol": "HKIB",
+    "name": "AMTD International Inc.",
+    "change": 0.4,
+    "price": 5.1,
+    "changesPercentage": 8.510641
+  },
+  {
+    "symbol": "OCC",
+    "name": "Optical Cable Corporation",
+    "change": 0.33,
+    "price": 4.29,
+    "changesPercentage": 8.333331
+  },
+  {
+    "symbol": "TREB",
+    "name": "Trebia Acquisition Corp.",
+    "change": 0.67,
+    "price": 8.76,
+    "changesPercentage": 8.28183
+  },
+  {
+    "symbol": "SOHOO",
+    "name": "Sotherly Hotels Inc.",
+    "change": 1.43,
+    "price": 19.4,
+    "changesPercentage": 7.95771
+  },
+  {
+    "symbol": "SLN",
+    "name": "Silence Therapeutics plc",
+    "change": 1.45,
+    "price": 19.95,
+    "changesPercentage": 7.8378415
+  },
+  {
+    "symbol": "VPG",
+    "name": "Vishay Precision Group, Inc.",
+    "change": 2.34,
+    "price": 33.06,
+    "changesPercentage": 7.617194
   }
 ]
