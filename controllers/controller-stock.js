@@ -53,7 +53,7 @@ module.exports.getStockLength = async (req, res, next) => {
 module.exports.getWSB = async (req, res, next) => {
   try {
     const { data } = await axios.get(
-      `https://dashboard.nbshare.io/api/v1/apps/reddit`,
+      'https://dashboard.nbshare.io/api/v1/apps/reddit',
     );
     res.status(200).json({ success: true, data });
   } catch (error) {
