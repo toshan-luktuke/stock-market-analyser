@@ -275,7 +275,4 @@ Team members
 
 ## 👨‍🏫Mentors
 
-- [Utsav Khatu](https://github.com/utsavk28)
-- [Vishal Patil](https://github.com/vishalpatil18)
-- [Mithilesh Patil](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
-- [Atharva Alshi](https://github.com/atharva1608)
+
