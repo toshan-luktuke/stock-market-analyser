@@ -4,7 +4,7 @@ const CTA = () => {
   return (
     <a
       className="flex text-sm lg:text-lg items-center justify-around p-4 mb-8 font-semibold text-purple-100 bg-purple-600 dark:bg-green-600 shadow-md focus:outline-none focus:shadow-outline-purple"
-      href="https://github.com/RushabhM03/stock-market-analyser"
+      href="https://github.com/toshan-luktuke/stock-market-analyser"
       target="_blank"
       rel="noopener noreferrer"
       style={{ borderRadius: '25% 15% / 90% 5%' }}
