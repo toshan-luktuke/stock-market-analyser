@@ -273,6 +273,14 @@ On entering the valid stock name, your prediction will be displayed
 
 Team members
 
+- [**S**arvagnya Purohit](https://github.com/saRvaGnyA) - sarvagnyapurohit@gmail.com
+- [**T**oshan Luktuke](https://github.com/toshan-luktuke) - toshan1603@gmail.com
+- [**A**lisha Kamat](https://github.com/alisha-kamat) - alishakamat8@gmail.com
+- [**R**ushabh Maru](https://github.com/RushabhM03) - rushabh.maru123@gmail.com
+
 ## 👨‍🏫Mentors
 
-
+- [Utsav Khatu](https://github.com/utsavk28)
+- [Vishal Patil](https://github.com/vishalpatil18)
+- [Mithilesh Patil](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+- [Atharva Alshi](https://github.com/atharva1608)
