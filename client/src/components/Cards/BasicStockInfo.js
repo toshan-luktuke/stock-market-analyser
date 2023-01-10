@@ -20,14 +20,14 @@ const directionEmojis = {
 };
 
 const BasicStockInfo = ({ symbol }) => {
-  const url = `https://stock-market-analyser-backend.herokuapp.com/stock/details/${symbol}`;
+  const url = `https://stock-market-analyser-backend.cyclic.app/stock/details/${symbol}`;
   const { recdata, isLoading } = useFetch(url);
   const { data } = recdata;
   const [loading, setLoading] = useState(true);
   const [rating, setRating] = useState({ success: false });
   const [graphData, setGraphData] = useState([]);
   useEffect(() => {
-    const url1 = `https://stock-market-analyser-backend.herokuapp.com/stock/rating/${symbol}`;
+    const url1 = `https://stock-market-analyser-backend.cyclic.app/stock/rating/${symbol}`;
     fetcherConditional(url1);
   }, [recdata, symbol]);
 
@@ -48,7 +48,7 @@ const BasicStockInfo = ({ symbol }) => {
 
   const getData = async () => {
     const { data } = await get(
-      `https://stock-market-analyser-backend.herokuapp.com/stock/chart/${symbol}`,
+      `https://stock-market-analyser-backend.cyclic.app/stock/chart/${symbol}`,
     );
     return data;
   };

@@ -14,7 +14,7 @@ const SearchIndian = () => {
   const getSuggestions = async (searchName) => {
     try {
       const { data } = await get(
-        `https://stock-market-analyser-backend.herokuapp.com/stock/indian/autosuggest/${searchName}`,
+        `https://stock-market-analyser-backend.cyclic.app/stock/indian/autosuggest/${searchName}`,
       );
       if (data.length > 10) {
         setSuggestions(data.slice(0, 10));

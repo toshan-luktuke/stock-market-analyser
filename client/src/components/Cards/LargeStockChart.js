@@ -69,7 +69,7 @@ const LargeStockChart = () => {
   const getSuggestions = async (searchName) => {
     try {
       const { data } = await get(
-        `https://stock-market-analyser-backend.herokuapp.com/stock/autosuggest/${searchName}`,
+        `https://stock-market-analyser-backend.cyclic.app/stock/autosuggest/${searchName}`,
       );
       if (data.length > 3) {
         setSuggestions(data.slice(0, 3));
@@ -85,7 +85,7 @@ const LargeStockChart = () => {
     const {
       data: { data },
     } = await get(
-      `https://stock-market-analyser-backend.herokuapp.com/stock/chart/${symbol}`,
+      `https://stock-market-analyser-backend.cyclic.app/stock/chart/${symbol}`,
     );
     let toPlot = [];
     for (let i = 0; i < data.chart.result[0].timestamp.length; ++i) {

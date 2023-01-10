@@ -3,7 +3,7 @@ import { useFetch } from '../hooks/useFetch';
 import BasicStockInfo from './Cards/BasicStockInfo';
 
 const StockAnalysis = ({ name }) => {
-  const url = `https://stock-market-analyser-backend.herokuapp.com/stock/autosuggest/${name}`;
+  const url = `https://stock-market-analyser-backend.cyclic.app/stock/autosuggest/${name}`;
   const { recdata } = useFetch(url);
   if (recdata[0] !== undefined) {
     console.log(recdata[0]);

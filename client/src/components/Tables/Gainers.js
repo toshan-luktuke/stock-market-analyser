@@ -17,7 +17,7 @@ const Gainers = () => {
 
   const resultsPerPage = 5;
   const url =
-    'https://stock-market-analyser-backend.herokuapp.com/stock/gainers';
+    'https://stock-market-analyser-backend.cyclic.app/stock/gainers';
 
   const {
     recdata: { data: response },

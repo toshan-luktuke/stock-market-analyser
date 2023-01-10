@@ -17,7 +17,7 @@ const Losers = () => {
 
   const resultsPerPage = 5;
   const url =
-    'https://stock-market-analyser-backend.herokuapp.com/stock/losers';
+    'https://stock-market-analyser-backend.cyclic.app/stock/losers';
 
   const {
     recdata: { data: response },

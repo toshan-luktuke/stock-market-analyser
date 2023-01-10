@@ -15,13 +15,13 @@ import SectionTitle from '../components/Typography/SectionTitle';
 
 const Dashboard = () => {
   const { recdata, isLoading } = useFetch(
-    'https://stock-market-analyser-backend.herokuapp.com/stock/isopen',
+    'https://stock-market-analyser-backend.cyclic.app/stock/isopen',
   );
   const { recdata: recdata1 } = useFetch(
-    'https://stock-market-analyser-backend.herokuapp.com/stock/indian/isopen',
+    'https://stock-market-analyser-backend.cyclic.app/stock/indian/isopen',
   );
   const { recdata: tickerdata, isLoading: loadingticker } = useFetch(
-    'https://stock-market-analyser-backend.herokuapp.com/stock/ticker',
+    'https://stock-market-analyser-backend.cyclic.app/stock/ticker',
   );
   console.log(tickerdata);
   const isIndianOpen = () => {
