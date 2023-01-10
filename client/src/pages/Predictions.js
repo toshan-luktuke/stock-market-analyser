@@ -35,7 +35,7 @@ const Predictions = () => {
       const {
         data: { data },
       } = await get(
-        `https://stock-ml-backend.herokuapp.com/stock_lr/${symbol}`,
+        `https://stock-ml-host.onrender.com/stock_lr/${symbol}`,
         {
           headers: {
             'Access-Control-Allow-Origin': '*',
